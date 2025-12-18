@@ -1,0 +1,9 @@
+id: NHANES:2017-2018
+name: NHANES 2017-2018 Survey Cycle
+description: National Health and Nutrition Examination Survey cycle 2017-2018
+study_type: CrossSectional
+population: Nationally representative sample of US population
+enrollment_period: 2017-2018
+geographic_location: United States
+data_source: Nhanes
+principal_investigator: Centers for Disease Control and Prevention

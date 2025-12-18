@@ -1,0 +1,19 @@
+chemical_entities:
+  - id: CHEBI:16716
+    name: Benzene
+    description: An aromatic hydrocarbon
+    chebi_id: CHEBI:16716
+    dtxsid: DTXSID2020152
+    molecular_formula: C6H6
+
+exposures:
+  - id: exposome_schema:exp_001
+    name: Benzene inhalation exposure
+    exposure_route: Inhalation
+    exposure_medium: Air
+
+studies:
+  - id: NHANES:2017-2018
+    name: NHANES 2017-2018
+    study_type: CrossSectional
+    data_source: Nhanes

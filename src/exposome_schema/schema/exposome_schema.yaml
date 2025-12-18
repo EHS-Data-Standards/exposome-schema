@@ -3,18 +3,53 @@ id: https://w3id.org/diatomsRcool/exposome-schema
 name: exposome-schema
 title: exposome-schema
 description: |-
-  Test project for exposome schema in LinkML
+  Comprehensive exposome schema for integrating chemical exposures, environmental factors,
+  dietary data, toxicology databases, and health outcomes with support for Adverse Outcome
+  Pathways (AOPs) and multi-granularity measurements
 license: MIT
 see_also:
   - https://diatomsRcool.github.io/exposome-schema
 
 prefixes:
+  # Schema namespaces
   exposome_schema: https://w3id.org/diatomsRcool/exposome-schema/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
+  biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
+
+  # 14 Required Ontologies
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CL: http://purl.obolibrary.org/obo/CL_
+  HP: http://purl.obolibrary.org/obo/HP_
+  UPHENO: http://purl.obolibrary.org/obo/UPHENO_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  MP: http://purl.obolibrary.org/obo/MP_
+  ZP: http://purl.obolibrary.org/obo/ZP_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  ECTO: http://purl.obolibrary.org/obo/ECTO_
+  EFO: http://identifiers.org/efo/
+  chear: http://hadatac.org/ont/chear#
+  HHEAR: http://hadatac.org/ont/hhear#
+
+  # Supporting OBO ontologies
   PATO: http://purl.obolibrary.org/obo/PATO_
-  example: https://example.org/
+  RO: http://purl.obolibrary.org/obo/RO_
+
+  # 12 Data Repository Prefixes
+  DTXSID: https://comptox.epa.gov/dashboard/dsstoxdb/results?search=
+  CHEMBL.COMPOUND: http://identifiers.org/chembl.compound/
+  CTD.CHEMICAL: http://ctdbase.org/detail.go?type=chem&acc=
+  CTD.GENE: http://ctdbase.org/detail.go?type=gene&acc=
+  AOPWIKI: https://aopwiki.org/aops/
+  GWAS: https://www.ebi.ac.uk/gwas/studies/
+  NCBIGENE: https://www.ncbi.nlm.nih.gov/gene/
+  GXA: https://www.ebi.ac.uk/gxa/experiments/
+  NHANES: https://wwwn.cdc.gov/Nchs/Nhanes/
+  USDA.PESTICIDE: https://www.ams.usda.gov/datasets/pdp/
+  PUBCHEM.COMPOUND: http://identifiers.org/pubchem.compound/
+
 default_prefix: exposome_schema
 default_range: string
 
@@ -23,74 +58,1151 @@ imports:
 
 classes:
 
+  # ============ Base Classes ============
+
   NamedThing:
     description: >-
-      A generic grouping for any identifiable entity
+      A generic grouping for any identifiable entity in the exposome
     slots:
       - id
       - name
       - description
+      - category
+      - xref
     class_uri: schema:Thing
 
-  Person:
+  # ============ Abstract Domain Classes ============
+
+  BiologicalEntity:
+    abstract: true
     is_a: NamedThing
     description: >-
-      Represents a Person
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      Biological entities including genes, proteins, cells, and anatomical structures
 
-  PersonCollection:
+  ChemicalEntity:
+    is_a: NamedThing
+    class_uri: CHEBI:24431
+    description: >-
+      A chemical entity including compounds, drugs, and metabolites
+    slots:
+      - chebi_id
+      - dtxsid
+      - chembl_id
+      - pubchem_cid
+      - cas_number
+      - inchi
+      - smiles
+      - molecular_formula
+
+  ExposureEvent:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      An event in which an organism is exposed to a chemical or environmental factor
+    slots:
+      - exposed_to_chemical
+      - exposure_route
+      - exposure_duration
+      - exposure_concentration
+      - exposure_medium
+
+  BiologicalResponse:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      A biological response at the molecular, cellular, or tissue level
+
+  HealthOutcome:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      A health-related outcome including phenotypes and diseases
+
+  StudyEntity:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      Entities related to studies, cohorts, and participants
+
+  Measurement:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      A measurement or observation
+
+  Association:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      A relationship between two entities
+
+  # ============ Exposure Classes ============
+
+  ChemicalExposure:
+    is_a: ExposureEvent
+    class_uri: ECTO:0000006
+    description: >-
+      Exposure to a chemical substance
+
+  DietaryExposure:
+    is_a: ExposureEvent
+    class_uri: FOODON:00002403
+    description: >-
+      Exposure through dietary consumption
+    slots:
+      - food_item
+      - serving_size
+
+  EnvironmentalExposure:
+    is_a: ExposureEvent
+    class_uri: ECTO:0000001
+    description: >-
+      Exposure to environmental factors
+    slots:
+      - environmental_context
+
+  OccupationalExposure:
+    is_a: ExposureEvent
+    class_uri: ECTO:0000002
+    description: >-
+      Exposure in an occupational setting
+    slots:
+      - occupation
+      - workplace
+
+  # ============ Health Outcome Classes ============
+
+  Phenotype:
+    is_a: HealthOutcome
+    class_uri: HP:0000118
+    description: >-
+      An observable characteristic or trait
+    slots:
+      - hp_id
+      - upheno_id
+      - phenotype_category
+      - severity
+      - onset_age
+
+  Disease:
+    is_a: HealthOutcome
+    class_uri: MONDO:0000001
+    description: >-
+      A disease or medical condition
+    slots:
+      - mondo_id
+      - disease_category
+      - affected_anatomy
+
+  AdverseOutcome:
+    is_a: HealthOutcome
+    description: >-
+      An adverse health outcome in the context of an Adverse Outcome Pathway
+    slots:
+      - outcome_level
+
+  MammalianPhenotype:
+    is_a: Phenotype
+    class_uri: MP:0000001
+    description: >-
+      A phenotype observed in mammalian model organisms
+    slots:
+      - mp_id
+
+  ZebrafishPhenotype:
+    is_a: Phenotype
+    class_uri: ZP:0000000
+    description: >-
+      A phenotype observed in zebrafish
+    slots:
+      - zp_id
+
+  # ============ AOP Framework Classes ============
+
+  AdverseOutcomePathway:
+    is_a: NamedThing
+    description: >-
+      A sequence of causally linked events at different levels of biological
+      organization that lead from exposure to adverse health outcomes
+    slots:
+      - aopwiki_id
+      - molecular_initiating_event
+      - key_events
+      - key_event_relationships
+      - adverse_outcome
+      - stressors
+
+  MolecularInitiatingEvent:
+    is_a: BiologicalResponse
+    class_uri: ECTO:3000000
+    description: >-
+      The initial molecular-level perturbation that starts an Adverse Outcome Pathway
+    slots:
+      - biological_process
+      - biological_object
+      - biological_action
+      - occurs_in_cell_type
+      - occurs_in_anatomy
+
+  KeyEvent:
+    is_a: BiologicalResponse
+    class_uri: ECTO:1000000
+    description: >-
+      A measurable change in biological state that is a step in an Adverse Outcome Pathway
+    slots:
+      - biological_process
+      - biological_object
+      - biological_action
+      - level_of_biological_organization
+      - occurs_in_cell_type
+      - occurs_in_anatomy
+
+  KeyEventRelationship:
+    is_a: Association
+    description: >-
+      A directional relationship between two key events in an AOP
+    slots:
+      - upstream_event
+      - downstream_event
+      - relationship_type
+      - evidence_support
+
+  # ============ Study & Measurement Classes ============
+
+  Study:
+    is_a: StudyEntity
+    class_uri: EFO:0001444
+    description: >-
+      A research study or survey
+    slots:
+      - study_type
+      - population
+      - enrollment_period
+      - geographic_location
+      - data_source
+      - principal_investigator
+      - publications
+
+  Cohort:
+    is_a: StudyEntity
+    description: >-
+      A group of individuals in a study
+    slots:
+      - part_of_study
+      - cohort_size
+      - inclusion_criteria
+
+  Participant:
+    is_a: StudyEntity
+    description: >-
+      An individual participant in a study
+    slots:
+      - part_of_cohort
+      - participant_id
+      - age
+      - sex
+      - species
+
+  ExposureMeasurement:
+    is_a: Measurement
+    description: >-
+      A measurement of exposure to a chemical or environmental factor
+    slots:
+      - measured_entity
+      - participant
+      - measurement_value
+      - measurement_unit
+      - measurement_method
+      - measurement_date
+      - sample_type
+      - source_database_record
+
+  BiomarkerMeasurement:
+    is_a: Measurement
+    description: >-
+      A measurement of a biological marker
+    slots:
+      - biomarker_type
+      - measured_entity
+      - participant
+      - measurement_value
+      - measurement_unit
+      - measurement_method
+      - measurement_date
+
+  PhenotypeMeasurement:
+    is_a: Measurement
+    description: >-
+      A measurement of a phenotypic trait
+    slots:
+      - phenotype
+      - participant
+      - measurement_value
+      - measurement_unit
+      - measurement_date
+
+  AggregatedMeasurement:
+    is_a: Measurement
+    description: >-
+      An aggregated or summary measurement across a cohort or population
+    slots:
+      - measured_entity
+      - cohort
+      - summary_statistic
+      - statistic_value
+      - sample_size
+      - stratification
+
+  # ============ Biological Entity Classes ============
+
+  Gene:
+    is_a: BiologicalEntity
+    description: >-
+      A gene or genetic element
+    slots:
+      - ncbigene_id
+      - symbol
+      - in_taxon
+
+  Protein:
+    is_a: BiologicalEntity
+    description: >-
+      A protein or polypeptide
+    slots:
+      - encoded_by_gene
+
+  CellType:
+    is_a: BiologicalEntity
+    class_uri: CL:0000000
+    description: >-
+      A type of cell
+    slots:
+      - cl_id
+
+  AnatomicalEntity:
+    is_a: BiologicalEntity
+    class_uri: UBERON:0001062
+    description: >-
+      An anatomical structure or system
+    slots:
+      - uberon_id
+
+  Organism:
+    is_a: BiologicalEntity
+    description: >-
+      An individual organism
+    slots:
+      - species
+      - taxon_id
+
+  # ============ Database Record Classes ============
+
+  DatabaseRecord:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      A record from an external database
+    slots:
+      - source_database
+      - record_url
+      - last_updated
+
+  NHANESRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the National Health and Nutrition Examination Survey
+    slots:
+      - survey_cycle
+      - variable_name
+
+  CTDRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the Comparative Toxicogenomics Database
+
+  ChEMBLRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from ChEMBL chemical database
+
+  GWASRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the GWAS Catalog
+
+  AOPWikiRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the AOP Wiki
+
+  ToxCastRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the ToxCast database
+
+  CompToxRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the EPA CompTox Chemicals Dashboard
+
+  GeneExpressionAtlasRecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from the Gene Expression Atlas
+
+  USDARecord:
+    is_a: DatabaseRecord
+    description: >-
+      A record from USDA Pesticide Data Program
+
+  # ============ Association Classes ============
+
+  ExposureToPhenotypeAssociation:
+    is_a: Association
+    description: >-
+      An association between an exposure and a phenotype
+    slots:
+      - exposure
+      - phenotype
+      - association_type
+      - evidence
+
+  ChemicalToGeneAssociation:
+    is_a: Association
+    description: >-
+      An association between a chemical and a gene
+    slots:
+      - chemical
+      - gene
+      - interaction_type
+
+  GeneToDiseaseAssociation:
+    is_a: Association
+    description: >-
+      An association between a gene and a disease
+    slots:
+      - gene
+      - disease
+      - association_type
+
+  GeneticVariantToPhenotypeAssociation:
+    is_a: Association
+    description: >-
+      An association between a genetic variant and a phenotype (e.g., from GWAS)
+    slots:
+      - genetic_variant
+      - phenotype
+      - p_value
+      - effect_size
+
+  # ============ Container Class ============
+
+  ExposomeDatabase:
     tree_root: true
     description: >-
-      A holder for Person objects
+      Container for all exposome data including exposures, chemicals,
+      health outcomes, AOPs, studies, and measurements
     attributes:
-      entries:
-        range: Person
+      chemical_entities:
+        description: Collection of chemical entities including compounds, drugs, and metabolites
+        range: ChemicalEntity
+        multivalued: true
+        inlined_as_list: true
+      exposures:
+        description: Collection of exposure events (chemical, dietary, environmental, occupational)
+        range: ExposureEvent
+        multivalued: true
+        inlined_as_list: true
+      health_outcomes:
+        description: Collection of health outcomes including phenotypes and diseases
+        range: HealthOutcome
+        multivalued: true
+        inlined_as_list: true
+      adverse_outcome_pathways:
+        description: Collection of Adverse Outcome Pathways linking exposures to health outcomes
+        range: AdverseOutcomePathway
+        multivalued: true
+        inlined_as_list: true
+      studies:
+        description: Collection of research studies and surveys
+        range: Study
+        multivalued: true
+        inlined_as_list: true
+      cohorts:
+        description: Collection of study cohorts
+        range: Cohort
+        multivalued: true
+        inlined_as_list: true
+      participants:
+        description: Collection of study participants
+        range: Participant
+        multivalued: true
+        inlined_as_list: true
+      measurements:
+        description: Collection of measurements and observations
+        range: Measurement
+        multivalued: true
+        inlined_as_list: true
+      biological_entities:
+        description: Collection of biological entities (genes, proteins, cells, anatomical structures)
+        range: BiologicalEntity
+        multivalued: true
+        inlined_as_list: true
+      database_records:
+        description: Collection of records from external databases
+        range: DatabaseRecord
+        multivalued: true
+        inlined_as_list: true
+      associations:
+        description: Collection of associations between entities
+        range: Association
         multivalued: true
         inlined_as_list: true
 
+# ============ Slots ============
+
 slots:
+
+  # Core slots
   id:
     identifier: true
     slot_uri: schema:identifier
     range: uriorcurie
     description: A unique identifier for a thing
+
   name:
     slot_uri: schema:name
     description: A human-readable name for a thing
+
   description:
     slot_uri: schema:description
     description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
+
+  category:
+    description: A category or type for a thing
+    multivalued: true
+
+  xref:
+    range: uriorcurie
+    multivalued: true
+    description: External database cross-references
+
+  # Chemical entity slots
+  chebi_id:
+    range: uriorcurie
+    pattern: "^CHEBI:\\d+$"
+    description: ChEBI identifier
+
+  dtxsid:
+    range: string
+    pattern: "^DTXSID\\d{7,9}$"
+    description: EPA CompTox Dashboard identifier
+
+  chembl_id:
+    range: string
+    pattern: "^CHEMBL\\d+$"
+    description: ChEMBL compound identifier
+
+  pubchem_cid:
     range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+    description: PubChem Compound identifier
+
+  cas_number:
+    range: string
+    description: CAS Registry Number
+
+  inchi:
+    range: string
+    description: InChI chemical identifier
+
+  smiles:
+    range: string
+    description: SMILES chemical structure
+
+  molecular_formula:
+    range: string
+    description: Molecular formula
+
+  # Exposure slots
+  exposed_to_chemical:
+    range: ChemicalEntity
+    slot_uri: CHEBI:24431
+    description: The chemical entity involved in the exposure
+
+  exposure_route:
+    range: ExposureRouteEnum
+    description: Route of exposure
+
+  exposure_duration:
+    range: string
+    description: Duration of exposure
+
+  exposure_concentration:
+    range: float
+    description: Concentration of exposure
+
+  exposure_medium:
+    range: ExposureMediumEnum
+    description: Medium through which exposure occurs
+
+  food_item:
+    range: string
+    description: Food item consumed
+
+  serving_size:
+    range: string
+    description: Serving size
+
+  environmental_context:
+    range: string
+    description: Environmental context of exposure
+
+  occupation:
+    range: string
+    description: Occupation related to exposure
+
+  workplace:
+    range: string
+    description: Workplace where exposure occurs
+
+  # Health outcome slots
+  hp_id:
+    range: uriorcurie
+    pattern: "^HP:\\d{7}$"
+    description: Human Phenotype Ontology identifier
+
+  upheno_id:
+    range: uriorcurie
+    pattern: "^UPHENO:\\d+$"
+    description: Unified phenotype ontology identifier
+
+  phenotype_category:
+    range: string
+    description: Category of phenotype
+
+  severity:
+    range: string
+    description: Severity of phenotype or disease
+
+  onset_age:
+    range: string
+    description: Age of onset
+
+  mondo_id:
+    range: uriorcurie
+    pattern: "^MONDO:\\d{7}$"
+    description: MONDO disease identifier
+
+  disease_category:
+    range: string
+    description: Category of disease
+
+  affected_anatomy:
+    range: AnatomicalEntity
+    description: Anatomical location affected
+
+  outcome_level:
+    range: BiologicalOrganizationLevelEnum
+    description: Level of biological organization
+
+  mp_id:
+    range: uriorcurie
+    pattern: "^MP:\\d{7}$"
+    description: Mammalian Phenotype Ontology identifier
+
+  zp_id:
+    range: uriorcurie
+    pattern: "^ZP:\\d{7}$"
+    description: Zebrafish Phenotype Ontology identifier
+
+  # AOP slots
+  aopwiki_id:
+    range: string
+    description: AOP Wiki identifier
+
+  molecular_initiating_event:
+    range: MolecularInitiatingEvent
+    description: The molecular initiating event of an AOP
+
+  key_events:
+    range: KeyEvent
+    multivalued: true
+    description: Key events in an AOP
+
+  key_event_relationships:
+    range: KeyEventRelationship
+    multivalued: true
+    description: Relationships between key events
+
+  adverse_outcome:
+    range: AdverseOutcome
+    description: The adverse outcome of an AOP
+
+  stressors:
+    range: ChemicalEntity
+    multivalued: true
+    description: Chemical stressors that trigger the AOP
+
+  biological_process:
+    range: string
+    description: Biological process involved
+
+  biological_object:
+    range: string
+    description: Biological object involved
+
+  biological_action:
+    range: string
+    description: Biological action or change
+
+  occurs_in_cell_type:
+    range: CellType
+    slot_uri: CL:0000000
+    description: Cell type where event occurs
+
+  occurs_in_anatomy:
+    range: AnatomicalEntity
+    slot_uri: UBERON:0001062
+    description: Anatomical location where event occurs
+
+  level_of_biological_organization:
+    range: BiologicalOrganizationLevelEnum
+    description: Level of biological organization
+
+  upstream_event:
+    range: KeyEvent
+    description: Upstream key event
+
+  downstream_event:
+    range: KeyEvent
+    description: Downstream key event
+
+  relationship_type:
+    range: string
+    description: Type of relationship
+
+  evidence_support:
+    range: string
+    description: Evidence supporting the relationship
+
+  # Study slots
+  study_type:
+    range: StudyTypeEnum
+    description: Type of study
+
+  population:
+    range: string
+    description: Study population description
+
+  enrollment_period:
+    range: string
+    description: Time period of enrollment
+
+  geographic_location:
+    range: string
+    description: Geographic location of study
+
+  data_source:
+    range: DataSourceEnum
+    description: Source database or repository
+
+  principal_investigator:
+    range: string
+    description: Principal investigator name
+
+  publications:
+    range: string
+    multivalued: true
+    description: Related publications
+
+  part_of_study:
+    range: Study
+    description: Study that this cohort is part of
+
+  cohort_size:
+    range: integer
+    description: Number of participants in cohort
+
+  inclusion_criteria:
+    range: string
+    description: Criteria for cohort inclusion
+
+  part_of_cohort:
+    range: Cohort
+    slot_uri: biolink:member_of
+    description: Cohort that this participant is part of
+
+  participant_id:
+    range: string
+    description: Participant identifier
+
+  age:
+    range: integer
+    description: Age in years
+
+  sex:
+    range: SexEnum
+    description: Biological sex
+
+  species:
+    range: string
+    description: Species name
+
+  # Measurement slots
+  measured_entity:
+    range: NamedThing
+    description: The entity being measured
+
+  participant:
+    range: Participant
+    description: The participant being measured
+
+  measurement_value:
+    range: float
+    description: Numeric measurement value
+
+  measurement_unit:
+    range: string
+    description: Unit of measurement
+
+  measurement_method:
+    range: string
+    description: Method used for measurement
+
+  measurement_date:
+    range: date
+    description: Date of measurement
+
+  sample_type:
+    range: SampleTypeEnum
+    description: Type of biological sample
+
+  source_database_record:
+    range: DatabaseRecord
+    description: Link to original database record
+
+  biomarker_type:
+    range: string
+    description: Type of biomarker
+
+  phenotype:
+    range: Phenotype
+    description: The phenotype being measured
+
+  cohort:
+    range: Cohort
+    description: The cohort for aggregated measurements
+
+  summary_statistic:
+    range: SummaryStatisticEnum
+    description: Type of summary statistic
+
+  statistic_value:
+    range: float
+    description: Value of the summary statistic
+
+  sample_size:
+    range: integer
+    description: Number of samples
+
+  stratification:
+    range: string
+    description: Stratification variables
+
+  # Biological entity slots
+  ncbigene_id:
+    range: string
+    pattern: "^\\d+$"
+    description: NCBI Gene identifier
+
+  symbol:
+    range: string
+    description: Gene symbol
+
+  in_taxon:
+    range: string
+    description: Taxonomic group
+
+  encoded_by_gene:
+    range: Gene
+    description: Gene that encodes this protein
+
+  cl_id:
+    range: uriorcurie
+    pattern: "^CL:\\d{7}$"
+    description: Cell Ontology identifier
+
+  uberon_id:
+    range: uriorcurie
+    pattern: "^UBERON:\\d{7}$"
+    description: UBERON anatomical identifier
+
+  taxon_id:
+    range: string
+    description: NCBI Taxonomy identifier
+
+  # Database record slots
+  source_database:
+    range: string
+    description: Name of source database
+
+  record_url:
+    range: uri
+    description: URL to database record
+
+  last_updated:
+    range: date
+    description: Date record was last updated
+
+  survey_cycle:
+    range: string
+    description: NHANES survey cycle
+
+  variable_name:
+    range: string
+    description: Variable name in database
+
+  # Association slots
+  exposure:
+    range: ExposureEvent
+    description: Exposure in association
+
+  chemical:
+    range: ChemicalEntity
+    description: Chemical in association
+
+  gene:
+    range: Gene
+    description: Gene in association
+
+  disease:
+    range: Disease
+    description: Disease in association
+
+  association_type:
+    range: string
+    description: Type of association
+
+  evidence:
+    range: string
+    description: Evidence for association
+
+  interaction_type:
+    range: string
+    description: Type of interaction
+
+  genetic_variant:
+    range: string
+    description: Genetic variant identifier
+
+  p_value:
+    range: float
+    description: Statistical p-value
+
+  effect_size:
+    range: float
+    description: Effect size of association
+
+  # Relationship slots
+  has_exposure:
+    domain: Participant
+    range: ExposureEvent
+    multivalued: true
+    slot_uri: ECTO:0000006
+    description: Exposures experienced by participant
+
+  causes_phenotype:
+    domain: ExposureEvent
+    range: Phenotype
+    multivalued: true
+    slot_uri: biolink:causes
+    description: Phenotypes caused by exposure
+
+  leads_to_molecular_event:
+    domain: ExposureEvent
+    range: MolecularInitiatingEvent
+    description: Molecular initiating event triggered by exposure
+
+  triggers_key_event:
+    domain: MolecularInitiatingEvent
+    range: KeyEvent
+    multivalued: true
+    description: Key events triggered
+
+  measured_in_study:
+    domain: Measurement
+    range: Study
+    description: Study in which measurement was made
+
+# ============ Enums ============
 
 enums:
-  PersonStatus:
+
+  ExposureRouteEnum:
+    description: Routes of exposure to chemicals or environmental factors
     permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+      Oral:
+        description: Oral ingestion
+        meaning: ECTO:0000895
+      Dermal:
+        description: Dermal contact
+        meaning: ECTO:0000896
+      Inhalation:
+        description: Inhalation
+        meaning: ECTO:0000897
+      Injection:
+        description: Injection
+      Unknown:
+        description: Unknown route
+
+  ExposureMediumEnum:
+    description: Medium through which exposure occurs
+    permissible_values:
+      Air:
+        description: Air
+        meaning: ENVO:00002005
+      Water:
+        description: Water
+        meaning: ENVO:00002006
+      Food:
+        description: Food
+        meaning: FOODON:00002403
+      Soil:
+        description: Soil
+        meaning: ENVO:00001998
+      Dust:
+        description: Dust
+      ConsumerProduct:
+        description: Consumer product
+      Unknown:
+        description: Unknown medium
+
+  BiologicalOrganizationLevelEnum:
+    description: Levels of biological organization
+    permissible_values:
+      Molecular:
+        description: Molecular level
+        meaning: EFO:0001432
+      Cellular:
+        description: Cellular level
+        meaning: CL:0000000
+      Tissue:
+        description: Tissue level
+        meaning: UBERON:0000479
+      Organ:
+        description: Organ level
+        meaning: UBERON:0000062
+      Organism:
+        description: Organism level
+        meaning: UBERON:0000468
+      Population:
+        description: Population level
+
+  StudyTypeEnum:
+    description: Types of research studies
+    permissible_values:
+      Cohort:
+        description: Cohort study
+        meaning: EFO:0001444
+      CrossSectional:
+        description: Cross-sectional study
+        meaning: EFO:0001745
+      CaseControl:
+        description: Case-control study
+        meaning: EFO:0001427
+      RandomizedControlledTrial:
+        description: Randomized controlled trial
+        meaning: EFO:0001427
+      Survey:
+        description: Survey
+      Gwas:
+        description: Genome-wide association study
+        meaning: EFO:0000508
+      Other:
+        description: Other study type
+
+  DataSourceEnum:
+    description: Data sources and repositories
+    permissible_values:
+      Nhanes:
+        description: National Health and Nutrition Examination Survey
+      Chear:
+        description: Children's Health Exposure Analysis Resource
+      Hhear:
+        description: Human Health Exposure Analysis Resource
+      AopWiki:
+        description: AOP Wiki
+      Ctd:
+        description: Comparative Toxicogenomics Database
+      ToxCast:
+        description: ToxCast
+      Tox21:
+        description: Tox21
+      ChemBl:
+        description: ChEMBL
+      CompTox:
+        description: CompTox Dashboard
+      GwasCatalog:
+        description: GWAS Catalog
+      GeneExpressionAtlas:
+        description: Gene Expression Atlas
+      UsdaPesticide:
+        description: USDA Pesticide Data Program
+      Wweia:
+        description: What We Eat In America
+      Other:
+        description: Other data source
+
+  SexEnum:
+    description: Biological sex
+    permissible_values:
+      Male:
+        description: Male
+        meaning: PATO:0000384
+      Female:
+        description: Female
+        meaning: PATO:0000383
+      Unknown:
+        description: Unknown
+
+  SampleTypeEnum:
+    description: Types of biological samples
+    permissible_values:
+      Blood:
+        description: Blood sample
+      Urine:
+        description: Urine sample
+      Serum:
+        description: Serum sample
+      Plasma:
+        description: Plasma sample
+      Tissue:
+        description: Tissue sample
+      Saliva:
+        description: Saliva sample
+      Hair:
+        description: Hair sample
+      Nail:
+        description: Nail sample
+      Other:
+        description: Other sample type
+
+  SummaryStatisticEnum:
+    description: Types of summary statistics
+    permissible_values:
+      Mean:
+        description: Arithmetic mean
+      Median:
+        description: Median
+      Mode:
+        description: Mode
+      Percentile:
+        description: Percentile
+      StandardDeviation:
+        description: Standard deviation
+      Variance:
+        description: Variance
+      Range:
+        description: Range
+      InterquartileRange:
+        description: Interquartile range

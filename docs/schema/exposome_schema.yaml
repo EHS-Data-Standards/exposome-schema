@@ -1,0 +1,2801 @@
+name: exposome-schema
+description: 'Comprehensive exposome schema for integrating chemical exposures, environmental
+  factors,
+
+  dietary data, toxicology databases, and health outcomes with support for Adverse
+  Outcome
+
+  Pathways (AOPs) and multi-granularity measurements'
+title: exposome-schema
+see_also:
+- https://diatomsRcool.github.io/exposome-schema
+id: https://w3id.org/diatomsRcool/exposome-schema
+imports:
+- linkml:types
+license: MIT
+prefixes:
+  exposome_schema:
+    prefix_prefix: exposome_schema
+    prefix_reference: https://w3id.org/diatomsRcool/exposome-schema/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  biolink:
+    prefix_prefix: biolink
+    prefix_reference: https://w3id.org/biolink/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  CHEBI:
+    prefix_prefix: CHEBI
+    prefix_reference: http://purl.obolibrary.org/obo/CHEBI_
+  FOODON:
+    prefix_prefix: FOODON
+    prefix_reference: http://purl.obolibrary.org/obo/FOODON_
+  CL:
+    prefix_prefix: CL
+    prefix_reference: http://purl.obolibrary.org/obo/CL_
+  HP:
+    prefix_prefix: HP
+    prefix_reference: http://purl.obolibrary.org/obo/HP_
+  UPHENO:
+    prefix_prefix: UPHENO
+    prefix_reference: http://purl.obolibrary.org/obo/UPHENO_
+  UBERON:
+    prefix_prefix: UBERON
+    prefix_reference: http://purl.obolibrary.org/obo/UBERON_
+  MONDO:
+    prefix_prefix: MONDO
+    prefix_reference: http://purl.obolibrary.org/obo/MONDO_
+  MP:
+    prefix_prefix: MP
+    prefix_reference: http://purl.obolibrary.org/obo/MP_
+  ZP:
+    prefix_prefix: ZP
+    prefix_reference: http://purl.obolibrary.org/obo/ZP_
+  ENVO:
+    prefix_prefix: ENVO
+    prefix_reference: http://purl.obolibrary.org/obo/ENVO_
+  ECTO:
+    prefix_prefix: ECTO
+    prefix_reference: http://purl.obolibrary.org/obo/ECTO_
+  EFO:
+    prefix_prefix: EFO
+    prefix_reference: http://www.ebi.ac.uk/efo/EFO_
+  CHEAR:
+    prefix_prefix: CHEAR
+    prefix_reference: http://hadatac.org/ont/chear#
+  HHEAR:
+    prefix_prefix: HHEAR
+    prefix_reference: http://hadatac.org/ont/hhear#
+  PATO:
+    prefix_prefix: PATO
+    prefix_reference: http://purl.obolibrary.org/obo/PATO_
+  RO:
+    prefix_prefix: RO
+    prefix_reference: http://purl.obolibrary.org/obo/RO_
+  DTXSID:
+    prefix_prefix: DTXSID
+    prefix_reference: https://comptox.epa.gov/dashboard/dsstoxdb/results?search=
+  CHEMBL.COMPOUND:
+    prefix_prefix: CHEMBL.COMPOUND
+    prefix_reference: https://www.ebi.ac.uk/chembl/compound_report_card/
+  CTD.CHEMICAL:
+    prefix_prefix: CTD.CHEMICAL
+    prefix_reference: http://ctdbase.org/detail.go?type=chem&acc=
+  CTD.GENE:
+    prefix_prefix: CTD.GENE
+    prefix_reference: http://ctdbase.org/detail.go?type=gene&acc=
+  AOPWIKI:
+    prefix_prefix: AOPWIKI
+    prefix_reference: https://aopwiki.org/aops/
+  GWAS:
+    prefix_prefix: GWAS
+    prefix_reference: https://www.ebi.ac.uk/gwas/studies/
+  NCBIGENE:
+    prefix_prefix: NCBIGENE
+    prefix_reference: https://www.ncbi.nlm.nih.gov/gene/
+  GXA:
+    prefix_prefix: GXA
+    prefix_reference: https://www.ebi.ac.uk/gxa/experiments/
+  NHANES:
+    prefix_prefix: NHANES
+    prefix_reference: https://wwwn.cdc.gov/Nchs/Nhanes/
+  USDA.PESTICIDE:
+    prefix_prefix: USDA.PESTICIDE
+    prefix_reference: https://www.ams.usda.gov/datasets/pdp/
+  PUBCHEM.COMPOUND:
+    prefix_prefix: PUBCHEM.COMPOUND
+    prefix_reference: https://pubchem.ncbi.nlm.nih.gov/compound/
+default_prefix: exposome_schema
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  ExposureRouteEnum:
+    name: ExposureRouteEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureRouteEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      ORAL:
+        text: ORAL
+        description: Oral ingestion
+        meaning: ECTO:0000895
+      DERMAL:
+        text: DERMAL
+        description: Dermal contact
+        meaning: ECTO:0000896
+      INHALATION:
+        text: INHALATION
+        description: Inhalation
+        meaning: ECTO:0000897
+      INJECTION:
+        text: INJECTION
+        description: Injection
+      UNKNOWN:
+        text: UNKNOWN
+        description: Unknown route
+  ExposureMediumEnum:
+    name: ExposureMediumEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureMediumEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      AIR:
+        text: AIR
+        description: Air
+        meaning: ENVO:00002005
+      WATER:
+        text: WATER
+        description: Water
+        meaning: ENVO:00002006
+      FOOD:
+        text: FOOD
+        description: Food
+        meaning: FOODON:00002403
+      SOIL:
+        text: SOIL
+        description: Soil
+        meaning: ENVO:00001998
+      DUST:
+        text: DUST
+        description: Dust
+      CONSUMER_PRODUCT:
+        text: CONSUMER_PRODUCT
+        description: Consumer product
+      UNKNOWN:
+        text: UNKNOWN
+        description: Unknown medium
+  BiologicalOrganizationLevelEnum:
+    name: BiologicalOrganizationLevelEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/BiologicalOrganizationLevelEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      MOLECULAR:
+        text: MOLECULAR
+        description: Molecular level
+        meaning: EFO:0001432
+      CELLULAR:
+        text: CELLULAR
+        description: Cellular level
+        meaning: CL:0000000
+      TISSUE:
+        text: TISSUE
+        description: Tissue level
+        meaning: UBERON:0000479
+      ORGAN:
+        text: ORGAN
+        description: Organ level
+        meaning: UBERON:0000062
+      ORGANISM:
+        text: ORGANISM
+        description: Organism level
+        meaning: UBERON:0000468
+      POPULATION:
+        text: POPULATION
+        description: Population level
+  StudyTypeEnum:
+    name: StudyTypeEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/StudyTypeEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      COHORT:
+        text: COHORT
+        description: Cohort study
+        meaning: EFO:0001444
+      CROSS_SECTIONAL:
+        text: CROSS_SECTIONAL
+        description: Cross-sectional study
+        meaning: EFO:0001745
+      CASE_CONTROL:
+        text: CASE_CONTROL
+        description: Case-control study
+        meaning: EFO:0001427
+      RANDOMIZED_CONTROLLED_TRIAL:
+        text: RANDOMIZED_CONTROLLED_TRIAL
+        description: Randomized controlled trial
+        meaning: EFO:0001427
+      SURVEY:
+        text: SURVEY
+        description: Survey
+      GWAS:
+        text: GWAS
+        description: Genome-wide association study
+        meaning: EFO:0000508
+      OTHER:
+        text: OTHER
+        description: Other study type
+  DataSourceEnum:
+    name: DataSourceEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/DataSourceEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      NHANES:
+        text: NHANES
+        description: National Health and Nutrition Examination Survey
+      CHEAR:
+        text: CHEAR
+        description: Children's Health Exposure Analysis Resource
+      HHEAR:
+        text: HHEAR
+        description: Human Health Exposure Analysis Resource
+      AOPWIKI:
+        text: AOPWIKI
+        description: AOP Wiki
+      CTD:
+        text: CTD
+        description: Comparative Toxicogenomics Database
+      TOXCAST:
+        text: TOXCAST
+        description: ToxCast
+      TOX21:
+        text: TOX21
+        description: Tox21
+      CHEMBL:
+        text: CHEMBL
+        description: ChEMBL
+      COMPTOX:
+        text: COMPTOX
+        description: CompTox Dashboard
+      GWAS_CATALOG:
+        text: GWAS_CATALOG
+        description: GWAS Catalog
+      GENE_EXPRESSION_ATLAS:
+        text: GENE_EXPRESSION_ATLAS
+        description: Gene Expression Atlas
+      USDA_PESTICIDE:
+        text: USDA_PESTICIDE
+        description: USDA Pesticide Data Program
+      WWEIA:
+        text: WWEIA
+        description: What We Eat In America
+      OTHER:
+        text: OTHER
+        description: Other data source
+  SexEnum:
+    name: SexEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/SexEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      MALE:
+        text: MALE
+        description: Male
+        meaning: PATO:0000384
+      FEMALE:
+        text: FEMALE
+        description: Female
+        meaning: PATO:0000383
+      UNKNOWN:
+        text: UNKNOWN
+        description: Unknown
+  SampleTypeEnum:
+    name: SampleTypeEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/SampleTypeEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      BLOOD:
+        text: BLOOD
+        description: Blood sample
+      URINE:
+        text: URINE
+        description: Urine sample
+      SERUM:
+        text: SERUM
+        description: Serum sample
+      PLASMA:
+        text: PLASMA
+        description: Plasma sample
+      TISSUE:
+        text: TISSUE
+        description: Tissue sample
+      SALIVA:
+        text: SALIVA
+        description: Saliva sample
+      HAIR:
+        text: HAIR
+        description: Hair sample
+      NAIL:
+        text: NAIL
+        description: Nail sample
+      OTHER:
+        text: OTHER
+        description: Other sample type
+  SummaryStatisticEnum:
+    name: SummaryStatisticEnum
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/SummaryStatisticEnum
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    permissible_values:
+      MEAN:
+        text: MEAN
+        description: Arithmetic mean
+      MEDIAN:
+        text: MEDIAN
+        description: Median
+      MODE:
+        text: MODE
+        description: Mode
+      PERCENTILE:
+        text: PERCENTILE
+        description: Percentile
+      STANDARD_DEVIATION:
+        text: STANDARD_DEVIATION
+        description: Standard deviation
+      VARIANCE:
+        text: VARIANCE
+        description: Variance
+      RANGE:
+        text: RANGE
+        description: Range
+      INTERQUARTILE_RANGE:
+        text: INTERQUARTILE_RANGE
+        description: Interquartile range
+slots:
+  id:
+    name: id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/id
+    description: A unique identifier for a thing
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - schema:identifier
+    slot_uri: schema:identifier
+    identifier: true
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    required: true
+  name:
+    name: name
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/name
+    description: A human-readable name for a thing
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - schema:name
+    slot_uri: schema:name
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/description
+    description: A human-readable description for a thing
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - schema:description
+    slot_uri: schema:description
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: string
+  category:
+    name: category
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/category
+    description: A category or type for a thing
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:category
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: string
+    multivalued: true
+  xref:
+    name: xref
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/xref
+    description: External database cross-references
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:xref
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    multivalued: true
+  chebi_id:
+    name: chebi_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/chebi_id
+    description: ChEBI identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:chebi_id
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: uriorcurie
+    pattern: ^CHEBI:\d+$
+  dtxsid:
+    name: dtxsid
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/dtxsid
+    description: EPA CompTox Dashboard identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:dtxsid
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+    pattern: ^DTXSID\d{7,9}$
+  chembl_id:
+    name: chembl_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/chembl_id
+    description: ChEMBL compound identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:chembl_id
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+    pattern: ^CHEMBL\d+$
+  pubchem_cid:
+    name: pubchem_cid
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/pubchem_cid
+    description: PubChem Compound identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:pubchem_cid
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: integer
+  cas_number:
+    name: cas_number
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/cas_number
+    description: CAS Registry Number
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:cas_number
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+  inchi:
+    name: inchi
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/inchi
+    description: InChI chemical identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:inchi
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+  smiles:
+    name: smiles
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/smiles
+    description: SMILES chemical structure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:smiles
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+  molecular_formula:
+    name: molecular_formula
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/molecular_formula
+    description: Molecular formula
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:molecular_formula
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    range: string
+  exposed_to_chemical:
+    name: exposed_to_chemical
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposed_to_chemical
+    description: The chemical entity involved in the exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - CHEBI:24431
+    slot_uri: CHEBI:24431
+    owner: ExposureEvent
+    domain_of:
+    - ExposureEvent
+    range: ChemicalEntity
+  exposure_route:
+    name: exposure_route
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposure_route
+    description: Route of exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposure_route
+    owner: ExposureEvent
+    domain_of:
+    - ExposureEvent
+    range: ExposureRouteEnum
+  exposure_duration:
+    name: exposure_duration
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposure_duration
+    description: Duration of exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposure_duration
+    owner: ExposureEvent
+    domain_of:
+    - ExposureEvent
+    range: string
+  exposure_concentration:
+    name: exposure_concentration
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposure_concentration
+    description: Concentration of exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposure_concentration
+    owner: ExposureEvent
+    domain_of:
+    - ExposureEvent
+    range: float
+  exposure_medium:
+    name: exposure_medium
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposure_medium
+    description: Medium through which exposure occurs
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposure_medium
+    owner: ExposureEvent
+    domain_of:
+    - ExposureEvent
+    range: ExposureMediumEnum
+  food_item:
+    name: food_item
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/food_item
+    description: Food item consumed
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:food_item
+    owner: DietaryExposure
+    domain_of:
+    - DietaryExposure
+    range: string
+  serving_size:
+    name: serving_size
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/serving_size
+    description: Serving size
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:serving_size
+    owner: DietaryExposure
+    domain_of:
+    - DietaryExposure
+    range: string
+  environmental_context:
+    name: environmental_context
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/environmental_context
+    description: Environmental context of exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:environmental_context
+    owner: EnvironmentalExposure
+    domain_of:
+    - EnvironmentalExposure
+    range: string
+  occupation:
+    name: occupation
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/occupation
+    description: Occupation related to exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:occupation
+    owner: OccupationalExposure
+    domain_of:
+    - OccupationalExposure
+    range: string
+  workplace:
+    name: workplace
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/workplace
+    description: Workplace where exposure occurs
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:workplace
+    owner: OccupationalExposure
+    domain_of:
+    - OccupationalExposure
+    range: string
+  hp_id:
+    name: hp_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/hp_id
+    description: Human Phenotype Ontology identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:hp_id
+    owner: Phenotype
+    domain_of:
+    - Phenotype
+    range: uriorcurie
+    pattern: ^HP:\d{7}$
+  upheno_id:
+    name: upheno_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/upheno_id
+    description: Unified phenotype ontology identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:upheno_id
+    owner: Phenotype
+    domain_of:
+    - Phenotype
+    range: uriorcurie
+    pattern: ^UPHENO:\d+$
+  phenotype_category:
+    name: phenotype_category
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/phenotype_category
+    description: Category of phenotype
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:phenotype_category
+    owner: Phenotype
+    domain_of:
+    - Phenotype
+    range: string
+  severity:
+    name: severity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/severity
+    description: Severity of phenotype or disease
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:severity
+    owner: Phenotype
+    domain_of:
+    - Phenotype
+    range: string
+  onset_age:
+    name: onset_age
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/onset_age
+    description: Age of onset
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:onset_age
+    owner: Phenotype
+    domain_of:
+    - Phenotype
+    range: string
+  mondo_id:
+    name: mondo_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/mondo_id
+    description: MONDO disease identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:mondo_id
+    owner: Disease
+    domain_of:
+    - Disease
+    range: uriorcurie
+    pattern: ^MONDO:\d{7}$
+  disease_category:
+    name: disease_category
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/disease_category
+    description: Category of disease
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:disease_category
+    owner: Disease
+    domain_of:
+    - Disease
+    range: string
+  affected_anatomy:
+    name: affected_anatomy
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/affected_anatomy
+    description: Anatomical location affected
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:affected_anatomy
+    owner: Disease
+    domain_of:
+    - Disease
+    range: AnatomicalEntity
+  outcome_level:
+    name: outcome_level
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/outcome_level
+    description: Level of biological organization
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:outcome_level
+    owner: AdverseOutcome
+    domain_of:
+    - AdverseOutcome
+    range: BiologicalOrganizationLevelEnum
+  mp_id:
+    name: mp_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/mp_id
+    description: Mammalian Phenotype Ontology identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:mp_id
+    owner: MammalianPhenotype
+    domain_of:
+    - MammalianPhenotype
+    range: uriorcurie
+    pattern: ^MP:\d{7}$
+  zp_id:
+    name: zp_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/zp_id
+    description: Zebrafish Phenotype Ontology identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:zp_id
+    owner: ZebrafishPhenotype
+    domain_of:
+    - ZebrafishPhenotype
+    range: uriorcurie
+    pattern: ^ZP:\d{7}$
+  aopwiki_id:
+    name: aopwiki_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/aopwiki_id
+    description: AOP Wiki identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:aopwiki_id
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: string
+  molecular_initiating_event:
+    name: molecular_initiating_event
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/molecular_initiating_event
+    description: The molecular initiating event of an AOP
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:molecular_initiating_event
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: MolecularInitiatingEvent
+  key_events:
+    name: key_events
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/key_events
+    description: Key events in an AOP
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:key_events
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: KeyEvent
+    multivalued: true
+  key_event_relationships:
+    name: key_event_relationships
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/key_event_relationships
+    description: Relationships between key events
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:key_event_relationships
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: KeyEventRelationship
+    multivalued: true
+  adverse_outcome:
+    name: adverse_outcome
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/adverse_outcome
+    description: The adverse outcome of an AOP
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:adverse_outcome
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: AdverseOutcome
+  stressors:
+    name: stressors
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/stressors
+    description: Chemical stressors that trigger the AOP
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:stressors
+    owner: AdverseOutcomePathway
+    domain_of:
+    - AdverseOutcomePathway
+    range: ChemicalEntity
+    multivalued: true
+  biological_process:
+    name: biological_process
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/biological_process
+    description: Biological process involved
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:biological_process
+    owner: KeyEvent
+    domain_of:
+    - MolecularInitiatingEvent
+    - KeyEvent
+    range: string
+  biological_object:
+    name: biological_object
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/biological_object
+    description: Biological object involved
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:biological_object
+    owner: KeyEvent
+    domain_of:
+    - MolecularInitiatingEvent
+    - KeyEvent
+    range: string
+  biological_action:
+    name: biological_action
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/biological_action
+    description: Biological action or change
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:biological_action
+    owner: KeyEvent
+    domain_of:
+    - MolecularInitiatingEvent
+    - KeyEvent
+    range: string
+  occurs_in_cell_type:
+    name: occurs_in_cell_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/occurs_in_cell_type
+    description: Cell type where event occurs
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - CL:0000000
+    slot_uri: CL:0000000
+    owner: KeyEvent
+    domain_of:
+    - MolecularInitiatingEvent
+    - KeyEvent
+    range: CellType
+  occurs_in_anatomy:
+    name: occurs_in_anatomy
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/occurs_in_anatomy
+    description: Anatomical location where event occurs
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - UBERON:0001062
+    slot_uri: UBERON:0001062
+    owner: KeyEvent
+    domain_of:
+    - MolecularInitiatingEvent
+    - KeyEvent
+    range: AnatomicalEntity
+  level_of_biological_organization:
+    name: level_of_biological_organization
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/level_of_biological_organization
+    description: Level of biological organization
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:level_of_biological_organization
+    owner: KeyEvent
+    domain_of:
+    - KeyEvent
+    range: BiologicalOrganizationLevelEnum
+  upstream_event:
+    name: upstream_event
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/upstream_event
+    description: Upstream key event
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:upstream_event
+    owner: KeyEventRelationship
+    domain_of:
+    - KeyEventRelationship
+    range: KeyEvent
+  downstream_event:
+    name: downstream_event
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/downstream_event
+    description: Downstream key event
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:downstream_event
+    owner: KeyEventRelationship
+    domain_of:
+    - KeyEventRelationship
+    range: KeyEvent
+  relationship_type:
+    name: relationship_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/relationship_type
+    description: Type of relationship
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:relationship_type
+    owner: KeyEventRelationship
+    domain_of:
+    - KeyEventRelationship
+    range: string
+  evidence_support:
+    name: evidence_support
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/evidence_support
+    description: Evidence supporting the relationship
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:evidence_support
+    owner: KeyEventRelationship
+    domain_of:
+    - KeyEventRelationship
+    range: string
+  study_type:
+    name: study_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/study_type
+    description: Type of study
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:study_type
+    owner: Study
+    domain_of:
+    - Study
+    range: StudyTypeEnum
+  population:
+    name: population
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/population
+    description: Study population description
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:population
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+  enrollment_period:
+    name: enrollment_period
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/enrollment_period
+    description: Time period of enrollment
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:enrollment_period
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+  geographic_location:
+    name: geographic_location
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/geographic_location
+    description: Geographic location of study
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:geographic_location
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+  data_source:
+    name: data_source
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/data_source
+    description: Source database or repository
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:data_source
+    owner: Study
+    domain_of:
+    - Study
+    range: DataSourceEnum
+  principal_investigator:
+    name: principal_investigator
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/principal_investigator
+    description: Principal investigator name
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:principal_investigator
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+  publications:
+    name: publications
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/publications
+    description: Related publications
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:publications
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+    multivalued: true
+  part_of_study:
+    name: part_of_study
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/part_of_study
+    description: Study that this cohort is part of
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:part_of_study
+    owner: Cohort
+    domain_of:
+    - Cohort
+    range: Study
+  cohort_size:
+    name: cohort_size
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/cohort_size
+    description: Number of participants in cohort
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:cohort_size
+    owner: Cohort
+    domain_of:
+    - Cohort
+    range: integer
+  inclusion_criteria:
+    name: inclusion_criteria
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/inclusion_criteria
+    description: Criteria for cohort inclusion
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:inclusion_criteria
+    owner: Cohort
+    domain_of:
+    - Cohort
+    range: string
+  part_of_cohort:
+    name: part_of_cohort
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/part_of_cohort
+    description: Cohort that this participant is part of
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - biolink:member_of
+    slot_uri: biolink:member_of
+    owner: Participant
+    domain_of:
+    - Participant
+    range: Cohort
+  participant_id:
+    name: participant_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/participant_id
+    description: Participant identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:participant_id
+    owner: Participant
+    domain_of:
+    - Participant
+    range: string
+  age:
+    name: age
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/age
+    description: Age in years
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:age
+    owner: Participant
+    domain_of:
+    - Participant
+    range: integer
+  sex:
+    name: sex
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/sex
+    description: Biological sex
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:sex
+    owner: Participant
+    domain_of:
+    - Participant
+    range: SexEnum
+  species:
+    name: species
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/species
+    description: Species name
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:species
+    owner: Organism
+    domain_of:
+    - Participant
+    - Organism
+    range: string
+  measured_entity:
+    name: measured_entity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measured_entity
+    description: The entity being measured
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measured_entity
+    owner: AggregatedMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    - AggregatedMeasurement
+    range: NamedThing
+  participant:
+    name: participant
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/participant
+    description: The participant being measured
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:participant
+    owner: PhenotypeMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    - PhenotypeMeasurement
+    range: Participant
+  measurement_value:
+    name: measurement_value
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measurement_value
+    description: Numeric measurement value
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measurement_value
+    owner: PhenotypeMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    - PhenotypeMeasurement
+    range: float
+  measurement_unit:
+    name: measurement_unit
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measurement_unit
+    description: Unit of measurement
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measurement_unit
+    owner: PhenotypeMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    - PhenotypeMeasurement
+    range: string
+  measurement_method:
+    name: measurement_method
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measurement_method
+    description: Method used for measurement
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measurement_method
+    owner: BiomarkerMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    range: string
+  measurement_date:
+    name: measurement_date
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measurement_date
+    description: Date of measurement
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measurement_date
+    owner: PhenotypeMeasurement
+    domain_of:
+    - ExposureMeasurement
+    - BiomarkerMeasurement
+    - PhenotypeMeasurement
+    range: date
+  sample_type:
+    name: sample_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/sample_type
+    description: Type of biological sample
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:sample_type
+    owner: ExposureMeasurement
+    domain_of:
+    - ExposureMeasurement
+    range: SampleTypeEnum
+  source_database_record:
+    name: source_database_record
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/source_database_record
+    description: Link to original database record
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:source_database_record
+    owner: ExposureMeasurement
+    domain_of:
+    - ExposureMeasurement
+    range: DatabaseRecord
+  biomarker_type:
+    name: biomarker_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/biomarker_type
+    description: Type of biomarker
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:biomarker_type
+    owner: BiomarkerMeasurement
+    domain_of:
+    - BiomarkerMeasurement
+    range: string
+  phenotype:
+    name: phenotype
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/phenotype
+    description: The phenotype being measured
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:phenotype
+    owner: GeneticVariantToPhenotypeAssociation
+    domain_of:
+    - PhenotypeMeasurement
+    - ExposureToPhenotypeAssociation
+    - GeneticVariantToPhenotypeAssociation
+    range: Phenotype
+  cohort:
+    name: cohort
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/cohort
+    description: The cohort for aggregated measurements
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:cohort
+    owner: AggregatedMeasurement
+    domain_of:
+    - AggregatedMeasurement
+    range: Cohort
+  summary_statistic:
+    name: summary_statistic
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/summary_statistic
+    description: Type of summary statistic
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:summary_statistic
+    owner: AggregatedMeasurement
+    domain_of:
+    - AggregatedMeasurement
+    range: SummaryStatisticEnum
+  statistic_value:
+    name: statistic_value
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/statistic_value
+    description: Value of the summary statistic
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:statistic_value
+    owner: AggregatedMeasurement
+    domain_of:
+    - AggregatedMeasurement
+    range: float
+  sample_size:
+    name: sample_size
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/sample_size
+    description: Number of samples
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:sample_size
+    owner: AggregatedMeasurement
+    domain_of:
+    - AggregatedMeasurement
+    range: integer
+  stratification:
+    name: stratification
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/stratification
+    description: Stratification variables
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:stratification
+    owner: AggregatedMeasurement
+    domain_of:
+    - AggregatedMeasurement
+    range: string
+  ncbigene_id:
+    name: ncbigene_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ncbigene_id
+    description: NCBI Gene identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:ncbigene_id
+    owner: Gene
+    domain_of:
+    - Gene
+    range: string
+    pattern: ^\d+$
+  symbol:
+    name: symbol
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/symbol
+    description: Gene symbol
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:symbol
+    owner: Gene
+    domain_of:
+    - Gene
+    range: string
+  in_taxon:
+    name: in_taxon
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/in_taxon
+    description: Taxonomic group
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:in_taxon
+    owner: Gene
+    domain_of:
+    - Gene
+    range: string
+  encoded_by_gene:
+    name: encoded_by_gene
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/encoded_by_gene
+    description: Gene that encodes this protein
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:encoded_by_gene
+    owner: Protein
+    domain_of:
+    - Protein
+    range: Gene
+  cl_id:
+    name: cl_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/cl_id
+    description: Cell Ontology identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:cl_id
+    owner: CellType
+    domain_of:
+    - CellType
+    range: uriorcurie
+    pattern: ^CL:\d{7}$
+  uberon_id:
+    name: uberon_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/uberon_id
+    description: UBERON anatomical identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:uberon_id
+    owner: AnatomicalEntity
+    domain_of:
+    - AnatomicalEntity
+    range: uriorcurie
+    pattern: ^UBERON:\d{7}$
+  taxon_id:
+    name: taxon_id
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/taxon_id
+    description: NCBI Taxonomy identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:taxon_id
+    owner: Organism
+    domain_of:
+    - Organism
+    range: string
+  source_database:
+    name: source_database
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/source_database
+    description: Name of source database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:source_database
+    owner: DatabaseRecord
+    domain_of:
+    - DatabaseRecord
+    range: string
+  record_url:
+    name: record_url
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/record_url
+    description: URL to database record
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:record_url
+    owner: DatabaseRecord
+    domain_of:
+    - DatabaseRecord
+    range: uri
+  last_updated:
+    name: last_updated
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/last_updated
+    description: Date record was last updated
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:last_updated
+    owner: DatabaseRecord
+    domain_of:
+    - DatabaseRecord
+    range: date
+  survey_cycle:
+    name: survey_cycle
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/survey_cycle
+    description: NHANES survey cycle
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:survey_cycle
+    owner: NHANESRecord
+    domain_of:
+    - NHANESRecord
+    range: string
+  variable_name:
+    name: variable_name
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/variable_name
+    description: Variable name in database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:variable_name
+    owner: NHANESRecord
+    domain_of:
+    - NHANESRecord
+    range: string
+  exposure:
+    name: exposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/exposure
+    description: Exposure in association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposure
+    owner: ExposureToPhenotypeAssociation
+    domain_of:
+    - ExposureToPhenotypeAssociation
+    range: ExposureEvent
+  chemical:
+    name: chemical
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/chemical
+    description: Chemical in association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:chemical
+    owner: ChemicalToGeneAssociation
+    domain_of:
+    - ChemicalToGeneAssociation
+    range: ChemicalEntity
+  gene:
+    name: gene
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/gene
+    description: Gene in association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:gene
+    owner: GeneToDiseaseAssociation
+    domain_of:
+    - ChemicalToGeneAssociation
+    - GeneToDiseaseAssociation
+    range: Gene
+  disease:
+    name: disease
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/disease
+    description: Disease in association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:disease
+    owner: GeneToDiseaseAssociation
+    domain_of:
+    - GeneToDiseaseAssociation
+    range: Disease
+  association_type:
+    name: association_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/association_type
+    description: Type of association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:association_type
+    owner: GeneToDiseaseAssociation
+    domain_of:
+    - ExposureToPhenotypeAssociation
+    - GeneToDiseaseAssociation
+    range: string
+  evidence:
+    name: evidence
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/evidence
+    description: Evidence for association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:evidence
+    owner: ExposureToPhenotypeAssociation
+    domain_of:
+    - ExposureToPhenotypeAssociation
+    range: string
+  interaction_type:
+    name: interaction_type
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/interaction_type
+    description: Type of interaction
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:interaction_type
+    owner: ChemicalToGeneAssociation
+    domain_of:
+    - ChemicalToGeneAssociation
+    range: string
+  genetic_variant:
+    name: genetic_variant
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/genetic_variant
+    description: Genetic variant identifier
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:genetic_variant
+    owner: GeneticVariantToPhenotypeAssociation
+    domain_of:
+    - GeneticVariantToPhenotypeAssociation
+    range: string
+  p_value:
+    name: p_value
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/p_value
+    description: Statistical p-value
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:p_value
+    owner: GeneticVariantToPhenotypeAssociation
+    domain_of:
+    - GeneticVariantToPhenotypeAssociation
+    range: float
+  effect_size:
+    name: effect_size
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/effect_size
+    description: Effect size of association
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:effect_size
+    owner: GeneticVariantToPhenotypeAssociation
+    domain_of:
+    - GeneticVariantToPhenotypeAssociation
+    range: float
+  has_exposure:
+    name: has_exposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/has_exposure
+    description: Exposures experienced by participant
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:0000006
+    domain: Participant
+    slot_uri: ECTO:0000006
+    owner: has_exposure
+    range: ExposureEvent
+    multivalued: true
+  causes_phenotype:
+    name: causes_phenotype
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/causes_phenotype
+    description: Phenotypes caused by exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - biolink:causes
+    domain: ExposureEvent
+    slot_uri: biolink:causes
+    owner: causes_phenotype
+    range: Phenotype
+    multivalued: true
+  leads_to_molecular_event:
+    name: leads_to_molecular_event
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/leads_to_molecular_event
+    description: Molecular initiating event triggered by exposure
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    domain: ExposureEvent
+    slot_uri: exposome_schema:leads_to_molecular_event
+    owner: leads_to_molecular_event
+    range: MolecularInitiatingEvent
+  triggers_key_event:
+    name: triggers_key_event
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/triggers_key_event
+    description: Key events triggered
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    domain: MolecularInitiatingEvent
+    slot_uri: exposome_schema:triggers_key_event
+    owner: triggers_key_event
+    range: KeyEvent
+    multivalued: true
+  measured_in_study:
+    name: measured_in_study
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/measured_in_study
+    description: Study in which measurement was made
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    domain: Measurement
+    slot_uri: exposome_schema:measured_in_study
+    owner: measured_in_study
+    range: Study
+  exposomeDatabase__chemical_entities:
+    name: exposomeDatabase__chemical_entities
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:chemical_entities
+    alias: chemical_entities
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: ChemicalEntity
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__exposures:
+    name: exposomeDatabase__exposures
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:exposures
+    alias: exposures
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: ExposureEvent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__health_outcomes:
+    name: exposomeDatabase__health_outcomes
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:health_outcomes
+    alias: health_outcomes
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: HealthOutcome
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__adverse_outcome_pathways:
+    name: exposomeDatabase__adverse_outcome_pathways
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:adverse_outcome_pathways
+    alias: adverse_outcome_pathways
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: AdverseOutcomePathway
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__studies:
+    name: exposomeDatabase__studies
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:studies
+    alias: studies
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: Study
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__cohorts:
+    name: exposomeDatabase__cohorts
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:cohorts
+    alias: cohorts
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: Cohort
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__participants:
+    name: exposomeDatabase__participants
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:participants
+    alias: participants
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: Participant
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__measurements:
+    name: exposomeDatabase__measurements
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:measurements
+    alias: measurements
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: Measurement
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__biological_entities:
+    name: exposomeDatabase__biological_entities
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:biological_entities
+    alias: biological_entities
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: BiologicalEntity
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__database_records:
+    name: exposomeDatabase__database_records
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:database_records
+    alias: database_records
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: DatabaseRecord
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  exposomeDatabase__associations:
+    name: exposomeDatabase__associations
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slot_uri: exposome_schema:associations
+    alias: associations
+    owner: ExposomeDatabase
+    domain_of:
+    - ExposomeDatabase
+    range: Association
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+classes:
+  NamedThing:
+    name: NamedThing
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/NamedThing
+    description: A generic grouping for any identifiable entity in the exposome
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - schema:Thing
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: schema:Thing
+  BiologicalEntity:
+    name: BiologicalEntity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/BiologicalEntity
+    description: Biological entities including genes, proteins, cells, and anatomical
+      structures
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:BiologicalEntity
+  ChemicalEntity:
+    name: ChemicalEntity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ChemicalEntity
+    description: A chemical entity including compounds, drugs, and metabolites
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - CHEBI:24431
+    is_a: NamedThing
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - chebi_id
+    - dtxsid
+    - chembl_id
+    - pubchem_cid
+    - cas_number
+    - inchi
+    - smiles
+    - molecular_formula
+    class_uri: CHEBI:24431
+  ExposureEvent:
+    name: ExposureEvent
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureEvent
+    description: An event in which an organism is exposed to a chemical or environmental
+      factor
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposed_to_chemical
+    - exposure_route
+    - exposure_duration
+    - exposure_concentration
+    - exposure_medium
+    class_uri: exposome_schema:ExposureEvent
+  BiologicalResponse:
+    name: BiologicalResponse
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/BiologicalResponse
+    description: A biological response at the molecular, cellular, or tissue level
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:BiologicalResponse
+  HealthOutcome:
+    name: HealthOutcome
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/HealthOutcome
+    description: A health-related outcome including phenotypes and diseases
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:HealthOutcome
+  StudyEntity:
+    name: StudyEntity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/StudyEntity
+    description: Entities related to studies, cohorts, and participants
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:StudyEntity
+  Measurement:
+    name: Measurement
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Measurement
+    description: A measurement or observation
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:Measurement
+  Association:
+    name: Association
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Association
+    description: A relationship between two entities
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    class_uri: exposome_schema:Association
+  ChemicalExposure:
+    name: ChemicalExposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ChemicalExposure
+    description: Exposure to a chemical substance
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:0000006
+    is_a: ExposureEvent
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposed_to_chemical
+    - exposure_route
+    - exposure_duration
+    - exposure_concentration
+    - exposure_medium
+    class_uri: ECTO:0000006
+  DietaryExposure:
+    name: DietaryExposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/DietaryExposure
+    description: Exposure through dietary consumption
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - FOODON:00002403
+    is_a: ExposureEvent
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposed_to_chemical
+    - exposure_route
+    - exposure_duration
+    - exposure_concentration
+    - exposure_medium
+    - food_item
+    - serving_size
+    class_uri: FOODON:00002403
+  EnvironmentalExposure:
+    name: EnvironmentalExposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/EnvironmentalExposure
+    description: Exposure to environmental factors
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:0000001
+    is_a: ExposureEvent
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposed_to_chemical
+    - exposure_route
+    - exposure_duration
+    - exposure_concentration
+    - exposure_medium
+    - environmental_context
+    class_uri: ECTO:0000001
+  OccupationalExposure:
+    name: OccupationalExposure
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/OccupationalExposure
+    description: Exposure in an occupational setting
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:0000002
+    is_a: ExposureEvent
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposed_to_chemical
+    - exposure_route
+    - exposure_duration
+    - exposure_concentration
+    - exposure_medium
+    - occupation
+    - workplace
+    class_uri: ECTO:0000002
+  Phenotype:
+    name: Phenotype
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Phenotype
+    description: An observable characteristic or trait
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - HP:0000118
+    is_a: HealthOutcome
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - hp_id
+    - upheno_id
+    - phenotype_category
+    - severity
+    - onset_age
+    class_uri: HP:0000118
+  Disease:
+    name: Disease
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Disease
+    description: A disease or medical condition
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - MONDO:0000001
+    is_a: HealthOutcome
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - mondo_id
+    - disease_category
+    - affected_anatomy
+    class_uri: MONDO:0000001
+  AdverseOutcome:
+    name: AdverseOutcome
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AdverseOutcome
+    description: An adverse health outcome in the context of an Adverse Outcome Pathway
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: HealthOutcome
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - outcome_level
+    class_uri: exposome_schema:AdverseOutcome
+  MammalianPhenotype:
+    name: MammalianPhenotype
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/MammalianPhenotype
+    description: A phenotype observed in mammalian model organisms
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - MP:0000001
+    is_a: Phenotype
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - hp_id
+    - upheno_id
+    - phenotype_category
+    - severity
+    - onset_age
+    - mp_id
+    class_uri: MP:0000001
+  ZebrafishPhenotype:
+    name: ZebrafishPhenotype
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ZebrafishPhenotype
+    description: A phenotype observed in zebrafish
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ZP:0000000
+    is_a: Phenotype
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - hp_id
+    - upheno_id
+    - phenotype_category
+    - severity
+    - onset_age
+    - zp_id
+    class_uri: ZP:0000000
+  AdverseOutcomePathway:
+    name: AdverseOutcomePathway
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AdverseOutcomePathway
+    description: A sequence of causally linked events at different levels of biological
+      organization that lead from exposure to adverse health outcomes
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - aopwiki_id
+    - molecular_initiating_event
+    - key_events
+    - key_event_relationships
+    - adverse_outcome
+    - stressors
+    class_uri: exposome_schema:AdverseOutcomePathway
+  MolecularInitiatingEvent:
+    name: MolecularInitiatingEvent
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/MolecularInitiatingEvent
+    description: The initial molecular-level perturbation that starts an Adverse Outcome
+      Pathway
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:3000000
+    is_a: BiologicalResponse
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - biological_process
+    - biological_object
+    - biological_action
+    - occurs_in_cell_type
+    - occurs_in_anatomy
+    class_uri: ECTO:3000000
+  KeyEvent:
+    name: KeyEvent
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/KeyEvent
+    description: A measurable change in biological state that is a step in an Adverse
+      Outcome Pathway
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - ECTO:1000000
+    is_a: BiologicalResponse
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - biological_process
+    - biological_object
+    - biological_action
+    - level_of_biological_organization
+    - occurs_in_cell_type
+    - occurs_in_anatomy
+    class_uri: ECTO:1000000
+  KeyEventRelationship:
+    name: KeyEventRelationship
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/KeyEventRelationship
+    description: A directional relationship between two key events in an AOP
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Association
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - upstream_event
+    - downstream_event
+    - relationship_type
+    - evidence_support
+    class_uri: exposome_schema:KeyEventRelationship
+  Study:
+    name: Study
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Study
+    description: A research study or survey
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - EFO:0001444
+    is_a: StudyEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - study_type
+    - population
+    - enrollment_period
+    - geographic_location
+    - data_source
+    - principal_investigator
+    - publications
+    class_uri: EFO:0001444
+  Cohort:
+    name: Cohort
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Cohort
+    description: A group of individuals in a study
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: StudyEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - part_of_study
+    - cohort_size
+    - inclusion_criteria
+    class_uri: exposome_schema:Cohort
+  Participant:
+    name: Participant
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Participant
+    description: An individual participant in a study
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: StudyEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - part_of_cohort
+    - participant_id
+    - age
+    - sex
+    - species
+    class_uri: exposome_schema:Participant
+  ExposureMeasurement:
+    name: ExposureMeasurement
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureMeasurement
+    description: A measurement of exposure to a chemical or environmental factor
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Measurement
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - measured_entity
+    - participant
+    - measurement_value
+    - measurement_unit
+    - measurement_method
+    - measurement_date
+    - sample_type
+    - source_database_record
+    class_uri: exposome_schema:ExposureMeasurement
+  BiomarkerMeasurement:
+    name: BiomarkerMeasurement
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/BiomarkerMeasurement
+    description: A measurement of a biological marker
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Measurement
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - biomarker_type
+    - measured_entity
+    - participant
+    - measurement_value
+    - measurement_unit
+    - measurement_method
+    - measurement_date
+    class_uri: exposome_schema:BiomarkerMeasurement
+  PhenotypeMeasurement:
+    name: PhenotypeMeasurement
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/PhenotypeMeasurement
+    description: A measurement of a phenotypic trait
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Measurement
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - phenotype
+    - participant
+    - measurement_value
+    - measurement_unit
+    - measurement_date
+    class_uri: exposome_schema:PhenotypeMeasurement
+  AggregatedMeasurement:
+    name: AggregatedMeasurement
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AggregatedMeasurement
+    description: An aggregated or summary measurement across a cohort or population
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Measurement
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - measured_entity
+    - cohort
+    - summary_statistic
+    - statistic_value
+    - sample_size
+    - stratification
+    class_uri: exposome_schema:AggregatedMeasurement
+  Gene:
+    name: Gene
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Gene
+    description: A gene or genetic element
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: BiologicalEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - ncbigene_id
+    - symbol
+    - in_taxon
+    class_uri: exposome_schema:Gene
+  Protein:
+    name: Protein
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Protein
+    description: A protein or polypeptide
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: BiologicalEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - encoded_by_gene
+    class_uri: exposome_schema:Protein
+  CellType:
+    name: CellType
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/CellType
+    description: A type of cell
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - CL:0000000
+    is_a: BiologicalEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - cl_id
+    class_uri: CL:0000000
+  AnatomicalEntity:
+    name: AnatomicalEntity
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AnatomicalEntity
+    description: An anatomical structure or system
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    mappings:
+    - UBERON:0001062
+    is_a: BiologicalEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - uberon_id
+    class_uri: UBERON:0001062
+  Organism:
+    name: Organism
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/Organism
+    description: An individual organism
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: BiologicalEntity
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - species
+    - taxon_id
+    class_uri: exposome_schema:Organism
+  DatabaseRecord:
+    name: DatabaseRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/DatabaseRecord
+    description: A record from an external database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: NamedThing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:DatabaseRecord
+  NHANESRecord:
+    name: NHANESRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/NHANESRecord
+    description: A record from the National Health and Nutrition Examination Survey
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    - survey_cycle
+    - variable_name
+    class_uri: exposome_schema:NHANESRecord
+  CTDRecord:
+    name: CTDRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/CTDRecord
+    description: A record from the Comparative Toxicogenomics Database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:CTDRecord
+  ChEMBLRecord:
+    name: ChEMBLRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ChEMBLRecord
+    description: A record from ChEMBL chemical database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:ChEMBLRecord
+  GWASRecord:
+    name: GWASRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GWASRecord
+    description: A record from the GWAS Catalog
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:GWASRecord
+  AOPWikiRecord:
+    name: AOPWikiRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AOPWikiRecord
+    description: A record from the AOP Wiki
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:AOPWikiRecord
+  ToxCastRecord:
+    name: ToxCastRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ToxCastRecord
+    description: A record from the ToxCast database
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:ToxCastRecord
+  CompToxRecord:
+    name: CompToxRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/CompToxRecord
+    description: A record from the EPA CompTox Chemicals Dashboard
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:CompToxRecord
+  GeneExpressionAtlasRecord:
+    name: GeneExpressionAtlasRecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GeneExpressionAtlasRecord
+    description: A record from the Gene Expression Atlas
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:GeneExpressionAtlasRecord
+  USDARecord:
+    name: USDARecord
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/USDARecord
+    description: A record from USDA Pesticide Data Program
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: DatabaseRecord
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - source_database
+    - record_url
+    - last_updated
+    class_uri: exposome_schema:USDARecord
+  ExposureToPhenotypeAssociation:
+    name: ExposureToPhenotypeAssociation
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureToPhenotypeAssociation
+    description: An association between an exposure and a phenotype
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Association
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - exposure
+    - phenotype
+    - association_type
+    - evidence
+    class_uri: exposome_schema:ExposureToPhenotypeAssociation
+  ChemicalToGeneAssociation:
+    name: ChemicalToGeneAssociation
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ChemicalToGeneAssociation
+    description: An association between a chemical and a gene
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Association
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - chemical
+    - gene
+    - interaction_type
+    class_uri: exposome_schema:ChemicalToGeneAssociation
+  GeneToDiseaseAssociation:
+    name: GeneToDiseaseAssociation
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GeneToDiseaseAssociation
+    description: An association between a gene and a disease
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Association
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - gene
+    - disease
+    - association_type
+    class_uri: exposome_schema:GeneToDiseaseAssociation
+  GeneticVariantToPhenotypeAssociation:
+    name: GeneticVariantToPhenotypeAssociation
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GeneticVariantToPhenotypeAssociation
+    description: An association between a genetic variant and a phenotype (e.g., from
+      GWAS)
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    is_a: Association
+    slots:
+    - id
+    - name
+    - description
+    - category
+    - xref
+    - genetic_variant
+    - phenotype
+    - p_value
+    - effect_size
+    class_uri: exposome_schema:GeneticVariantToPhenotypeAssociation
+  ExposomeDatabase:
+    name: ExposomeDatabase
+    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposomeDatabase
+    description: Container for all exposome data including exposures, chemicals, health
+      outcomes, AOPs, studies, and measurements
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    slots:
+    - exposomeDatabase__chemical_entities
+    - exposomeDatabase__exposures
+    - exposomeDatabase__health_outcomes
+    - exposomeDatabase__adverse_outcome_pathways
+    - exposomeDatabase__studies
+    - exposomeDatabase__cohorts
+    - exposomeDatabase__participants
+    - exposomeDatabase__measurements
+    - exposomeDatabase__biological_entities
+    - exposomeDatabase__database_records
+    - exposomeDatabase__associations
+    attributes:
+      chemical_entities:
+        name: chemical_entities
+        range: ChemicalEntity
+        multivalued: true
+        inlined_as_list: true
+      exposures:
+        name: exposures
+        range: ExposureEvent
+        multivalued: true
+        inlined_as_list: true
+      health_outcomes:
+        name: health_outcomes
+        range: HealthOutcome
+        multivalued: true
+        inlined_as_list: true
+      adverse_outcome_pathways:
+        name: adverse_outcome_pathways
+        range: AdverseOutcomePathway
+        multivalued: true
+        inlined_as_list: true
+      studies:
+        name: studies
+        range: Study
+        multivalued: true
+        inlined_as_list: true
+      cohorts:
+        name: cohorts
+        range: Cohort
+        multivalued: true
+        inlined_as_list: true
+      participants:
+        name: participants
+        range: Participant
+        multivalued: true
+        inlined_as_list: true
+      measurements:
+        name: measurements
+        range: Measurement
+        multivalued: true
+        inlined_as_list: true
+      biological_entities:
+        name: biological_entities
+        range: BiologicalEntity
+        multivalued: true
+        inlined_as_list: true
+      database_records:
+        name: database_records
+        range: DatabaseRecord
+        multivalued: true
+        inlined_as_list: true
+      associations:
+        name: associations
+        range: Association
+        multivalued: true
+        inlined_as_list: true
+    class_uri: exposome_schema:ExposomeDatabase
+    tree_root: true
+metamodel_version: 1.7.0
+source_file: exposome_schema.yaml
+source_file_date: '2025-12-18T16:50:57'
+source_file_size: 27209
+generation_date: '2025-12-18T16:56:11'
+

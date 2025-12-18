@@ -1,0 +1,13 @@
+id: CHEBI:16716
+name: Benzene
+description: An aromatic hydrocarbon commonly used as an industrial solvent
+category:
+  - organic compound
+  - aromatic hydrocarbon
+chebi_id: CHEBI:16716
+dtxsid: DTXSID2020152
+chembl_id: CHEMBL277500
+pubchem_cid: 241
+cas_number: 71-43-2
+molecular_formula: C6H6
+smiles: c1ccccc1
