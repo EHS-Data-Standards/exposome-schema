@@ -1,0 +1,1407 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Schema - exposome-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exposome-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="exposome-schema" class="md-header__button md-logo" aria-label="exposome-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            exposome-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/diatomsRcool/exposome-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="exposome-schema" class="md-nav__button md-logo" aria-label="exposome-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    exposome-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/diatomsRcool/exposome-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="exposome-schema">exposome-schema</h1>
+<p>Comprehensive exposome schema for integrating chemical exposures, environmental factors,
+dietary data, toxicology databases, and health outcomes with support for Adverse Outcome
+Pathways (AOPs) and multi-granularity measurements</p>
+<p>URI: https://w3id.org/diatomsRcool/exposome-schema</p>
+<p>Name: exposome-schema</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="ExposomeDatabase/">ExposomeDatabase</a></td>
+<td>Container for all exposome data including exposures, chemicals, health outcom...</td>
+</tr>
+<tr>
+<td><a href="NamedThing/">NamedThing</a></td>
+<td>A generic grouping for any identifiable entity in the exposome</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AdverseOutcomePathway/">AdverseOutcomePathway</a></td>
+<td>A sequence of causally linked events at different levels of biological organi...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
+<td>A relationship between two entities</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalToGeneAssociation/">ChemicalToGeneAssociation</a></td>
+<td>An association between a chemical and a gene</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
+<td>An association between an exposure and a phenotype</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneticVariantToPhenotypeAssociation/">GeneticVariantToPhenotypeAssociation</a></td>
+<td>An association between a genetic variant and a phenotype (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneToDiseaseAssociation/">GeneToDiseaseAssociation</a></td>
+<td>An association between a gene and a disease</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KeyEventRelationship/">KeyEventRelationship</a></td>
+<td>A directional relationship between two key events in an AOP</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiologicalEntity/">BiologicalEntity</a></td>
+<td>Biological entities including genes, proteins, cells, and anatomical structur...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnatomicalEntity/">AnatomicalEntity</a></td>
+<td>An anatomical structure or system</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CellType/">CellType</a></td>
+<td>A type of cell</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Gene/">Gene</a></td>
+<td>A gene or genetic element</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Organism/">Organism</a></td>
+<td>An individual organism</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
+<td>A protein or polypeptide</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiologicalResponse/">BiologicalResponse</a></td>
+<td>A biological response at the molecular, cellular, or tissue level</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KeyEvent/">KeyEvent</a></td>
+<td>A measurable change in biological state that is a step in an Adverse Outcome ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularInitiatingEvent/">MolecularInitiatingEvent</a></td>
+<td>The initial molecular-level perturbation that starts an Adverse Outcome Pathw...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalEntity/">ChemicalEntity</a></td>
+<td>A chemical entity including compounds, drugs, and metabolites</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DatabaseRecord/">DatabaseRecord</a></td>
+<td>A record from an external database</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AOPWikiRecord/">AOPWikiRecord</a></td>
+<td>A record from the AOP Wiki</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChEMBLRecord/">ChEMBLRecord</a></td>
+<td>A record from ChEMBL chemical database</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CompToxRecord/">CompToxRecord</a></td>
+<td>A record from the EPA CompTox Chemicals Dashboard</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CTDRecord/">CTDRecord</a></td>
+<td>A record from the Comparative Toxicogenomics Database</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneExpressionAtlasRecord/">GeneExpressionAtlasRecord</a></td>
+<td>A record from the Gene Expression Atlas</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GWASRecord/">GWASRecord</a></td>
+<td>A record from the GWAS Catalog</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NHANESRecord/">NHANESRecord</a></td>
+<td>A record from the National Health and Nutrition Examination Survey</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ToxCastRecord/">ToxCastRecord</a></td>
+<td>A record from the ToxCast database</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="USDARecord/">USDARecord</a></td>
+<td>A record from USDA Pesticide Data Program</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureEvent/">ExposureEvent</a></td>
+<td>An event in which an organism is exposed to a chemical or environmental facto...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalExposure/">ChemicalExposure</a></td>
+<td>Exposure to a chemical substance</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DietaryExposure/">DietaryExposure</a></td>
+<td>Exposure through dietary consumption</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnvironmentalExposure/">EnvironmentalExposure</a></td>
+<td>Exposure to environmental factors</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OccupationalExposure/">OccupationalExposure</a></td>
+<td>Exposure in an occupational setting</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HealthOutcome/">HealthOutcome</a></td>
+<td>A health-related outcome including phenotypes and diseases</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AdverseOutcome/">AdverseOutcome</a></td>
+<td>An adverse health outcome in the context of an Adverse Outcome Pathway</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Disease/">Disease</a></td>
+<td>A disease or medical condition</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Phenotype/">Phenotype</a></td>
+<td>An observable characteristic or trait</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MammalianPhenotype/">MammalianPhenotype</a></td>
+<td>A phenotype observed in mammalian model organisms</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ZebrafishPhenotype/">ZebrafishPhenotype</a></td>
+<td>A phenotype observed in zebrafish</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
+<td>A measurement or observation</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AggregatedMeasurement/">AggregatedMeasurement</a></td>
+<td>An aggregated or summary measurement across a cohort or population</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiomarkerMeasurement/">BiomarkerMeasurement</a></td>
+<td>A measurement of a biological marker</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureMeasurement/">ExposureMeasurement</a></td>
+<td>A measurement of exposure to a chemical or environmental factor</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PhenotypeMeasurement/">PhenotypeMeasurement</a></td>
+<td>A measurement of a phenotypic trait</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StudyEntity/">StudyEntity</a></td>
+<td>Entities related to studies, cohorts, and participants</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Cohort/">Cohort</a></td>
+<td>A group of individuals in a study</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Participant/">Participant</a></td>
+<td>An individual participant in a study</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Study/">Study</a></td>
+<td>A research study or survey</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="adverse_outcome/">adverse_outcome</a></td>
+<td>The adverse outcome of an AOP</td>
+</tr>
+<tr>
+<td><a href="adverse_outcome_pathways/">adverse_outcome_pathways</a></td>
+<td>Collection of Adverse Outcome Pathways linking exposures to health outcomes</td>
+</tr>
+<tr>
+<td><a href="affected_anatomy/">affected_anatomy</a></td>
+<td>Anatomical location affected</td>
+</tr>
+<tr>
+<td><a href="age/">age</a></td>
+<td>Age in years</td>
+</tr>
+<tr>
+<td><a href="aopwiki_id/">aopwiki_id</a></td>
+<td>AOP Wiki identifier</td>
+</tr>
+<tr>
+<td><a href="association_type/">association_type</a></td>
+<td>Type of association</td>
+</tr>
+<tr>
+<td><a href="associations/">associations</a></td>
+<td>Collection of associations between entities</td>
+</tr>
+<tr>
+<td><a href="biological_action/">biological_action</a></td>
+<td>Biological action or change</td>
+</tr>
+<tr>
+<td><a href="biological_entities/">biological_entities</a></td>
+<td>Collection of biological entities (genes, proteins, cells, anatomical structu...</td>
+</tr>
+<tr>
+<td><a href="biological_object/">biological_object</a></td>
+<td>Biological object involved</td>
+</tr>
+<tr>
+<td><a href="biological_process/">biological_process</a></td>
+<td>Biological process involved</td>
+</tr>
+<tr>
+<td><a href="biomarker_type/">biomarker_type</a></td>
+<td>Type of biomarker</td>
+</tr>
+<tr>
+<td><a href="cas_number/">cas_number</a></td>
+<td>CAS Registry Number</td>
+</tr>
+<tr>
+<td><a href="category/">category</a></td>
+<td>A category or type for a thing</td>
+</tr>
+<tr>
+<td><a href="causes_phenotype/">causes_phenotype</a></td>
+<td>Phenotypes caused by exposure</td>
+</tr>
+<tr>
+<td><a href="chebi_id/">chebi_id</a></td>
+<td>ChEBI identifier</td>
+</tr>
+<tr>
+<td><a href="chembl_id/">chembl_id</a></td>
+<td>ChEMBL compound identifier</td>
+</tr>
+<tr>
+<td><a href="chemical/">chemical</a></td>
+<td>Chemical in association</td>
+</tr>
+<tr>
+<td><a href="chemical_entities/">chemical_entities</a></td>
+<td>Collection of chemical entities including compounds, drugs, and metabolites</td>
+</tr>
+<tr>
+<td><a href="cl_id/">cl_id</a></td>
+<td>Cell Ontology identifier</td>
+</tr>
+<tr>
+<td><a href="cohort/">cohort</a></td>
+<td>The cohort for aggregated measurements</td>
+</tr>
+<tr>
+<td><a href="cohort_size/">cohort_size</a></td>
+<td>Number of participants in cohort</td>
+</tr>
+<tr>
+<td><a href="cohorts/">cohorts</a></td>
+<td>Collection of study cohorts</td>
+</tr>
+<tr>
+<td><a href="data_source/">data_source</a></td>
+<td>Source database or repository</td>
+</tr>
+<tr>
+<td><a href="database_records/">database_records</a></td>
+<td>Collection of records from external databases</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>A human-readable description for a thing</td>
+</tr>
+<tr>
+<td><a href="disease/">disease</a></td>
+<td>Disease in association</td>
+</tr>
+<tr>
+<td><a href="disease_category/">disease_category</a></td>
+<td>Category of disease</td>
+</tr>
+<tr>
+<td><a href="downstream_event/">downstream_event</a></td>
+<td>Downstream key event</td>
+</tr>
+<tr>
+<td><a href="dtxsid/">dtxsid</a></td>
+<td>EPA CompTox Dashboard identifier</td>
+</tr>
+<tr>
+<td><a href="effect_size/">effect_size</a></td>
+<td>Effect size of association</td>
+</tr>
+<tr>
+<td><a href="encoded_by_gene/">encoded_by_gene</a></td>
+<td>Gene that encodes this protein</td>
+</tr>
+<tr>
+<td><a href="enrollment_period/">enrollment_period</a></td>
+<td>Time period of enrollment</td>
+</tr>
+<tr>
+<td><a href="environmental_context/">environmental_context</a></td>
+<td>Environmental context of exposure</td>
+</tr>
+<tr>
+<td><a href="evidence/">evidence</a></td>
+<td>Evidence for association</td>
+</tr>
+<tr>
+<td><a href="evidence_support/">evidence_support</a></td>
+<td>Evidence supporting the relationship</td>
+</tr>
+<tr>
+<td><a href="exposed_to_chemical/">exposed_to_chemical</a></td>
+<td>The chemical entity involved in the exposure</td>
+</tr>
+<tr>
+<td><a href="exposure/">exposure</a></td>
+<td>Exposure in association</td>
+</tr>
+<tr>
+<td><a href="exposure_concentration/">exposure_concentration</a></td>
+<td>Concentration of exposure</td>
+</tr>
+<tr>
+<td><a href="exposure_duration/">exposure_duration</a></td>
+<td>Duration of exposure</td>
+</tr>
+<tr>
+<td><a href="exposure_medium/">exposure_medium</a></td>
+<td>Medium through which exposure occurs</td>
+</tr>
+<tr>
+<td><a href="exposure_route/">exposure_route</a></td>
+<td>Route of exposure</td>
+</tr>
+<tr>
+<td><a href="exposures/">exposures</a></td>
+<td>Collection of exposure events (chemical, dietary, environmental, occupational...</td>
+</tr>
+<tr>
+<td><a href="food_item/">food_item</a></td>
+<td>Food item consumed</td>
+</tr>
+<tr>
+<td><a href="gene/">gene</a></td>
+<td>Gene in association</td>
+</tr>
+<tr>
+<td><a href="genetic_variant/">genetic_variant</a></td>
+<td>Genetic variant identifier</td>
+</tr>
+<tr>
+<td><a href="geographic_location/">geographic_location</a></td>
+<td>Geographic location of study</td>
+</tr>
+<tr>
+<td><a href="has_exposure/">has_exposure</a></td>
+<td>Exposures experienced by participant</td>
+</tr>
+<tr>
+<td><a href="health_outcomes/">health_outcomes</a></td>
+<td>Collection of health outcomes including phenotypes and diseases</td>
+</tr>
+<tr>
+<td><a href="hp_id/">hp_id</a></td>
+<td>Human Phenotype Ontology identifier</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>A unique identifier for a thing</td>
+</tr>
+<tr>
+<td><a href="in_taxon/">in_taxon</a></td>
+<td>Taxonomic group</td>
+</tr>
+<tr>
+<td><a href="inchi/">inchi</a></td>
+<td>InChI chemical identifier</td>
+</tr>
+<tr>
+<td><a href="inclusion_criteria/">inclusion_criteria</a></td>
+<td>Criteria for cohort inclusion</td>
+</tr>
+<tr>
+<td><a href="interaction_type/">interaction_type</a></td>
+<td>Type of interaction</td>
+</tr>
+<tr>
+<td><a href="key_event_relationships/">key_event_relationships</a></td>
+<td>Relationships between key events</td>
+</tr>
+<tr>
+<td><a href="key_events/">key_events</a></td>
+<td>Key events in an AOP</td>
+</tr>
+<tr>
+<td><a href="last_updated/">last_updated</a></td>
+<td>Date record was last updated</td>
+</tr>
+<tr>
+<td><a href="leads_to_molecular_event/">leads_to_molecular_event</a></td>
+<td>Molecular initiating event triggered by exposure</td>
+</tr>
+<tr>
+<td><a href="level_of_biological_organization/">level_of_biological_organization</a></td>
+<td>Level of biological organization</td>
+</tr>
+<tr>
+<td><a href="measured_entity/">measured_entity</a></td>
+<td>The entity being measured</td>
+</tr>
+<tr>
+<td><a href="measured_in_study/">measured_in_study</a></td>
+<td>Study in which measurement was made</td>
+</tr>
+<tr>
+<td><a href="measurement_date/">measurement_date</a></td>
+<td>Date of measurement</td>
+</tr>
+<tr>
+<td><a href="measurement_method/">measurement_method</a></td>
+<td>Method used for measurement</td>
+</tr>
+<tr>
+<td><a href="measurement_unit/">measurement_unit</a></td>
+<td>Unit of measurement</td>
+</tr>
+<tr>
+<td><a href="measurement_value/">measurement_value</a></td>
+<td>Numeric measurement value</td>
+</tr>
+<tr>
+<td><a href="measurements/">measurements</a></td>
+<td>Collection of measurements and observations</td>
+</tr>
+<tr>
+<td><a href="molecular_formula/">molecular_formula</a></td>
+<td>Molecular formula</td>
+</tr>
+<tr>
+<td><a href="molecular_initiating_event/">molecular_initiating_event</a></td>
+<td>The molecular initiating event of an AOP</td>
+</tr>
+<tr>
+<td><a href="mondo_id/">mondo_id</a></td>
+<td>MONDO disease identifier</td>
+</tr>
+<tr>
+<td><a href="mp_id/">mp_id</a></td>
+<td>Mammalian Phenotype Ontology identifier</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td>A human-readable name for a thing</td>
+</tr>
+<tr>
+<td><a href="ncbigene_id/">ncbigene_id</a></td>
+<td>NCBI Gene identifier</td>
+</tr>
+<tr>
+<td><a href="occupation/">occupation</a></td>
+<td>Occupation related to exposure</td>
+</tr>
+<tr>
+<td><a href="occurs_in_anatomy/">occurs_in_anatomy</a></td>
+<td>Anatomical location where event occurs</td>
+</tr>
+<tr>
+<td><a href="occurs_in_cell_type/">occurs_in_cell_type</a></td>
+<td>Cell type where event occurs</td>
+</tr>
+<tr>
+<td><a href="onset_age/">onset_age</a></td>
+<td>Age of onset</td>
+</tr>
+<tr>
+<td><a href="outcome_level/">outcome_level</a></td>
+<td>Level of biological organization</td>
+</tr>
+<tr>
+<td><a href="p_value/">p_value</a></td>
+<td>Statistical p-value</td>
+</tr>
+<tr>
+<td><a href="part_of_cohort/">part_of_cohort</a></td>
+<td>Cohort that this participant is part of</td>
+</tr>
+<tr>
+<td><a href="part_of_study/">part_of_study</a></td>
+<td>Study that this cohort is part of</td>
+</tr>
+<tr>
+<td><a href="participant/">participant</a></td>
+<td>The participant being measured</td>
+</tr>
+<tr>
+<td><a href="participant_id/">participant_id</a></td>
+<td>Participant identifier</td>
+</tr>
+<tr>
+<td><a href="participants/">participants</a></td>
+<td>Collection of study participants</td>
+</tr>
+<tr>
+<td><a href="phenotype/">phenotype</a></td>
+<td>The phenotype being measured</td>
+</tr>
+<tr>
+<td><a href="phenotype_category/">phenotype_category</a></td>
+<td>Category of phenotype</td>
+</tr>
+<tr>
+<td><a href="population/">population</a></td>
+<td>Study population description</td>
+</tr>
+<tr>
+<td><a href="principal_investigator/">principal_investigator</a></td>
+<td>Principal investigator name</td>
+</tr>
+<tr>
+<td><a href="pubchem_cid/">pubchem_cid</a></td>
+<td>PubChem Compound identifier</td>
+</tr>
+<tr>
+<td><a href="publications/">publications</a></td>
+<td>Related publications</td>
+</tr>
+<tr>
+<td><a href="record_url/">record_url</a></td>
+<td>URL to database record</td>
+</tr>
+<tr>
+<td><a href="relationship_type/">relationship_type</a></td>
+<td>Type of relationship</td>
+</tr>
+<tr>
+<td><a href="sample_size/">sample_size</a></td>
+<td>Number of samples</td>
+</tr>
+<tr>
+<td><a href="sample_type/">sample_type</a></td>
+<td>Type of biological sample</td>
+</tr>
+<tr>
+<td><a href="serving_size/">serving_size</a></td>
+<td>Serving size</td>
+</tr>
+<tr>
+<td><a href="severity/">severity</a></td>
+<td>Severity of phenotype or disease</td>
+</tr>
+<tr>
+<td><a href="sex/">sex</a></td>
+<td>Biological sex</td>
+</tr>
+<tr>
+<td><a href="smiles/">smiles</a></td>
+<td>SMILES chemical structure</td>
+</tr>
+<tr>
+<td><a href="source_database/">source_database</a></td>
+<td>Name of source database</td>
+</tr>
+<tr>
+<td><a href="source_database_record/">source_database_record</a></td>
+<td>Link to original database record</td>
+</tr>
+<tr>
+<td><a href="species/">species</a></td>
+<td>Species name</td>
+</tr>
+<tr>
+<td><a href="statistic_value/">statistic_value</a></td>
+<td>Value of the summary statistic</td>
+</tr>
+<tr>
+<td><a href="stratification/">stratification</a></td>
+<td>Stratification variables</td>
+</tr>
+<tr>
+<td><a href="stressors/">stressors</a></td>
+<td>Chemical stressors that trigger the AOP</td>
+</tr>
+<tr>
+<td><a href="studies/">studies</a></td>
+<td>Collection of research studies and surveys</td>
+</tr>
+<tr>
+<td><a href="study_type/">study_type</a></td>
+<td>Type of study</td>
+</tr>
+<tr>
+<td><a href="summary_statistic/">summary_statistic</a></td>
+<td>Type of summary statistic</td>
+</tr>
+<tr>
+<td><a href="survey_cycle/">survey_cycle</a></td>
+<td>NHANES survey cycle</td>
+</tr>
+<tr>
+<td><a href="symbol/">symbol</a></td>
+<td>Gene symbol</td>
+</tr>
+<tr>
+<td><a href="taxon_id/">taxon_id</a></td>
+<td>NCBI Taxonomy identifier</td>
+</tr>
+<tr>
+<td><a href="triggers_key_event/">triggers_key_event</a></td>
+<td>Key events triggered</td>
+</tr>
+<tr>
+<td><a href="uberon_id/">uberon_id</a></td>
+<td>UBERON anatomical identifier</td>
+</tr>
+<tr>
+<td><a href="upheno_id/">upheno_id</a></td>
+<td>Unified phenotype ontology identifier</td>
+</tr>
+<tr>
+<td><a href="upstream_event/">upstream_event</a></td>
+<td>Upstream key event</td>
+</tr>
+<tr>
+<td><a href="variable_name/">variable_name</a></td>
+<td>Variable name in database</td>
+</tr>
+<tr>
+<td><a href="workplace/">workplace</a></td>
+<td>Workplace where exposure occurs</td>
+</tr>
+<tr>
+<td><a href="xref/">xref</a></td>
+<td>External database cross-references</td>
+</tr>
+<tr>
+<td><a href="zp_id/">zp_id</a></td>
+<td>Zebrafish Phenotype Ontology identifier</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="BiologicalOrganizationLevelEnum/">BiologicalOrganizationLevelEnum</a></td>
+<td>Levels of biological organization</td>
+</tr>
+<tr>
+<td><a href="DataSourceEnum/">DataSourceEnum</a></td>
+<td>Data sources and repositories</td>
+</tr>
+<tr>
+<td><a href="ExposureMediumEnum/">ExposureMediumEnum</a></td>
+<td>Medium through which exposure occurs</td>
+</tr>
+<tr>
+<td><a href="ExposureRouteEnum/">ExposureRouteEnum</a></td>
+<td>Routes of exposure to chemicals or environmental factors</td>
+</tr>
+<tr>
+<td><a href="SampleTypeEnum/">SampleTypeEnum</a></td>
+<td>Types of biological samples</td>
+</tr>
+<tr>
+<td><a href="SexEnum/">SexEnum</a></td>
+<td>Biological sex</td>
+</tr>
+<tr>
+<td><a href="StudyTypeEnum/">StudyTypeEnum</a></td>
+<td>Types of research studies</td>
+</tr>
+<tr>
+<td><a href="SummaryStatisticEnum/">SummaryStatisticEnum</a></td>
+<td>Types of summary statistics</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path</td>
+</tr>
+<tr>
+<td><a href="Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path</td>
+</tr>
+<tr>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
