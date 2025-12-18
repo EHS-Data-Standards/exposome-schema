@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+_commit: v0.4.1
+_src_path: https://github.com/linkml/linkml-project-copier
+add_example: true
+copyright_year: '2025'
+email: annethessen@gmail.com
+full_name: Anne Thessen
+gh_action_docs_preview: false
+gh_action_pypi: true
+github_org: diatomsRcool
+license: MIT
+project_description: Test project for exposome schema in LinkML
+project_name: exposome-schema
+project_slug: exposome_schema
+
