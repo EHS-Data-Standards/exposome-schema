@@ -1,5 +1,5 @@
 # Auto generated from exposome_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-18T17:03:05
+# Generation date: 2026-01-05T10:56:49
 # Schema: exposome-schema
 #
 # id: https://w3id.org/diatomsRcool/exposome-schema
@@ -235,46 +235,6 @@ class AnatomicalEntityId(BiologicalEntityId):
 
 
 class OrganismId(BiologicalEntityId):
-    pass
-
-
-class DatabaseRecordId(NamedThingId):
-    pass
-
-
-class NHANESRecordId(DatabaseRecordId):
-    pass
-
-
-class CTDRecordId(DatabaseRecordId):
-    pass
-
-
-class ChEMBLRecordId(DatabaseRecordId):
-    pass
-
-
-class GWASRecordId(DatabaseRecordId):
-    pass
-
-
-class AOPWikiRecordId(DatabaseRecordId):
-    pass
-
-
-class ToxCastRecordId(DatabaseRecordId):
-    pass
-
-
-class CompToxRecordId(DatabaseRecordId):
-    pass
-
-
-class GeneExpressionAtlasRecordId(DatabaseRecordId):
-    pass
-
-
-class USDARecordId(DatabaseRecordId):
     pass
 
 
@@ -1113,7 +1073,7 @@ class ExposureMeasurement(Measurement):
     measurement_method: Optional[str] = None
     measurement_date: Optional[Union[str, XSDDate]] = None
     sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
-    source_database_record: Optional[Union[str, DatabaseRecordId]] = None
+    source_database_record: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1142,8 +1102,8 @@ class ExposureMeasurement(Measurement):
         if self.sample_type is not None and not isinstance(self.sample_type, SampleTypeEnum):
             self.sample_type = SampleTypeEnum(self.sample_type)
 
-        if self.source_database_record is not None and not isinstance(self.source_database_record, DatabaseRecordId):
-            self.source_database_record = DatabaseRecordId(self.source_database_record)
+        if self.source_database_record is not None and not isinstance(self.source_database_record, str):
+            self.source_database_record = str(self.source_database_record)
 
         super().__post_init__(**kwargs)
 
@@ -1437,251 +1397,6 @@ class Organism(BiologicalEntity):
 
 
 @dataclass(repr=False)
-class DatabaseRecord(NamedThing):
-    """
-    A record from an external database
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["DatabaseRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:DatabaseRecord"
-    class_name: ClassVar[str] = "DatabaseRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.DatabaseRecord
-
-    id: Union[str, DatabaseRecordId] = None
-    source_database: Optional[str] = None
-    record_url: Optional[Union[str, URI]] = None
-    last_updated: Optional[Union[str, XSDDate]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self.source_database is not None and not isinstance(self.source_database, str):
-            self.source_database = str(self.source_database)
-
-        if self.record_url is not None and not isinstance(self.record_url, URI):
-            self.record_url = URI(self.record_url)
-
-        if self.last_updated is not None and not isinstance(self.last_updated, XSDDate):
-            self.last_updated = XSDDate(self.last_updated)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NHANESRecord(DatabaseRecord):
-    """
-    A record from the National Health and Nutrition Examination Survey
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["NHANESRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:NHANESRecord"
-    class_name: ClassVar[str] = "NHANESRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.NHANESRecord
-
-    id: Union[str, NHANESRecordId] = None
-    survey_cycle: Optional[str] = None
-    variable_name: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NHANESRecordId):
-            self.id = NHANESRecordId(self.id)
-
-        if self.survey_cycle is not None and not isinstance(self.survey_cycle, str):
-            self.survey_cycle = str(self.survey_cycle)
-
-        if self.variable_name is not None and not isinstance(self.variable_name, str):
-            self.variable_name = str(self.variable_name)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class CTDRecord(DatabaseRecord):
-    """
-    A record from the Comparative Toxicogenomics Database
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["CTDRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:CTDRecord"
-    class_name: ClassVar[str] = "CTDRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.CTDRecord
-
-    id: Union[str, CTDRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CTDRecordId):
-            self.id = CTDRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ChEMBLRecord(DatabaseRecord):
-    """
-    A record from ChEMBL chemical database
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ChEMBLRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:ChEMBLRecord"
-    class_name: ClassVar[str] = "ChEMBLRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ChEMBLRecord
-
-    id: Union[str, ChEMBLRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChEMBLRecordId):
-            self.id = ChEMBLRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class GWASRecord(DatabaseRecord):
-    """
-    A record from the GWAS Catalog
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["GWASRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:GWASRecord"
-    class_name: ClassVar[str] = "GWASRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.GWASRecord
-
-    id: Union[str, GWASRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, GWASRecordId):
-            self.id = GWASRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class AOPWikiRecord(DatabaseRecord):
-    """
-    A record from the AOP Wiki
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["AOPWikiRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:AOPWikiRecord"
-    class_name: ClassVar[str] = "AOPWikiRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.AOPWikiRecord
-
-    id: Union[str, AOPWikiRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AOPWikiRecordId):
-            self.id = AOPWikiRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ToxCastRecord(DatabaseRecord):
-    """
-    A record from the ToxCast database
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ToxCastRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:ToxCastRecord"
-    class_name: ClassVar[str] = "ToxCastRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ToxCastRecord
-
-    id: Union[str, ToxCastRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ToxCastRecordId):
-            self.id = ToxCastRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class CompToxRecord(DatabaseRecord):
-    """
-    A record from the EPA CompTox Chemicals Dashboard
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["CompToxRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:CompToxRecord"
-    class_name: ClassVar[str] = "CompToxRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.CompToxRecord
-
-    id: Union[str, CompToxRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CompToxRecordId):
-            self.id = CompToxRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class GeneExpressionAtlasRecord(DatabaseRecord):
-    """
-    A record from the Gene Expression Atlas
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["GeneExpressionAtlasRecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:GeneExpressionAtlasRecord"
-    class_name: ClassVar[str] = "GeneExpressionAtlasRecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.GeneExpressionAtlasRecord
-
-    id: Union[str, GeneExpressionAtlasRecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, GeneExpressionAtlasRecordId):
-            self.id = GeneExpressionAtlasRecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class USDARecord(DatabaseRecord):
-    """
-    A record from USDA Pesticide Data Program
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["USDARecord"]
-    class_class_curie: ClassVar[str] = "exposome_schema:USDARecord"
-    class_name: ClassVar[str] = "USDARecord"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.USDARecord
-
-    id: Union[str, USDARecordId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, USDARecordId):
-            self.id = USDARecordId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class ExposureToPhenotypeAssociation(Association):
     """
     An association between an exposure and a phenotype
@@ -1850,7 +1565,7 @@ class ExposomeDatabase(YAMLRoot):
     participants: Optional[Union[dict[Union[str, ParticipantId], Union[dict, Participant]], list[Union[dict, Participant]]]] = empty_dict()
     measurements: Optional[Union[dict[Union[str, MeasurementId], Union[dict, Measurement]], list[Union[dict, Measurement]]]] = empty_dict()
     biological_entities: Optional[Union[dict[Union[str, BiologicalEntityId], Union[dict, BiologicalEntity]], list[Union[dict, BiologicalEntity]]]] = empty_dict()
-    database_records: Optional[Union[dict[Union[str, DatabaseRecordId], Union[dict, DatabaseRecord]], list[Union[dict, DatabaseRecord]]]] = empty_dict()
+    database_records: Optional[Union[str, list[str]]] = empty_list()
     associations: Optional[Union[dict[Union[str, AssociationId], Union[dict, Association]], list[Union[dict, Association]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1872,7 +1587,9 @@ class ExposomeDatabase(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="biological_entities", slot_type=BiologicalEntity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="database_records", slot_type=DatabaseRecord, key_name="id", keyed=True)
+        if not isinstance(self.database_records, list):
+            self.database_records = [self.database_records] if self.database_records is not None else []
+        self.database_records = [v if isinstance(v, str) else str(v) for v in self.database_records]
 
         self._normalize_inlined_as_list(slot_name="associations", slot_type=Association, key_name="id", keyed=True)
 
@@ -2385,7 +2102,7 @@ slots.sample_type = Slot(uri=EXPOSOME_SCHEMA.sample_type, name="sample_type", cu
                    model_uri=EXPOSOME_SCHEMA.sample_type, domain=None, range=Optional[Union[str, "SampleTypeEnum"]])
 
 slots.source_database_record = Slot(uri=EXPOSOME_SCHEMA.source_database_record, name="source_database_record", curie=EXPOSOME_SCHEMA.curie('source_database_record'),
-                   model_uri=EXPOSOME_SCHEMA.source_database_record, domain=None, range=Optional[Union[str, DatabaseRecordId]])
+                   model_uri=EXPOSOME_SCHEMA.source_database_record, domain=None, range=Optional[str])
 
 slots.biomarker_type = Slot(uri=EXPOSOME_SCHEMA.biomarker_type, name="biomarker_type", curie=EXPOSOME_SCHEMA.curie('biomarker_type'),
                    model_uri=EXPOSOME_SCHEMA.biomarker_type, domain=None, range=Optional[str])
@@ -2520,7 +2237,7 @@ slots.exposomeDatabase__biological_entities = Slot(uri=EXPOSOME_SCHEMA.biologica
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__biological_entities, domain=None, range=Optional[Union[dict[Union[str, BiologicalEntityId], Union[dict, BiologicalEntity]], list[Union[dict, BiologicalEntity]]]])
 
 slots.exposomeDatabase__database_records = Slot(uri=EXPOSOME_SCHEMA.database_records, name="exposomeDatabase__database_records", curie=EXPOSOME_SCHEMA.curie('database_records'),
-                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__database_records, domain=None, range=Optional[Union[dict[Union[str, DatabaseRecordId], Union[dict, DatabaseRecord]], list[Union[dict, DatabaseRecord]]]])
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__database_records, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.exposomeDatabase__associations = Slot(uri=EXPOSOME_SCHEMA.associations, name="exposomeDatabase__associations", curie=EXPOSOME_SCHEMA.curie('associations'),
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__associations, domain=None, range=Optional[Union[dict[Union[str, AssociationId], Union[dict, Association]], list[Union[dict, Association]]]])
