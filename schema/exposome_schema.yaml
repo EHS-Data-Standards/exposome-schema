@@ -2832,7 +2832,7 @@ classes:
     tree_root: true
 metamodel_version: 1.7.0
 source_file: exposome_schema.yaml
-source_file_date: '2026-01-10T17:17:32'
+source_file_date: '2026-01-10T17:18:02'
 source_file_size: 28426
-generation_date: '2026-01-10T17:17:42'
+generation_date: '2026-01-10T17:18:11'
 
