@@ -2,794 +2,794 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/about/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/AOPWikiRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/AdverseOutcome/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/AdverseOutcomePathway/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/AggregatedMeasurement/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/AnatomicalEntity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Association/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/BiologicalEntity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/BiologicalOrganizationLevelEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/BiologicalResponse/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/BiomarkerMeasurement/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Boolean/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/CTDRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/CellType/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ChEMBLRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ChemicalEntity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ChemicalExposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ChemicalToGeneAssociation/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Cohort/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/CompToxRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Curie/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/DataSourceEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/DatabaseRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Date/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/DateOrDatetime/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Datetime/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Decimal/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/DietaryExposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Disease/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Double/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/EnvironmentalExposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposomeDatabase/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposureEvent/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposureMeasurement/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposureMediumEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposureRouteEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ExposureToPhenotypeAssociation/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Float/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/GWASRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Gene/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/GeneExpressionAtlasRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/GeneToDiseaseAssociation/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/GeneticVariantToPhenotypeAssociation/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/HealthOutcome/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Integer/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Jsonpath/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Jsonpointer/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/KeyEvent/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/KeyEventRelationship/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/MammalianPhenotype/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Measurement/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/MolecularInitiatingEvent/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/NHANESRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/NamedThing/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Ncname/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Nodeidentifier/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Objectidentifier/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/OccupationalExposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Organism/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Participant/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Phenotype/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/PhenotypeMeasurement/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Protein/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/SampleTypeEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/SexEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Sparqlpath/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/String/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Study/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/StudyEntity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/StudyTypeEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/SummaryStatisticEnum/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Time/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ToxCastRecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/USDARecord/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Uri/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/Uriorcurie/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ZebrafishPhenotype/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/adverse_outcome/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/adverse_outcome_pathways/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/affected_anatomy/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/age/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/aopwiki_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/association_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/associations/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/biological_action/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/biological_entities/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/biological_object/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/biological_process/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/biomarker_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/cas_number/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/category/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/causes_phenotype/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/chebi_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/chembl_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/chemical/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/chemical_entities/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/cl_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/cohort/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/cohort_size/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/cohorts/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/data_source/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/database_records/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/description/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/disease/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/disease_category/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/downstream_event/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/dtxsid/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/effect_size/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/encoded_by_gene/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/enrollment_period/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/environmental_context/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/evidence/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/evidence_support/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposed_to_chemical/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposome-schema/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposure_concentration/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposure_duration/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposure_medium/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposure_route/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/exposures/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/food_item/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/gene/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/genetic_variant/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/geographic_location/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/has_exposure/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/health_outcomes/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/hp_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/in_taxon/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/inchi/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/inclusion_criteria/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/interaction_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/key_event_relationships/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/key_events/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/last_updated/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/leads_to_molecular_event/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/level_of_biological_organization/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measured_entity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measured_in_study/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measurement_date/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measurement_method/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measurement_unit/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measurement_value/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/measurements/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/molecular_formula/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/molecular_initiating_event/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/mondo_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/mp_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/name/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/ncbigene_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/occupation/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/occurs_in_anatomy/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/occurs_in_cell_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/onset_age/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/outcome_level/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/p_value/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/part_of_cohort/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/part_of_study/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/participant/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/participant_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/participants/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/phenotype/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/phenotype_category/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/population/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/principal_investigator/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/pubchem_cid/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/publications/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/record_url/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/relationship_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/sample_size/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/sample_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/serving_size/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/severity/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/sex/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/smiles/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/source_database/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/source_database_record/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/species/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/statistic_value/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/stratification/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/stressors/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/studies/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/study_type/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/summary_statistic/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/survey_cycle/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/symbol/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/taxon_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/triggers_key_event/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/uberon_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/upheno_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/upstream_event/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/variable_name/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/workplace/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/xref/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
     <url>
          <loc>https://diatomsRcool.github.io/exposome-schema/elements/zp_id/</loc>
-         <lastmod>2025-12-18</lastmod>
+         <lastmod>2026-01-10</lastmod>
     </url>
 </urlset>
