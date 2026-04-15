@@ -58,6 +58,23 @@ imports:
 
 classes:
 
+  # ============ Metaclass ===============
+  
+    ExposureEvent:
+    abstract: true
+    description: >-
+      An event in which a BiologicalEntity is exposed to a StimulusEntity and results in
+      a BiologicalResponse
+    annotations:
+      must_not_have_id_slot: true
+    slots:
+      - exposure_stimulus
+        required: true
+      - exposure_outcome
+        required: true
+      - exposure_receiver
+        required: true
+
   # ============ Base Classes ============
 
   NamedThing:
@@ -71,16 +88,22 @@ classes:
       - xref
     class_uri: schema:Thing
 
-  # ============ Abstract Domain Classes ============
+
+  # ============ Domain Classes ============
 
   BiologicalEntity:
-    abstract: true
     is_a: NamedThing
+    class_uri: CARO:0030000
     description: >-
       Biological entities including genes, proteins, cells, and anatomical structures
 
-  ChemicalEntity:
+  StimulusEntity:
     is_a: NamedThing
+    description: >- 
+      Any entity to which a receiver is being exposed
+
+  ChemicalEntity:
+    is_a: StimulusEntity
     class_uri: CHEBI:24431
     description: >-
       A chemical entity including compounds, drugs, and metabolites
@@ -94,18 +117,6 @@ classes:
       - smiles
       - molecular_formula
 
-  ExposureEvent:
-    abstract: true
-    is_a: NamedThing
-    description: >-
-      An event in which an organism is exposed to a chemical or environmental factor
-    slots:
-      - exposed_to_chemical
-      - exposure_route
-      - exposure_duration
-      - exposure_concentration
-      - exposure_medium
-
   BiologicalResponse:
     abstract: true
     is_a: NamedThing
@@ -114,7 +125,7 @@ classes:
 
   HealthOutcome:
     abstract: true
-    is_a: NamedThing
+    is_a: BiologicalResponse
     description: >-
       A health-related outcome including phenotypes and diseases
 
@@ -138,14 +149,41 @@ classes:
 
   # ============ Exposure Classes ============
 
+  Exposure:
+    abstract: true
+    is_a: NamedThing
+    class_uri: ExO:0000002
+    description: >-
+      An 
+    slots:
+      - exposure_stimulus
+        required: true
+      - exposure_route
+      - exposure_duration
+      - exposure_frequency
+      - exposure_concentration
+      - exposure_medium
+  
+  ActiveExposure:
+    is_a: Exposure
+    description: >-
+      Direct, intentional contact with a stimulus 
+
+  PassiveExposure:
+    is_a: Exposure
+    description: >-
+      Indirect, unintentional, or incidental contact with a stimulus
+    slots:
+      - environmental_context
+      
   ChemicalExposure:
-    is_a: ExposureEvent
-    class_uri: ECTO:0000006
+    is_a: Exposure
+    class_uri: ECTO:0000231
     description: >-
       Exposure to a chemical substance
 
   DietaryExposure:
-    is_a: ExposureEvent
+    is_a: Exposure
     class_uri: FOODON:00002403
     description: >-
       Exposure through dietary consumption
@@ -153,34 +191,46 @@ classes:
       - food_item
       - serving_size
 
-  EnvironmentalExposure:
-    is_a: ExposureEvent
-    class_uri: ECTO:0000001
-    description: >-
-      Exposure to environmental factors
-    slots:
-      - environmental_context
-
   OccupationalExposure:
-    is_a: ExposureEvent
-    class_uri: ECTO:0000002
+    is_a: Exposure
+    class_uri: ECTO:0001591
     description: >-
       Exposure in an occupational setting
     slots:
       - occupation
       - workplace
 
+  ExperimentalExposure:
+    is_a: Exposure
+    class_uri: XCO:0000000
+    description: >-
+      Exposure to a treatment in an empirical experimental setting
+
+  PrenatalExposure:
+    is_a: Exposure
+    description: >-
+      Exposure of a mammalian embryo or fetus via the mother
+
+  BehavioralExposure:
+    is_a: Exposure
+    description: >-
+     Exposure wherein the receiver engages in a behavior that mediates an exposure 
+     or leads to a health outcome
+
+  SesExposure:
+    is_a: Exposure
+    description: >-
+      Exposure to stimulus related to socioeconomic factors
+      
   # ============ Health Outcome Classes ============
 
   Phenotype:
     is_a: HealthOutcome
-    class_uri: HP:0000118
+    class_uri: UPHENO:0001001
     description: >-
       An observable characteristic or trait
     slots:
-      - hp_id
       - upheno_id
-      - phenotype_category
       - severity
       - onset_age
 
@@ -191,7 +241,6 @@ classes:
       A disease or medical condition
     slots:
       - mondo_id
-      - disease_category
       - affected_anatomy
 
   AdverseOutcome:
@@ -217,6 +266,15 @@ classes:
     slots:
       - zp_id
 
+  HumanPhenotype:
+    is_a: Phenotype
+    class_uri: HP:0000001
+    description: >-
+      A phenotype observed in humans
+    slots:
+      - hpo_id
+    
+
   # ============ AOP Framework Classes ============
 
   AdverseOutcomePathway:
@@ -234,7 +292,6 @@ classes:
 
   MolecularInitiatingEvent:
     is_a: BiologicalResponse
-    class_uri: ECTO:3000000
     description: >-
       The initial molecular-level perturbation that starts an Adverse Outcome Pathway
     slots:
@@ -246,7 +303,6 @@ classes:
 
   KeyEvent:
     is_a: BiologicalResponse
-    class_uri: ECTO:1000000
     description: >-
       A measurable change in biological state that is a step in an Adverse Outcome Pathway
     slots:
@@ -371,7 +427,7 @@ classes:
     slots:
       - encoded_by_gene
 
-  CellType:
+  Cell:
     is_a: BiologicalEntity
     class_uri: CL:0000000
     description: >-
@@ -383,7 +439,7 @@ classes:
     is_a: BiologicalEntity
     class_uri: UBERON:0001062
     description: >-
-      An anatomical structure or system
+      An anatomical structure or system, part of an organism, made of many cells
     slots:
       - uberon_id
 
@@ -394,24 +450,47 @@ classes:
     slots:
       - species
       - taxon_id
+      - lifestage
+      
+  Population:
+    is_a: BiologicalEntity
+    description: >-
+      A group of organisms of the same species
+    slots:
+     - species
+
+  # ================== Associations ===================
 
   ExposureToPhenotypeAssociation:
-    is_a: Association
+    implements: ExposureEvent
     description: >-
       An association between an exposure and a phenotype
     slots:
       - exposure
       - phenotype
+      - receiver
       - association_type
       - evidence
 
+  ExposureToDiseaseAssociation:
+    implements: ExposureEvent
+    description: >-
+      An association between an exposure and a disease
+    slots:
+      - exposure
+      - disease
+      - receiver
+      - evidence
+      - association_type
+
   ChemicalToGeneAssociation:
-    is_a: Association
+    implements: ExposureEvent
     description: >-
       An association between a chemical and a gene
     slots:
       - chemical
       - gene
+      - receiver
       - interaction_type
 
   GeneToDiseaseAssociation:
@@ -561,10 +640,9 @@ slots:
     description: Molecular formula
 
   # Exposure slots
-  exposed_to_chemical:
-    range: ChemicalEntity
-    slot_uri: CHEBI:24431
-    description: The chemical entity involved in the exposure
+  exposure_stimulus:
+    range: StimulusEntity
+    description: The stimulus involved in the exposure
 
   exposure_route:
     range: ExposureRouteEnum
@@ -581,6 +659,16 @@ slots:
   exposure_medium:
     range: ExposureMediumEnum
     description: Medium through which exposure occurs
+
+  exposure_frequency:
+    range: ExposureFrequencyEnum
+  
+  exposure_outcome:
+    range: BiologicalResponse
+  
+  exposure_receiver:
+    range: BiologicalEntity
+    description: The organism, cell, tissue, or population being exposed
 
   food_item:
     range: string
@@ -613,10 +701,6 @@ slots:
     pattern: "^UPHENO:\\d+$"
     description: Unified phenotype ontology identifier
 
-  phenotype_category:
-    range: string
-    description: Category of phenotype
-
   severity:
     range: string
     description: Severity of phenotype or disease
@@ -629,10 +713,6 @@ slots:
     range: uriorcurie
     pattern: "^MONDO:\\d{7}$"
     description: MONDO disease identifier
-
-  disease_category:
-    range: string
-    description: Category of disease
 
   affected_anatomy:
     range: AnatomicalEntity
@@ -699,7 +779,6 @@ slots:
 
   occurs_in_anatomy:
     range: AnatomicalEntity
-    slot_uri: UBERON:0001062
     description: Anatomical location where event occurs
 
   level_of_biological_organization:
@@ -813,10 +892,6 @@ slots:
   sample_type:
     range: SampleTypeEnum
     description: Type of biological sample
-
-  source_database_record:
-    range: string
-    description: Reference to source database record
 
   biomarker_type:
     range: string
