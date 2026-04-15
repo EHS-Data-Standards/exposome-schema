@@ -311,15 +311,6 @@
 
       ExposomeDatabase : database_records
 
-
-
-
-
-        ExposomeDatabase --&gt; "*" DatabaseRecord : database_records
-        click DatabaseRecord href "../DatabaseRecord/"
-
-
-
       ExposomeDatabase : exposures
 
 
@@ -445,7 +436,7 @@
 </tr>
 <tr>
 <td><a href="../database_records/">database_records</a></td>
-<td>* <br/> <a href="../DatabaseRecord/">DatabaseRecord</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Collection of records from external databases</td>
 <td>direct</td>
 </tr>
@@ -599,7 +590,6 @@ attributes:
     rank: 1000
     domain_of:
     - ExposomeDatabase
-    range: DatabaseRecord
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -754,7 +744,7 @@ attributes:
     owner: ExposomeDatabase
     domain_of:
     - ExposomeDatabase
-    range: DatabaseRecord
+    range: string
     multivalued: true
     inlined: true
     inlined_as_list: true

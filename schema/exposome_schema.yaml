@@ -1394,13 +1394,13 @@ slots:
   source_database_record:
     name: source_database_record
     definition_uri: https://w3id.org/diatomsRcool/exposome-schema/source_database_record
-    description: Link to original database record
+    description: Reference to source database record
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:source_database_record
     owner: ExposureMeasurement
     domain_of:
     - ExposureMeasurement
-    range: DatabaseRecord
+    range: string
   biomarker_type:
     name: biomarker_type
     definition_uri: https://w3id.org/diatomsRcool/exposome-schema/biomarker_type
@@ -1552,9 +1552,6 @@ slots:
     description: Name of source database
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:source_database
-    owner: DatabaseRecord
-    domain_of:
-    - DatabaseRecord
     range: string
   record_url:
     name: record_url
@@ -1562,9 +1559,6 @@ slots:
     description: URL to database record
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:record_url
-    owner: DatabaseRecord
-    domain_of:
-    - DatabaseRecord
     range: uri
   last_updated:
     name: last_updated
@@ -1572,9 +1566,6 @@ slots:
     description: Date record was last updated
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:last_updated
-    owner: DatabaseRecord
-    domain_of:
-    - DatabaseRecord
     range: date
   survey_cycle:
     name: survey_cycle
@@ -1582,9 +1573,6 @@ slots:
     description: NHANES survey cycle
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:survey_cycle
-    owner: NHANESRecord
-    domain_of:
-    - NHANESRecord
     range: string
   variable_name:
     name: variable_name
@@ -1592,9 +1580,6 @@ slots:
     description: Variable name in database
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     slot_uri: exposome_schema:variable_name
-    owner: NHANESRecord
-    domain_of:
-    - NHANESRecord
     range: string
   exposure:
     name: exposure
@@ -1879,9 +1864,8 @@ slots:
     owner: ExposomeDatabase
     domain_of:
     - ExposomeDatabase
-    range: DatabaseRecord
+    range: string
     multivalued: true
-    inlined: true
     inlined_as_list: true
   exposomeDatabase__associations:
     name: exposomeDatabase__associations
@@ -2509,169 +2493,6 @@ classes:
     - species
     - taxon_id
     class_uri: exposome_schema:Organism
-  DatabaseRecord:
-    name: DatabaseRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/DatabaseRecord
-    description: A record from an external database
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: NamedThing
-    abstract: true
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:DatabaseRecord
-  NHANESRecord:
-    name: NHANESRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/NHANESRecord
-    description: A record from the National Health and Nutrition Examination Survey
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    - survey_cycle
-    - variable_name
-    class_uri: exposome_schema:NHANESRecord
-  CTDRecord:
-    name: CTDRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/CTDRecord
-    description: A record from the Comparative Toxicogenomics Database
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:CTDRecord
-  ChEMBLRecord:
-    name: ChEMBLRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ChEMBLRecord
-    description: A record from ChEMBL chemical database
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:ChEMBLRecord
-  GWASRecord:
-    name: GWASRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GWASRecord
-    description: A record from the GWAS Catalog
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:GWASRecord
-  AOPWikiRecord:
-    name: AOPWikiRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/AOPWikiRecord
-    description: A record from the AOP Wiki
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:AOPWikiRecord
-  ToxCastRecord:
-    name: ToxCastRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ToxCastRecord
-    description: A record from the ToxCast database
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:ToxCastRecord
-  CompToxRecord:
-    name: CompToxRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/CompToxRecord
-    description: A record from the EPA CompTox Chemicals Dashboard
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:CompToxRecord
-  GeneExpressionAtlasRecord:
-    name: GeneExpressionAtlasRecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/GeneExpressionAtlasRecord
-    description: A record from the Gene Expression Atlas
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:GeneExpressionAtlasRecord
-  USDARecord:
-    name: USDARecord
-    definition_uri: https://w3id.org/diatomsRcool/exposome-schema/USDARecord
-    description: A record from USDA Pesticide Data Program
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    is_a: DatabaseRecord
-    slots:
-    - id
-    - name
-    - description
-    - category
-    - xref
-    - source_database
-    - record_url
-    - last_updated
-    class_uri: exposome_schema:USDARecord
   ExposureToPhenotypeAssociation:
     name: ExposureToPhenotypeAssociation
     definition_uri: https://w3id.org/diatomsRcool/exposome-schema/ExposureToPhenotypeAssociation
@@ -2819,7 +2640,6 @@ classes:
       database_records:
         name: database_records
         description: Collection of records from external databases
-        range: DatabaseRecord
         multivalued: true
         inlined_as_list: true
       associations:
@@ -2832,7 +2652,7 @@ classes:
     tree_root: true
 metamodel_version: 1.7.0
 source_file: exposome_schema.yaml
-source_file_date: '2026-01-10T17:18:27'
-source_file_size: 28426
-generation_date: '2026-01-10T17:18:37'
+source_file_date: '2026-04-15T13:35:20'
+source_file_size: 26969
+generation_date: '2026-04-15T13:35:32'
 

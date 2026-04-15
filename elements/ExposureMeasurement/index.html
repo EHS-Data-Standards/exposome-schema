@@ -317,15 +317,6 @@
 
       ExposureMeasurement : source_database_record
 
-
-
-
-
-        ExposureMeasurement --&gt; "0..1" DatabaseRecord : source_database_record
-        click DatabaseRecord href "../DatabaseRecord/"
-
-
-
       ExposureMeasurement : xref
 
 
@@ -395,8 +386,8 @@
 </tr>
 <tr>
 <td><a href="../source_database_record/">source_database_record</a></td>
-<td>0..1 <br/> <a href="../DatabaseRecord/">DatabaseRecord</a></td>
-<td>Link to original database record</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Reference to source database record</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -565,14 +556,14 @@ attributes:
     range: SampleTypeEnum
   source_database_record:
     name: source_database_record
-    description: Link to original database record
+    description: Reference to source database record
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
     alias: source_database_record
     owner: ExposureMeasurement
     domain_of:
     - ExposureMeasurement
-    range: DatabaseRecord
+    range: string
   id:
     name: id
     description: A unique identifier for a thing
