@@ -1063,7 +1063,7 @@ class ExposureMeasurement(Measurement):
                        'BiomarkerMeasurement',
                        'PhenotypeMeasurement']} })
     sample_type: Optional[SampleTypeEnum] = Field(default=None, description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
-    source_database_record: Optional[str] = Field(default=None, description="""Link to original database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
+    source_database_record: Optional[str] = Field(default=None, description="""Reference to source database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1264,169 +1264,6 @@ class Organism(BiologicalEntity):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class DatabaseRecord(NamedThing):
-    """
-    A record from an external database
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class NHANESRecord(DatabaseRecord):
-    """
-    A record from the National Health and Nutrition Examination Survey
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    survey_cycle: Optional[str] = Field(default=None, description="""NHANES survey cycle""", json_schema_extra = { "linkml_meta": {'domain_of': ['NHANESRecord']} })
-    variable_name: Optional[str] = Field(default=None, description="""Variable name in database""", json_schema_extra = { "linkml_meta": {'domain_of': ['NHANESRecord']} })
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class CTDRecord(DatabaseRecord):
-    """
-    A record from the Comparative Toxicogenomics Database
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class ChEMBLRecord(DatabaseRecord):
-    """
-    A record from ChEMBL chemical database
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class GWASRecord(DatabaseRecord):
-    """
-    A record from the GWAS Catalog
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class AOPWikiRecord(DatabaseRecord):
-    """
-    A record from the AOP Wiki
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class ToxCastRecord(DatabaseRecord):
-    """
-    A record from the ToxCast database
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class CompToxRecord(DatabaseRecord):
-    """
-    A record from the EPA CompTox Chemicals Dashboard
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class GeneExpressionAtlasRecord(DatabaseRecord):
-    """
-    A record from the Gene Expression Atlas
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class USDARecord(DatabaseRecord):
-    """
-    A record from USDA Pesticide Data Program
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
 class ExposureToPhenotypeAssociation(Association):
     """
     An association between an exposure and a phenotype
@@ -1513,7 +1350,7 @@ class ExposomeDatabase(ConfiguredBaseModel):
     participants: Optional[list[Participant]] = Field(default=[], description="""Collection of study participants""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
     measurements: Optional[list[Measurement]] = Field(default=[], description="""Collection of measurements and observations""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
     biological_entities: Optional[list[BiologicalEntity]] = Field(default=[], description="""Collection of biological entities (genes, proteins, cells, anatomical structures)""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
-    database_records: Optional[list[DatabaseRecord]] = Field(default=[], description="""Collection of records from external databases""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    database_records: Optional[list[str]] = Field(default=[], description="""Collection of records from external databases""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
     associations: Optional[list[Association]] = Field(default=[], description="""Collection of associations between entities""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
 
 
@@ -1553,16 +1390,6 @@ Protein.model_rebuild()
 CellType.model_rebuild()
 AnatomicalEntity.model_rebuild()
 Organism.model_rebuild()
-DatabaseRecord.model_rebuild()
-NHANESRecord.model_rebuild()
-CTDRecord.model_rebuild()
-ChEMBLRecord.model_rebuild()
-GWASRecord.model_rebuild()
-AOPWikiRecord.model_rebuild()
-ToxCastRecord.model_rebuild()
-CompToxRecord.model_rebuild()
-GeneExpressionAtlasRecord.model_rebuild()
-USDARecord.model_rebuild()
 ExposureToPhenotypeAssociation.model_rebuild()
 ChemicalToGeneAssociation.model_rebuild()
 GeneToDiseaseAssociation.model_rebuild()

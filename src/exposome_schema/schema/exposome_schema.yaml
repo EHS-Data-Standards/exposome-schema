@@ -395,68 +395,6 @@ classes:
       - species
       - taxon_id
 
-  # ============ Database Record Classes ============
-
-  DatabaseRecord:
-    abstract: true
-    is_a: NamedThing
-    description: >-
-      A record from an external database
-    slots:
-      - source_database
-      - record_url
-      - last_updated
-
-  NHANESRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the National Health and Nutrition Examination Survey
-    slots:
-      - survey_cycle
-      - variable_name
-
-  CTDRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the Comparative Toxicogenomics Database
-
-  ChEMBLRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from ChEMBL chemical database
-
-  GWASRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the GWAS Catalog
-
-  AOPWikiRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the AOP Wiki
-
-  ToxCastRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the ToxCast database
-
-  CompToxRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the EPA CompTox Chemicals Dashboard
-
-  GeneExpressionAtlasRecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from the Gene Expression Atlas
-
-  USDARecord:
-    is_a: DatabaseRecord
-    description: >-
-      A record from USDA Pesticide Data Program
-
-  # ============ Association Classes ============
-
   ExposureToPhenotypeAssociation:
     is_a: Association
     description: >-
@@ -550,7 +488,6 @@ classes:
         inlined_as_list: true
       database_records:
         description: Collection of records from external databases
-        range: DatabaseRecord
         multivalued: true
         inlined_as_list: true
       associations:
@@ -878,8 +815,8 @@ slots:
     description: Type of biological sample
 
   source_database_record:
-    range: DatabaseRecord
-    description: Link to original database record
+    range: string
+    description: Reference to source database record
 
   biomarker_type:
     range: string
@@ -941,7 +878,6 @@ slots:
     range: string
     description: NCBI Taxonomy identifier
 
-  # Database record slots
   source_database:
     range: string
     description: Name of source database
@@ -1033,8 +969,6 @@ slots:
     domain: Measurement
     range: Study
     description: Study in which measurement was made
-
-# ============ Enums ============
 
 enums:
 
