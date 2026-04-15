@@ -50,6 +50,12 @@ prefixes:
   USDA.PESTICIDE: https://www.ams.usda.gov/datasets/pdp/
   PUBCHEM.COMPOUND: http://identifiers.org/pubchem.compound/
 
+  # Geospatial and Census Data Prefixes
+  AQS: https://aqs.epa.gov/api/
+  CENSUS: https://api.census.gov/data/
+  GEO: http://www.opengis.net/ont/geosparql#
+  WGS84: http://www.w3.org/2003/01/geo/wgs84_pos#
+
 default_prefix: exposome_schema
 default_range: string
 
@@ -395,6 +401,178 @@ classes:
       - species
       - taxon_id
 
+  # ============ Geospatial Classes ============
+
+  GeoLocation:
+    is_a: NamedThing
+    class_uri: WGS84:SpatialThing
+    description: >-
+      A geographic location specified by coordinates and H3 hexagonal index
+    slots:
+      - latitude
+      - longitude
+      - elevation
+      - h3_index
+      - h3_resolution
+      - coordinate_uncertainty
+
+  H3SpatialIndex:
+    is_a: NamedThing
+    description: >-
+      An H3 hexagonal grid cell used for spatiotemporal indexing
+    slots:
+      - h3_index
+      - h3_resolution
+      - center_latitude
+      - center_longitude
+      - parent_h3_index
+      - child_h3_indices
+
+  GeographicEntity:
+    is_a: NamedThing
+    description: >-
+      A geographic region or administrative area
+    slots:
+      - geo_location
+      - geographic_level
+      - geographic_identifier
+      - boundary_polygon
+
+  CensusGeography:
+    is_a: GeographicEntity
+    description: >-
+      Census-defined geographic areas including block groups, tracts, and counties
+    slots:
+      - census_geographic_level
+      - geoid
+      - state_fips
+      - county_fips
+      - tract_code
+      - block_group_code
+
+  # ============ Spatiotemporal Classes ============
+
+  SpatiotemporalIndex:
+    is_a: NamedThing
+    description: >-
+      A spatiotemporal index combining H3 spatial indexing with temporal information
+    slots:
+      - h3_spatial_index
+      - time_point
+      - time_range_start
+      - time_range_end
+      - temporal_resolution
+
+  TemporalEntity:
+    abstract: true
+    is_a: NamedThing
+    description: >-
+      An entity with temporal extent
+    slots:
+      - start_date
+      - end_date
+      - temporal_resolution
+
+  # ============ EPA AQS Monitoring Network Classes ============
+
+  AQSMonitoringSite:
+    is_a: NamedThing
+    description: >-
+      An EPA Air Quality System monitoring site
+    slots:
+      - site_id
+      - site_name
+      - geo_location
+      - h3_index
+      - site_type
+      - monitoring_agency
+      - establishment_date
+      - closure_date
+      - monitor_parameters
+
+  AQSMeasurement:
+    is_a: Measurement
+    description: >-
+      An air quality measurement from the EPA AQS monitoring network
+    slots:
+      - monitoring_site
+      - parameter_code
+      - parameter_name
+      - measurement_value
+      - measurement_unit
+      - measurement_date
+      - measurement_time
+      - sample_duration
+      - detection_limit
+      - uncertainty
+      - quality_indicator
+      - spatiotemporal_index
+
+  AirQualityParameter:
+    is_a: NamedThing
+    description: >-
+      An air quality parameter measured by monitoring networks
+    slots:
+      - parameter_code
+      - parameter_name
+      - cas_number
+      - measurement_scale
+      - standard_units
+
+  # ============ American Community Survey Classes ============
+
+  ACSEstimate:
+    is_a: Measurement
+    description: >-
+      A demographic or socioeconomic estimate from the American Community Survey
+    slots:
+      - census_geography
+      - variable_code
+      - variable_name
+      - estimate_value
+      - margin_of_error
+      - survey_year
+      - survey_period
+      - spatiotemporal_index
+
+  ACSVariable:
+    is_a: NamedThing
+    description: >-
+      A variable measured in the American Community Survey
+    slots:
+      - variable_code
+      - variable_name
+      - variable_category
+      - universe
+      - data_type
+
+  DemographicData:
+    is_a: NamedThing
+    description: >-
+      Demographic information for a geographic area
+    slots:
+      - census_geography
+      - total_population
+      - population_density
+      - median_age
+      - median_household_income
+      - spatiotemporal_index
+
+  # ============ Geolocated Data Container ============
+
+  GeolocatedDataset:
+    is_a: NamedThing
+    description: >-
+      A dataset with geographic and temporal indexing using H3
+    slots:
+      - dataset_name
+      - dataset_type
+      - coverage_area
+      - temporal_coverage_start
+      - temporal_coverage_end
+      - h3_resolution_levels
+      - data_source
+
   # ============ Database Record Classes ============
 
   DatabaseRecord:
@@ -556,6 +734,51 @@ classes:
       associations:
         description: Collection of associations between entities
         range: Association
+        multivalued: true
+        inlined_as_list: true
+      geo_locations:
+        description: Collection of geographic locations with H3 indexing
+        range: GeoLocation
+        multivalued: true
+        inlined_as_list: true
+      h3_spatial_indices:
+        description: Collection of H3 hexagonal grid cells
+        range: H3SpatialIndex
+        multivalued: true
+        inlined_as_list: true
+      geographic_entities:
+        description: Collection of geographic regions and administrative areas
+        range: GeographicEntity
+        multivalued: true
+        inlined_as_list: true
+      spatiotemporal_indices:
+        description: Collection of spatiotemporal indices combining H3 with temporal data
+        range: SpatiotemporalIndex
+        multivalued: true
+        inlined_as_list: true
+      aqs_monitoring_sites:
+        description: Collection of EPA AQS air quality monitoring sites
+        range: AQSMonitoringSite
+        multivalued: true
+        inlined_as_list: true
+      aqs_measurements:
+        description: Collection of air quality measurements from EPA AQS
+        range: AQSMeasurement
+        multivalued: true
+        inlined_as_list: true
+      acs_estimates:
+        description: Collection of American Community Survey demographic estimates
+        range: ACSEstimate
+        multivalued: true
+        inlined_as_list: true
+      demographic_data:
+        description: Collection of demographic data for geographic areas
+        range: DemographicData
+        multivalued: true
+        inlined_as_list: true
+      geolocated_datasets:
+        description: Collection of geolocated datasets with H3 indexing
+        range: GeolocatedDataset
         multivalued: true
         inlined_as_list: true
 
@@ -1034,6 +1257,285 @@ slots:
     range: Study
     description: Study in which measurement was made
 
+  # Geospatial slots
+  latitude:
+    range: float
+    slot_uri: WGS84:lat
+    description: Latitude in decimal degrees (WGS84)
+    minimum_value: -90.0
+    maximum_value: 90.0
+
+  longitude:
+    range: float
+    slot_uri: WGS84:long
+    description: Longitude in decimal degrees (WGS84)
+    minimum_value: -180.0
+    maximum_value: 180.0
+
+  elevation:
+    range: float
+    description: Elevation in meters above sea level
+
+  h3_index:
+    range: string
+    pattern: "^[0-9a-f]{15}$"
+    description: H3 hexagonal grid cell index (15 hexadecimal characters)
+
+  h3_resolution:
+    range: integer
+    description: H3 grid resolution level (0-15, where 0 is coarsest and 15 is finest)
+    minimum_value: 0
+    maximum_value: 15
+
+  coordinate_uncertainty:
+    range: float
+    description: Uncertainty in coordinates (meters)
+
+  center_latitude:
+    range: float
+    description: Latitude of H3 cell center
+
+  center_longitude:
+    range: float
+    description: Longitude of H3 cell center
+
+  parent_h3_index:
+    range: string
+    description: Parent H3 index at coarser resolution
+
+  child_h3_indices:
+    range: string
+    multivalued: true
+    description: Child H3 indices at finer resolution
+
+  geo_location:
+    range: GeoLocation
+    description: Geographic location with coordinates
+
+  geographic_level:
+    range: GeographicLevelEnum
+    description: Level of geographic aggregation
+
+  geographic_identifier:
+    range: string
+    description: Identifier for geographic entity
+
+  boundary_polygon:
+    range: string
+    description: GeoJSON or WKT polygon defining geographic boundary
+
+  # Census geography slots
+  census_geographic_level:
+    range: CensusGeographicLevelEnum
+    description: Census geographic hierarchy level
+
+  geoid:
+    range: string
+    description: Geographic identifier used by US Census
+
+  state_fips:
+    range: string
+    pattern: "^\\d{2}$"
+    description: State FIPS code (2 digits)
+
+  county_fips:
+    range: string
+    pattern: "^\\d{3}$"
+    description: County FIPS code (3 digits)
+
+  tract_code:
+    range: string
+    pattern: "^\\d{6}$"
+    description: Census tract code (6 digits)
+
+  block_group_code:
+    range: string
+    pattern: "^\\d$"
+    description: Block group code (1 digit)
+
+  # Temporal slots
+  start_date:
+    range: date
+    description: Start date of temporal extent
+
+  end_date:
+    range: date
+    description: End date of temporal extent
+
+  temporal_resolution:
+    range: TemporalResolutionEnum
+    description: Temporal resolution of data
+
+  time_point:
+    range: datetime
+    description: Specific point in time
+
+  time_range_start:
+    range: datetime
+    description: Start of time range
+
+  time_range_end:
+    range: datetime
+    description: End of time range
+
+  # Spatiotemporal index slots
+  h3_spatial_index:
+    range: H3SpatialIndex
+    description: H3 spatial index reference
+
+  spatiotemporal_index:
+    range: SpatiotemporalIndex
+    description: Combined spatial and temporal index
+
+  # EPA AQS slots
+  site_id:
+    range: string
+    description: AQS site identifier
+
+  site_name:
+    range: string
+    description: Name of monitoring site
+
+  site_type:
+    range: MonitoringSiteTypeEnum
+    description: Type of monitoring site
+
+  monitoring_agency:
+    range: string
+    description: Agency operating the monitoring site
+
+  monitoring_site:
+    range: AQSMonitoringSite
+    description: Reference to monitoring site
+
+  establishment_date:
+    range: date
+    description: Date site was established
+
+  closure_date:
+    range: date
+    description: Date site was closed
+
+  monitor_parameters:
+    range: AirQualityParameter
+    multivalued: true
+    description: Parameters monitored at this site
+
+  parameter_code:
+    range: string
+    description: Parameter code identifier
+
+  parameter_name:
+    range: string
+    description: Name of measured parameter
+
+  measurement_time:
+    range: time
+    description: Time of measurement
+
+  sample_duration:
+    range: string
+    description: Duration of sample collection
+
+  detection_limit:
+    range: float
+    description: Minimum detection limit
+
+  uncertainty:
+    range: float
+    description: Measurement uncertainty
+
+  quality_indicator:
+    range: string
+    description: Data quality indicator
+
+  measurement_scale:
+    range: string
+    description: Scale of measurement
+
+  standard_units:
+    range: string
+    description: Standard units for parameter
+
+  # American Community Survey slots
+  census_geography:
+    range: CensusGeography
+    description: Census geography reference
+
+  variable_code:
+    range: string
+    description: ACS variable code
+
+  variable_category:
+    range: ACSVariableCategoryEnum
+    description: Category of ACS variable
+
+  estimate_value:
+    range: float
+    description: Estimated value from survey
+
+  margin_of_error:
+    range: float
+    description: Margin of error for estimate
+
+  survey_year:
+    range: integer
+    description: Year of survey
+
+  survey_period:
+    range: string
+    description: Survey period (1-year, 5-year)
+
+  universe:
+    range: string
+    description: Universe or population for variable
+
+  data_type:
+    range: string
+    description: Data type of variable
+
+  total_population:
+    range: integer
+    description: Total population count
+
+  population_density:
+    range: float
+    description: Population per square kilometer
+
+  median_age:
+    range: float
+    description: Median age in years
+
+  median_household_income:
+    range: float
+    description: Median household income in USD
+
+  # Geolocated dataset slots
+  dataset_name:
+    range: string
+    description: Name of geolocated dataset
+
+  dataset_type:
+    range: string
+    description: Type of dataset
+
+  coverage_area:
+    range: string
+    description: Geographic coverage area description
+
+  temporal_coverage_start:
+    range: date
+    description: Start of temporal coverage
+
+  temporal_coverage_end:
+    range: date
+    description: End of temporal coverage
+
+  h3_resolution_levels:
+    range: integer
+    multivalued: true
+    description: H3 resolution levels used in dataset
+
 # ============ Enums ============
 
 enums:
@@ -1150,6 +1652,10 @@ enums:
         description: USDA Pesticide Data Program
       Wweia:
         description: What We Eat In America
+      Aqs:
+        description: EPA Air Quality System
+      Acs:
+        description: American Community Survey
       Other:
         description: Other data source
 
@@ -1206,3 +1712,125 @@ enums:
         description: Range
       InterquartileRange:
         description: Interquartile range
+
+  GeographicLevelEnum:
+    description: Levels of geographic aggregation
+    permissible_values:
+      Global:
+        description: Global level
+      Country:
+        description: Country level
+      State:
+        description: State or province level
+      County:
+        description: County level
+      City:
+        description: City or municipality level
+      Neighborhood:
+        description: Neighborhood level
+      PostalCode:
+        description: Postal code or ZIP code level
+      Custom:
+        description: Custom geographic boundary
+
+  CensusGeographicLevelEnum:
+    description: US Census geographic hierarchy levels
+    permissible_values:
+      Nation:
+        description: National level
+      State:
+        description: State level
+      County:
+        description: County level
+      Tract:
+        description: Census tract level
+      BlockGroup:
+        description: Block group level
+      Block:
+        description: Census block level (not available in ACS)
+      Place:
+        description: Incorporated place (city/town)
+      MetropolitanStatisticalArea:
+        description: Metropolitan Statistical Area (MSA)
+      CongressionalDistrict:
+        description: Congressional district
+      ZctaZipCode:
+        description: ZIP Code Tabulation Area (ZCTA)
+
+  TemporalResolutionEnum:
+    description: Temporal resolution of data
+    permissible_values:
+      Instantaneous:
+        description: Single point in time
+      Hourly:
+        description: Hourly aggregation
+      Daily:
+        description: Daily aggregation
+      Weekly:
+        description: Weekly aggregation
+      Monthly:
+        description: Monthly aggregation
+      Quarterly:
+        description: Quarterly aggregation
+      Annual:
+        description: Annual aggregation
+      Decadal:
+        description: Decadal aggregation
+      Custom:
+        description: Custom temporal resolution
+
+  MonitoringSiteTypeEnum:
+    description: Types of environmental monitoring sites
+    permissible_values:
+      Urban:
+        description: Urban monitoring site
+      Suburban:
+        description: Suburban monitoring site
+      Rural:
+        description: Rural monitoring site
+      NearRoad:
+        description: Near-road monitoring site
+      Industrial:
+        description: Industrial area monitoring site
+      Background:
+        description: Background monitoring site
+      Mobile:
+        description: Mobile monitoring site
+      Other:
+        description: Other site type
+
+  ACSVariableCategoryEnum:
+    description: Categories of American Community Survey variables
+    permissible_values:
+      Age:
+        description: Age and sex
+      Race:
+        description: Race and ethnicity
+      Household:
+        description: Household composition
+      Housing:
+        description: Housing characteristics
+      Income:
+        description: Income and earnings
+      Employment:
+        description: Employment and occupation
+      Education:
+        description: Educational attainment
+      Poverty:
+        description: Poverty status
+      Transportation:
+        description: Transportation and commuting
+      Health:
+        description: Health insurance coverage
+      Veterans:
+        description: Veteran status
+      Disability:
+        description: Disability status
+      Language:
+        description: Language spoken at home
+      Immigration:
+        description: Citizenship and immigration
+      Ancestry:
+        description: Ancestry and origin
+      Other:
+        description: Other variable category

@@ -91,6 +91,10 @@ linkml_meta = LinkMLMeta({'default_prefix': 'exposome_schema',
      'name': 'exposome-schema',
      'prefixes': {'AOPWIKI': {'prefix_prefix': 'AOPWIKI',
                               'prefix_reference': 'https://aopwiki.org/aops/'},
+                  'AQS': {'prefix_prefix': 'AQS',
+                          'prefix_reference': 'https://aqs.epa.gov/api/'},
+                  'CENSUS': {'prefix_prefix': 'CENSUS',
+                             'prefix_reference': 'https://api.census.gov/data/'},
                   'CHEBI': {'prefix_prefix': 'CHEBI',
                             'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
                   'CHEMBL.COMPOUND': {'prefix_prefix': 'CHEMBL.COMPOUND',
@@ -111,6 +115,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'exposome_schema',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/ENVO_'},
                   'FOODON': {'prefix_prefix': 'FOODON',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/FOODON_'},
+                  'GEO': {'prefix_prefix': 'GEO',
+                          'prefix_reference': 'http://www.opengis.net/ont/geosparql#'},
                   'GWAS': {'prefix_prefix': 'GWAS',
                            'prefix_reference': 'https://www.ebi.ac.uk/gwas/studies/'},
                   'GXA': {'prefix_prefix': 'GXA',
@@ -139,6 +145,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'exposome_schema',
                              'prefix_reference': 'http://purl.obolibrary.org/obo/UPHENO_'},
                   'USDA.PESTICIDE': {'prefix_prefix': 'USDA.PESTICIDE',
                                      'prefix_reference': 'https://www.ams.usda.gov/datasets/pdp/'},
+                  'WGS84': {'prefix_prefix': 'WGS84',
+                            'prefix_reference': 'http://www.w3.org/2003/01/geo/wgs84_pos#'},
                   'ZP': {'prefix_prefix': 'ZP',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/ZP_'},
                   'biolink': {'prefix_prefix': 'biolink',
@@ -335,6 +343,14 @@ class DataSourceEnum(str, Enum):
     """
     What We Eat In America
     """
+    Aqs = "Aqs"
+    """
+    EPA Air Quality System
+    """
+    Acs = "Acs"
+    """
+    American Community Survey
+    """
     Other = "Other"
     """
     Other data source
@@ -439,6 +455,240 @@ class SummaryStatisticEnum(str, Enum):
     """
 
 
+class GeographicLevelEnum(str, Enum):
+    """
+    Levels of geographic aggregation
+    """
+    Global = "Global"
+    """
+    Global level
+    """
+    Country = "Country"
+    """
+    Country level
+    """
+    State = "State"
+    """
+    State or province level
+    """
+    County = "County"
+    """
+    County level
+    """
+    City = "City"
+    """
+    City or municipality level
+    """
+    Neighborhood = "Neighborhood"
+    """
+    Neighborhood level
+    """
+    PostalCode = "PostalCode"
+    """
+    Postal code or ZIP code level
+    """
+    Custom = "Custom"
+    """
+    Custom geographic boundary
+    """
+
+
+class CensusGeographicLevelEnum(str, Enum):
+    """
+    US Census geographic hierarchy levels
+    """
+    Nation = "Nation"
+    """
+    National level
+    """
+    State = "State"
+    """
+    State level
+    """
+    County = "County"
+    """
+    County level
+    """
+    Tract = "Tract"
+    """
+    Census tract level
+    """
+    BlockGroup = "BlockGroup"
+    """
+    Block group level
+    """
+    Block = "Block"
+    """
+    Census block level (not available in ACS)
+    """
+    Place = "Place"
+    """
+    Incorporated place (city/town)
+    """
+    MetropolitanStatisticalArea = "MetropolitanStatisticalArea"
+    """
+    Metropolitan Statistical Area (MSA)
+    """
+    CongressionalDistrict = "CongressionalDistrict"
+    """
+    Congressional district
+    """
+    ZctaZipCode = "ZctaZipCode"
+    """
+    ZIP Code Tabulation Area (ZCTA)
+    """
+
+
+class TemporalResolutionEnum(str, Enum):
+    """
+    Temporal resolution of data
+    """
+    Instantaneous = "Instantaneous"
+    """
+    Single point in time
+    """
+    Hourly = "Hourly"
+    """
+    Hourly aggregation
+    """
+    Daily = "Daily"
+    """
+    Daily aggregation
+    """
+    Weekly = "Weekly"
+    """
+    Weekly aggregation
+    """
+    Monthly = "Monthly"
+    """
+    Monthly aggregation
+    """
+    Quarterly = "Quarterly"
+    """
+    Quarterly aggregation
+    """
+    Annual = "Annual"
+    """
+    Annual aggregation
+    """
+    Decadal = "Decadal"
+    """
+    Decadal aggregation
+    """
+    Custom = "Custom"
+    """
+    Custom temporal resolution
+    """
+
+
+class MonitoringSiteTypeEnum(str, Enum):
+    """
+    Types of environmental monitoring sites
+    """
+    Urban = "Urban"
+    """
+    Urban monitoring site
+    """
+    Suburban = "Suburban"
+    """
+    Suburban monitoring site
+    """
+    Rural = "Rural"
+    """
+    Rural monitoring site
+    """
+    NearRoad = "NearRoad"
+    """
+    Near-road monitoring site
+    """
+    Industrial = "Industrial"
+    """
+    Industrial area monitoring site
+    """
+    Background = "Background"
+    """
+    Background monitoring site
+    """
+    Mobile = "Mobile"
+    """
+    Mobile monitoring site
+    """
+    Other = "Other"
+    """
+    Other site type
+    """
+
+
+class ACSVariableCategoryEnum(str, Enum):
+    """
+    Categories of American Community Survey variables
+    """
+    Age = "Age"
+    """
+    Age and sex
+    """
+    Race = "Race"
+    """
+    Race and ethnicity
+    """
+    Household = "Household"
+    """
+    Household composition
+    """
+    Housing = "Housing"
+    """
+    Housing characteristics
+    """
+    Income = "Income"
+    """
+    Income and earnings
+    """
+    Employment = "Employment"
+    """
+    Employment and occupation
+    """
+    Education = "Education"
+    """
+    Educational attainment
+    """
+    Poverty = "Poverty"
+    """
+    Poverty status
+    """
+    Transportation = "Transportation"
+    """
+    Transportation and commuting
+    """
+    Health = "Health"
+    """
+    Health insurance coverage
+    """
+    Veterans = "Veterans"
+    """
+    Veteran status
+    """
+    Disability = "Disability"
+    """
+    Disability status
+    """
+    Language = "Language"
+    """
+    Language spoken at home
+    """
+    Immigration = "Immigration"
+    """
+    Citizenship and immigration
+    """
+    Ancestry = "Ancestry"
+    """
+    Ancestry and origin
+    """
+    Other = "Other"
+    """
+    Other variable category
+    """
+
+
 
 class NamedThing(ConfiguredBaseModel):
     """
@@ -479,7 +729,7 @@ class ChemicalEntity(NamedThing):
     dtxsid: Optional[str] = Field(default=None, description="""EPA CompTox Dashboard identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
     chembl_id: Optional[str] = Field(default=None, description="""ChEMBL compound identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
     pubchem_cid: Optional[int] = Field(default=None, description="""PubChem Compound identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
-    cas_number: Optional[str] = Field(default=None, description="""CAS Registry Number""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
+    cas_number: Optional[str] = Field(default=None, description="""CAS Registry Number""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity', 'AirQualityParameter']} })
     inchi: Optional[str] = Field(default=None, description="""InChI chemical identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
     smiles: Optional[str] = Field(default=None, description="""SMILES chemical structure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
     molecular_formula: Optional[str] = Field(default=None, description="""Molecular formula""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity']} })
@@ -996,7 +1246,7 @@ class Study(StudyEntity):
     population: Optional[str] = Field(default=None, description="""Study population description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
     enrollment_period: Optional[str] = Field(default=None, description="""Time period of enrollment""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
     geographic_location: Optional[str] = Field(default=None, description="""Geographic location of study""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
-    data_source: Optional[DataSourceEnum] = Field(default=None, description="""Source database or repository""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
+    data_source: Optional[DataSourceEnum] = Field(default=None, description="""Source database or repository""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'GeolocatedDataset']} })
     principal_investigator: Optional[str] = Field(default=None, description="""Principal investigator name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
     publications: Optional[list[str]] = Field(default=[], description="""Related publications""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -1054,14 +1304,17 @@ class ExposureMeasurement(Measurement):
                        'PhenotypeMeasurement']} })
     measurement_value: Optional[float] = Field(default=None, description="""Numeric measurement value""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_unit: Optional[str] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_method: Optional[str] = Field(default=None, description="""Method used for measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement', 'BiomarkerMeasurement']} })
     measurement_date: Optional[date] = Field(default=None, description="""Date of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     sample_type: Optional[SampleTypeEnum] = Field(default=None, description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
     source_database_record: Optional[str] = Field(default=None, description="""Link to original database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -1086,14 +1339,17 @@ class BiomarkerMeasurement(Measurement):
                        'PhenotypeMeasurement']} })
     measurement_value: Optional[float] = Field(default=None, description="""Numeric measurement value""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_unit: Optional[str] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_method: Optional[str] = Field(default=None, description="""Method used for measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement', 'BiomarkerMeasurement']} })
     measurement_date: Optional[date] = Field(default=None, description="""Date of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1115,13 +1371,16 @@ class PhenotypeMeasurement(Measurement):
                        'PhenotypeMeasurement']} })
     measurement_value: Optional[float] = Field(default=None, description="""Numeric measurement value""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_unit: Optional[str] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     measurement_date: Optional[date] = Field(default=None, description="""Date of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
                        'BiomarkerMeasurement',
-                       'PhenotypeMeasurement']} })
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1264,6 +1523,363 @@ class Organism(BiologicalEntity):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
+class GeoLocation(NamedThing):
+    """
+    A geographic location specified by coordinates and H3 hexagonal index
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'WGS84:SpatialThing',
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    latitude: Optional[float] = Field(default=None, description="""Latitude in decimal degrees (WGS84)""", ge=-90.0, le=90.0, json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation'], 'slot_uri': 'WGS84:lat'} })
+    longitude: Optional[float] = Field(default=None, description="""Longitude in decimal degrees (WGS84)""", ge=-180.0, le=180.0, json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation'], 'slot_uri': 'WGS84:long'} })
+    elevation: Optional[float] = Field(default=None, description="""Elevation in meters above sea level""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation']} })
+    h3_index: Optional[str] = Field(default=None, description="""H3 hexagonal grid cell index (15 hexadecimal characters)""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation', 'H3SpatialIndex', 'AQSMonitoringSite']} })
+    h3_resolution: Optional[int] = Field(default=None, description="""H3 grid resolution level (0-15, where 0 is coarsest and 15 is finest)""", ge=0, le=15, json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation', 'H3SpatialIndex']} })
+    coordinate_uncertainty: Optional[float] = Field(default=None, description="""Uncertainty in coordinates (meters)""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+    @field_validator('h3_index')
+    def pattern_h3_index(cls, v):
+        pattern=re.compile(r"^[0-9a-f]{15}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid h3_index format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid h3_index format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class H3SpatialIndex(NamedThing):
+    """
+    An H3 hexagonal grid cell used for spatiotemporal indexing
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    h3_index: Optional[str] = Field(default=None, description="""H3 hexagonal grid cell index (15 hexadecimal characters)""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation', 'H3SpatialIndex', 'AQSMonitoringSite']} })
+    h3_resolution: Optional[int] = Field(default=None, description="""H3 grid resolution level (0-15, where 0 is coarsest and 15 is finest)""", ge=0, le=15, json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation', 'H3SpatialIndex']} })
+    center_latitude: Optional[float] = Field(default=None, description="""Latitude of H3 cell center""", json_schema_extra = { "linkml_meta": {'domain_of': ['H3SpatialIndex']} })
+    center_longitude: Optional[float] = Field(default=None, description="""Longitude of H3 cell center""", json_schema_extra = { "linkml_meta": {'domain_of': ['H3SpatialIndex']} })
+    parent_h3_index: Optional[str] = Field(default=None, description="""Parent H3 index at coarser resolution""", json_schema_extra = { "linkml_meta": {'domain_of': ['H3SpatialIndex']} })
+    child_h3_indices: Optional[list[str]] = Field(default=[], description="""Child H3 indices at finer resolution""", json_schema_extra = { "linkml_meta": {'domain_of': ['H3SpatialIndex']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+    @field_validator('h3_index')
+    def pattern_h3_index(cls, v):
+        pattern=re.compile(r"^[0-9a-f]{15}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid h3_index format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid h3_index format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class GeographicEntity(NamedThing):
+    """
+    A geographic region or administrative area
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    geo_location: Optional[str] = Field(default=None, description="""Geographic location with coordinates""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity', 'AQSMonitoringSite']} })
+    geographic_level: Optional[GeographicLevelEnum] = Field(default=None, description="""Level of geographic aggregation""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    geographic_identifier: Optional[str] = Field(default=None, description="""Identifier for geographic entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    boundary_polygon: Optional[str] = Field(default=None, description="""GeoJSON or WKT polygon defining geographic boundary""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class CensusGeography(GeographicEntity):
+    """
+    Census-defined geographic areas including block groups, tracts, and counties
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    census_geographic_level: Optional[CensusGeographicLevelEnum] = Field(default=None, description="""Census geographic hierarchy level""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    geoid: Optional[str] = Field(default=None, description="""Geographic identifier used by US Census""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    state_fips: Optional[str] = Field(default=None, description="""State FIPS code (2 digits)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    county_fips: Optional[str] = Field(default=None, description="""County FIPS code (3 digits)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    tract_code: Optional[str] = Field(default=None, description="""Census tract code (6 digits)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    block_group_code: Optional[str] = Field(default=None, description="""Block group code (1 digit)""", json_schema_extra = { "linkml_meta": {'domain_of': ['CensusGeography']} })
+    geo_location: Optional[str] = Field(default=None, description="""Geographic location with coordinates""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity', 'AQSMonitoringSite']} })
+    geographic_level: Optional[GeographicLevelEnum] = Field(default=None, description="""Level of geographic aggregation""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    geographic_identifier: Optional[str] = Field(default=None, description="""Identifier for geographic entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    boundary_polygon: Optional[str] = Field(default=None, description="""GeoJSON or WKT polygon defining geographic boundary""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+    @field_validator('state_fips')
+    def pattern_state_fips(cls, v):
+        pattern=re.compile(r"^\d{2}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid state_fips format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid state_fips format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('county_fips')
+    def pattern_county_fips(cls, v):
+        pattern=re.compile(r"^\d{3}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid county_fips format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid county_fips format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('tract_code')
+    def pattern_tract_code(cls, v):
+        pattern=re.compile(r"^\d{6}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid tract_code format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid tract_code format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('block_group_code')
+    def pattern_block_group_code(cls, v):
+        pattern=re.compile(r"^\d$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid block_group_code format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid block_group_code format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class SpatiotemporalIndex(NamedThing):
+    """
+    A spatiotemporal index combining H3 spatial indexing with temporal information
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    h3_spatial_index: Optional[str] = Field(default=None, description="""H3 spatial index reference""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex']} })
+    time_point: Optional[datetime ] = Field(default=None, description="""Specific point in time""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex']} })
+    time_range_start: Optional[datetime ] = Field(default=None, description="""Start of time range""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex']} })
+    time_range_end: Optional[datetime ] = Field(default=None, description="""End of time range""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex']} })
+    temporal_resolution: Optional[TemporalResolutionEnum] = Field(default=None, description="""Temporal resolution of data""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex', 'TemporalEntity']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class TemporalEntity(NamedThing):
+    """
+    An entity with temporal extent
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    start_date: Optional[date] = Field(default=None, description="""Start date of temporal extent""", json_schema_extra = { "linkml_meta": {'domain_of': ['TemporalEntity']} })
+    end_date: Optional[date] = Field(default=None, description="""End date of temporal extent""", json_schema_extra = { "linkml_meta": {'domain_of': ['TemporalEntity']} })
+    temporal_resolution: Optional[TemporalResolutionEnum] = Field(default=None, description="""Temporal resolution of data""", json_schema_extra = { "linkml_meta": {'domain_of': ['SpatiotemporalIndex', 'TemporalEntity']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class AQSMonitoringSite(NamedThing):
+    """
+    An EPA Air Quality System monitoring site
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    site_id: Optional[str] = Field(default=None, description="""AQS site identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    site_name: Optional[str] = Field(default=None, description="""Name of monitoring site""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    geo_location: Optional[str] = Field(default=None, description="""Geographic location with coordinates""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeographicEntity', 'AQSMonitoringSite']} })
+    h3_index: Optional[str] = Field(default=None, description="""H3 hexagonal grid cell index (15 hexadecimal characters)""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeoLocation', 'H3SpatialIndex', 'AQSMonitoringSite']} })
+    site_type: Optional[MonitoringSiteTypeEnum] = Field(default=None, description="""Type of monitoring site""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    monitoring_agency: Optional[str] = Field(default=None, description="""Agency operating the monitoring site""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    establishment_date: Optional[date] = Field(default=None, description="""Date site was established""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    closure_date: Optional[date] = Field(default=None, description="""Date site was closed""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    monitor_parameters: Optional[list[str]] = Field(default=[], description="""Parameters monitored at this site""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMonitoringSite']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+    @field_validator('h3_index')
+    def pattern_h3_index(cls, v):
+        pattern=re.compile(r"^[0-9a-f]{15}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid h3_index format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid h3_index format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AQSMeasurement(Measurement):
+    """
+    An air quality measurement from the EPA AQS monitoring network
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    monitoring_site: Optional[str] = Field(default=None, description="""Reference to monitoring site""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    parameter_code: Optional[str] = Field(default=None, description="""Parameter code identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'AirQualityParameter']} })
+    parameter_name: Optional[str] = Field(default=None, description="""Name of measured parameter""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'AirQualityParameter']} })
+    measurement_value: Optional[float] = Field(default=None, description="""Numeric measurement value""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
+                       'BiomarkerMeasurement',
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
+    measurement_unit: Optional[str] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
+                       'BiomarkerMeasurement',
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
+    measurement_date: Optional[date] = Field(default=None, description="""Date of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement',
+                       'BiomarkerMeasurement',
+                       'PhenotypeMeasurement',
+                       'AQSMeasurement']} })
+    measurement_time: Optional[str] = Field(default=None, description="""Time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    sample_duration: Optional[str] = Field(default=None, description="""Duration of sample collection""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    detection_limit: Optional[float] = Field(default=None, description="""Minimum detection limit""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    uncertainty: Optional[float] = Field(default=None, description="""Measurement uncertainty""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    quality_indicator: Optional[str] = Field(default=None, description="""Data quality indicator""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement']} })
+    spatiotemporal_index: Optional[str] = Field(default=None, description="""Combined spatial and temporal index""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'ACSEstimate', 'DemographicData']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class AirQualityParameter(NamedThing):
+    """
+    An air quality parameter measured by monitoring networks
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    parameter_code: Optional[str] = Field(default=None, description="""Parameter code identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'AirQualityParameter']} })
+    parameter_name: Optional[str] = Field(default=None, description="""Name of measured parameter""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'AirQualityParameter']} })
+    cas_number: Optional[str] = Field(default=None, description="""CAS Registry Number""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity', 'AirQualityParameter']} })
+    measurement_scale: Optional[str] = Field(default=None, description="""Scale of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['AirQualityParameter']} })
+    standard_units: Optional[str] = Field(default=None, description="""Standard units for parameter""", json_schema_extra = { "linkml_meta": {'domain_of': ['AirQualityParameter']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ACSEstimate(Measurement):
+    """
+    A demographic or socioeconomic estimate from the American Community Survey
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    census_geography: Optional[str] = Field(default=None, description="""Census geography reference""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'DemographicData']} })
+    variable_code: Optional[str] = Field(default=None, description="""ACS variable code""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'ACSVariable']} })
+    variable_name: Optional[str] = Field(default=None, description="""Variable name in database""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'ACSVariable', 'NHANESRecord']} })
+    estimate_value: Optional[float] = Field(default=None, description="""Estimated value from survey""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate']} })
+    margin_of_error: Optional[float] = Field(default=None, description="""Margin of error for estimate""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate']} })
+    survey_year: Optional[int] = Field(default=None, description="""Year of survey""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate']} })
+    survey_period: Optional[str] = Field(default=None, description="""Survey period (1-year, 5-year)""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate']} })
+    spatiotemporal_index: Optional[str] = Field(default=None, description="""Combined spatial and temporal index""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'ACSEstimate', 'DemographicData']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ACSVariable(NamedThing):
+    """
+    A variable measured in the American Community Survey
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    variable_code: Optional[str] = Field(default=None, description="""ACS variable code""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'ACSVariable']} })
+    variable_name: Optional[str] = Field(default=None, description="""Variable name in database""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'ACSVariable', 'NHANESRecord']} })
+    variable_category: Optional[ACSVariableCategoryEnum] = Field(default=None, description="""Category of ACS variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSVariable']} })
+    universe: Optional[str] = Field(default=None, description="""Universe or population for variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSVariable']} })
+    data_type: Optional[str] = Field(default=None, description="""Data type of variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSVariable']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class DemographicData(NamedThing):
+    """
+    Demographic information for a geographic area
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    census_geography: Optional[str] = Field(default=None, description="""Census geography reference""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'DemographicData']} })
+    total_population: Optional[int] = Field(default=None, description="""Total population count""", json_schema_extra = { "linkml_meta": {'domain_of': ['DemographicData']} })
+    population_density: Optional[float] = Field(default=None, description="""Population per square kilometer""", json_schema_extra = { "linkml_meta": {'domain_of': ['DemographicData']} })
+    median_age: Optional[float] = Field(default=None, description="""Median age in years""", json_schema_extra = { "linkml_meta": {'domain_of': ['DemographicData']} })
+    median_household_income: Optional[float] = Field(default=None, description="""Median household income in USD""", json_schema_extra = { "linkml_meta": {'domain_of': ['DemographicData']} })
+    spatiotemporal_index: Optional[str] = Field(default=None, description="""Combined spatial and temporal index""", json_schema_extra = { "linkml_meta": {'domain_of': ['AQSMeasurement', 'ACSEstimate', 'DemographicData']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class GeolocatedDataset(NamedThing):
+    """
+    A dataset with geographic and temporal indexing using H3
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    dataset_name: Optional[str] = Field(default=None, description="""Name of geolocated dataset""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    dataset_type: Optional[str] = Field(default=None, description="""Type of dataset""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    coverage_area: Optional[str] = Field(default=None, description="""Geographic coverage area description""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    temporal_coverage_start: Optional[date] = Field(default=None, description="""Start of temporal coverage""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    temporal_coverage_end: Optional[date] = Field(default=None, description="""End of temporal coverage""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    h3_resolution_levels: Optional[list[int]] = Field(default=[], description="""H3 resolution levels used in dataset""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeolocatedDataset']} })
+    data_source: Optional[DataSourceEnum] = Field(default=None, description="""Source database or repository""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'GeolocatedDataset']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
 class DatabaseRecord(NamedThing):
     """
     A record from an external database
@@ -1288,7 +1904,7 @@ class NHANESRecord(DatabaseRecord):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     survey_cycle: Optional[str] = Field(default=None, description="""NHANES survey cycle""", json_schema_extra = { "linkml_meta": {'domain_of': ['NHANESRecord']} })
-    variable_name: Optional[str] = Field(default=None, description="""Variable name in database""", json_schema_extra = { "linkml_meta": {'domain_of': ['NHANESRecord']} })
+    variable_name: Optional[str] = Field(default=None, description="""Variable name in database""", json_schema_extra = { "linkml_meta": {'domain_of': ['ACSEstimate', 'ACSVariable', 'NHANESRecord']} })
     source_database: Optional[str] = Field(default=None, description="""Name of source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
     record_url: Optional[str] = Field(default=None, description="""URL to database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
     last_updated: Optional[date] = Field(default=None, description="""Date record was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['DatabaseRecord']} })
@@ -1515,6 +2131,15 @@ class ExposomeDatabase(ConfiguredBaseModel):
     biological_entities: Optional[list[BiologicalEntity]] = Field(default=[], description="""Collection of biological entities (genes, proteins, cells, anatomical structures)""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
     database_records: Optional[list[DatabaseRecord]] = Field(default=[], description="""Collection of records from external databases""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
     associations: Optional[list[Association]] = Field(default=[], description="""Collection of associations between entities""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    geo_locations: Optional[list[GeoLocation]] = Field(default=[], description="""Collection of geographic locations with H3 indexing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    h3_spatial_indices: Optional[list[H3SpatialIndex]] = Field(default=[], description="""Collection of H3 hexagonal grid cells""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    geographic_entities: Optional[list[GeographicEntity]] = Field(default=[], description="""Collection of geographic regions and administrative areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    spatiotemporal_indices: Optional[list[SpatiotemporalIndex]] = Field(default=[], description="""Collection of spatiotemporal indices combining H3 with temporal data""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    aqs_monitoring_sites: Optional[list[AQSMonitoringSite]] = Field(default=[], description="""Collection of EPA AQS air quality monitoring sites""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    aqs_measurements: Optional[list[AQSMeasurement]] = Field(default=[], description="""Collection of air quality measurements from EPA AQS""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    acs_estimates: Optional[list[ACSEstimate]] = Field(default=[], description="""Collection of American Community Survey demographic estimates""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    demographic_data: Optional[list[DemographicData]] = Field(default=[], description="""Collection of demographic data for geographic areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
+    geolocated_datasets: Optional[list[GeolocatedDataset]] = Field(default=[], description="""Collection of geolocated datasets with H3 indexing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposomeDatabase']} })
 
 
 # Model rebuild
@@ -1553,6 +2178,19 @@ Protein.model_rebuild()
 CellType.model_rebuild()
 AnatomicalEntity.model_rebuild()
 Organism.model_rebuild()
+GeoLocation.model_rebuild()
+H3SpatialIndex.model_rebuild()
+GeographicEntity.model_rebuild()
+CensusGeography.model_rebuild()
+SpatiotemporalIndex.model_rebuild()
+TemporalEntity.model_rebuild()
+AQSMonitoringSite.model_rebuild()
+AQSMeasurement.model_rebuild()
+AirQualityParameter.model_rebuild()
+ACSEstimate.model_rebuild()
+ACSVariable.model_rebuild()
+DemographicData.model_rebuild()
+GeolocatedDataset.model_rebuild()
 DatabaseRecord.model_rebuild()
 NHANESRecord.model_rebuild()
 CTDRecord.model_rebuild()

@@ -1,5 +1,5 @@
 # Auto generated from exposome_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-18T17:03:05
+# Generation date: 2025-12-24T13:42:22
 # Schema: exposome-schema
 #
 # id: https://w3id.org/diatomsRcool/exposome-schema
@@ -58,14 +58,16 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Date, Float, Integer, String, Uri, Uriorcurie
-from linkml_runtime.utils.metamodelcore import URI, URIorCURIE, XSDDate
+from linkml_runtime.linkml_model.types import Date, Datetime, Float, Integer, String, Time, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
 AOPWIKI = CurieNamespace('AOPWIKI', 'https://aopwiki.org/aops/')
+AQS = CurieNamespace('AQS', 'https://aqs.epa.gov/api/')
+CENSUS = CurieNamespace('CENSUS', 'https://api.census.gov/data/')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'http://identifiers.org/chembl.compound/')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
@@ -76,6 +78,7 @@ ECTO = CurieNamespace('ECTO', 'http://purl.obolibrary.org/obo/ECTO_')
 EFO = CurieNamespace('EFO', 'http://identifiers.org/efo/')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FOODON = CurieNamespace('FOODON', 'http://purl.obolibrary.org/obo/FOODON_')
+GEO = CurieNamespace('GEO', 'http://www.opengis.net/ont/geosparql#')
 GWAS = CurieNamespace('GWAS', 'https://www.ebi.ac.uk/gwas/studies/')
 GXA = CurieNamespace('GXA', 'https://www.ebi.ac.uk/gxa/experiments/')
 HHEAR = CurieNamespace('HHEAR', 'http://hadatac.org/ont/hhear#')
@@ -90,6 +93,7 @@ RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UPHENO = CurieNamespace('UPHENO', 'http://purl.obolibrary.org/obo/UPHENO_')
 USDA_PESTICIDE = CurieNamespace('USDA_PESTICIDE', 'https://www.ams.usda.gov/datasets/pdp/')
+WGS84 = CurieNamespace('WGS84', 'http://www.w3.org/2003/01/geo/wgs84_pos#')
 ZP = CurieNamespace('ZP', 'http://purl.obolibrary.org/obo/ZP_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 CHEAR = CurieNamespace('chear', 'http://hadatac.org/ont/chear#')
@@ -235,6 +239,58 @@ class AnatomicalEntityId(BiologicalEntityId):
 
 
 class OrganismId(BiologicalEntityId):
+    pass
+
+
+class GeoLocationId(NamedThingId):
+    pass
+
+
+class H3SpatialIndexId(NamedThingId):
+    pass
+
+
+class GeographicEntityId(NamedThingId):
+    pass
+
+
+class CensusGeographyId(GeographicEntityId):
+    pass
+
+
+class SpatiotemporalIndexId(NamedThingId):
+    pass
+
+
+class TemporalEntityId(NamedThingId):
+    pass
+
+
+class AQSMonitoringSiteId(NamedThingId):
+    pass
+
+
+class AQSMeasurementId(MeasurementId):
+    pass
+
+
+class AirQualityParameterId(NamedThingId):
+    pass
+
+
+class ACSEstimateId(MeasurementId):
+    pass
+
+
+class ACSVariableId(NamedThingId):
+    pass
+
+
+class DemographicDataId(NamedThingId):
+    pass
+
+
+class GeolocatedDatasetId(NamedThingId):
     pass
 
 
@@ -1437,6 +1493,631 @@ class Organism(BiologicalEntity):
 
 
 @dataclass(repr=False)
+class GeoLocation(NamedThing):
+    """
+    A geographic location specified by coordinates and H3 hexagonal index
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = WGS84["SpatialThing"]
+    class_class_curie: ClassVar[str] = "WGS84:SpatialThing"
+    class_name: ClassVar[str] = "GeoLocation"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.GeoLocation
+
+    id: Union[str, GeoLocationId] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    elevation: Optional[float] = None
+    h3_index: Optional[str] = None
+    h3_resolution: Optional[int] = None
+    coordinate_uncertainty: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GeoLocationId):
+            self.id = GeoLocationId(self.id)
+
+        if self.latitude is not None and not isinstance(self.latitude, float):
+            self.latitude = float(self.latitude)
+
+        if self.longitude is not None and not isinstance(self.longitude, float):
+            self.longitude = float(self.longitude)
+
+        if self.elevation is not None and not isinstance(self.elevation, float):
+            self.elevation = float(self.elevation)
+
+        if self.h3_index is not None and not isinstance(self.h3_index, str):
+            self.h3_index = str(self.h3_index)
+
+        if self.h3_resolution is not None and not isinstance(self.h3_resolution, int):
+            self.h3_resolution = int(self.h3_resolution)
+
+        if self.coordinate_uncertainty is not None and not isinstance(self.coordinate_uncertainty, float):
+            self.coordinate_uncertainty = float(self.coordinate_uncertainty)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class H3SpatialIndex(NamedThing):
+    """
+    An H3 hexagonal grid cell used for spatiotemporal indexing
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["H3SpatialIndex"]
+    class_class_curie: ClassVar[str] = "exposome_schema:H3SpatialIndex"
+    class_name: ClassVar[str] = "H3SpatialIndex"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.H3SpatialIndex
+
+    id: Union[str, H3SpatialIndexId] = None
+    h3_index: Optional[str] = None
+    h3_resolution: Optional[int] = None
+    center_latitude: Optional[float] = None
+    center_longitude: Optional[float] = None
+    parent_h3_index: Optional[str] = None
+    child_h3_indices: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, H3SpatialIndexId):
+            self.id = H3SpatialIndexId(self.id)
+
+        if self.h3_index is not None and not isinstance(self.h3_index, str):
+            self.h3_index = str(self.h3_index)
+
+        if self.h3_resolution is not None and not isinstance(self.h3_resolution, int):
+            self.h3_resolution = int(self.h3_resolution)
+
+        if self.center_latitude is not None and not isinstance(self.center_latitude, float):
+            self.center_latitude = float(self.center_latitude)
+
+        if self.center_longitude is not None and not isinstance(self.center_longitude, float):
+            self.center_longitude = float(self.center_longitude)
+
+        if self.parent_h3_index is not None and not isinstance(self.parent_h3_index, str):
+            self.parent_h3_index = str(self.parent_h3_index)
+
+        if not isinstance(self.child_h3_indices, list):
+            self.child_h3_indices = [self.child_h3_indices] if self.child_h3_indices is not None else []
+        self.child_h3_indices = [v if isinstance(v, str) else str(v) for v in self.child_h3_indices]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GeographicEntity(NamedThing):
+    """
+    A geographic region or administrative area
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["GeographicEntity"]
+    class_class_curie: ClassVar[str] = "exposome_schema:GeographicEntity"
+    class_name: ClassVar[str] = "GeographicEntity"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.GeographicEntity
+
+    id: Union[str, GeographicEntityId] = None
+    geo_location: Optional[Union[str, GeoLocationId]] = None
+    geographic_level: Optional[Union[str, "GeographicLevelEnum"]] = None
+    geographic_identifier: Optional[str] = None
+    boundary_polygon: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GeographicEntityId):
+            self.id = GeographicEntityId(self.id)
+
+        if self.geo_location is not None and not isinstance(self.geo_location, GeoLocationId):
+            self.geo_location = GeoLocationId(self.geo_location)
+
+        if self.geographic_level is not None and not isinstance(self.geographic_level, GeographicLevelEnum):
+            self.geographic_level = GeographicLevelEnum(self.geographic_level)
+
+        if self.geographic_identifier is not None and not isinstance(self.geographic_identifier, str):
+            self.geographic_identifier = str(self.geographic_identifier)
+
+        if self.boundary_polygon is not None and not isinstance(self.boundary_polygon, str):
+            self.boundary_polygon = str(self.boundary_polygon)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CensusGeography(GeographicEntity):
+    """
+    Census-defined geographic areas including block groups, tracts, and counties
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["CensusGeography"]
+    class_class_curie: ClassVar[str] = "exposome_schema:CensusGeography"
+    class_name: ClassVar[str] = "CensusGeography"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.CensusGeography
+
+    id: Union[str, CensusGeographyId] = None
+    census_geographic_level: Optional[Union[str, "CensusGeographicLevelEnum"]] = None
+    geoid: Optional[str] = None
+    state_fips: Optional[str] = None
+    county_fips: Optional[str] = None
+    tract_code: Optional[str] = None
+    block_group_code: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CensusGeographyId):
+            self.id = CensusGeographyId(self.id)
+
+        if self.census_geographic_level is not None and not isinstance(self.census_geographic_level, CensusGeographicLevelEnum):
+            self.census_geographic_level = CensusGeographicLevelEnum(self.census_geographic_level)
+
+        if self.geoid is not None and not isinstance(self.geoid, str):
+            self.geoid = str(self.geoid)
+
+        if self.state_fips is not None and not isinstance(self.state_fips, str):
+            self.state_fips = str(self.state_fips)
+
+        if self.county_fips is not None and not isinstance(self.county_fips, str):
+            self.county_fips = str(self.county_fips)
+
+        if self.tract_code is not None and not isinstance(self.tract_code, str):
+            self.tract_code = str(self.tract_code)
+
+        if self.block_group_code is not None and not isinstance(self.block_group_code, str):
+            self.block_group_code = str(self.block_group_code)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SpatiotemporalIndex(NamedThing):
+    """
+    A spatiotemporal index combining H3 spatial indexing with temporal information
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["SpatiotemporalIndex"]
+    class_class_curie: ClassVar[str] = "exposome_schema:SpatiotemporalIndex"
+    class_name: ClassVar[str] = "SpatiotemporalIndex"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.SpatiotemporalIndex
+
+    id: Union[str, SpatiotemporalIndexId] = None
+    h3_spatial_index: Optional[Union[str, H3SpatialIndexId]] = None
+    time_point: Optional[Union[str, XSDDateTime]] = None
+    time_range_start: Optional[Union[str, XSDDateTime]] = None
+    time_range_end: Optional[Union[str, XSDDateTime]] = None
+    temporal_resolution: Optional[Union[str, "TemporalResolutionEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SpatiotemporalIndexId):
+            self.id = SpatiotemporalIndexId(self.id)
+
+        if self.h3_spatial_index is not None and not isinstance(self.h3_spatial_index, H3SpatialIndexId):
+            self.h3_spatial_index = H3SpatialIndexId(self.h3_spatial_index)
+
+        if self.time_point is not None and not isinstance(self.time_point, XSDDateTime):
+            self.time_point = XSDDateTime(self.time_point)
+
+        if self.time_range_start is not None and not isinstance(self.time_range_start, XSDDateTime):
+            self.time_range_start = XSDDateTime(self.time_range_start)
+
+        if self.time_range_end is not None and not isinstance(self.time_range_end, XSDDateTime):
+            self.time_range_end = XSDDateTime(self.time_range_end)
+
+        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, TemporalResolutionEnum):
+            self.temporal_resolution = TemporalResolutionEnum(self.temporal_resolution)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class TemporalEntity(NamedThing):
+    """
+    An entity with temporal extent
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["TemporalEntity"]
+    class_class_curie: ClassVar[str] = "exposome_schema:TemporalEntity"
+    class_name: ClassVar[str] = "TemporalEntity"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.TemporalEntity
+
+    id: Union[str, TemporalEntityId] = None
+    start_date: Optional[Union[str, XSDDate]] = None
+    end_date: Optional[Union[str, XSDDate]] = None
+    temporal_resolution: Optional[Union[str, "TemporalResolutionEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.start_date is not None and not isinstance(self.start_date, XSDDate):
+            self.start_date = XSDDate(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, XSDDate):
+            self.end_date = XSDDate(self.end_date)
+
+        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, TemporalResolutionEnum):
+            self.temporal_resolution = TemporalResolutionEnum(self.temporal_resolution)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AQSMonitoringSite(NamedThing):
+    """
+    An EPA Air Quality System monitoring site
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["AQSMonitoringSite"]
+    class_class_curie: ClassVar[str] = "exposome_schema:AQSMonitoringSite"
+    class_name: ClassVar[str] = "AQSMonitoringSite"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.AQSMonitoringSite
+
+    id: Union[str, AQSMonitoringSiteId] = None
+    site_id: Optional[str] = None
+    site_name: Optional[str] = None
+    geo_location: Optional[Union[str, GeoLocationId]] = None
+    h3_index: Optional[str] = None
+    site_type: Optional[Union[str, "MonitoringSiteTypeEnum"]] = None
+    monitoring_agency: Optional[str] = None
+    establishment_date: Optional[Union[str, XSDDate]] = None
+    closure_date: Optional[Union[str, XSDDate]] = None
+    monitor_parameters: Optional[Union[Union[str, AirQualityParameterId], list[Union[str, AirQualityParameterId]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AQSMonitoringSiteId):
+            self.id = AQSMonitoringSiteId(self.id)
+
+        if self.site_id is not None and not isinstance(self.site_id, str):
+            self.site_id = str(self.site_id)
+
+        if self.site_name is not None and not isinstance(self.site_name, str):
+            self.site_name = str(self.site_name)
+
+        if self.geo_location is not None and not isinstance(self.geo_location, GeoLocationId):
+            self.geo_location = GeoLocationId(self.geo_location)
+
+        if self.h3_index is not None and not isinstance(self.h3_index, str):
+            self.h3_index = str(self.h3_index)
+
+        if self.site_type is not None and not isinstance(self.site_type, MonitoringSiteTypeEnum):
+            self.site_type = MonitoringSiteTypeEnum(self.site_type)
+
+        if self.monitoring_agency is not None and not isinstance(self.monitoring_agency, str):
+            self.monitoring_agency = str(self.monitoring_agency)
+
+        if self.establishment_date is not None and not isinstance(self.establishment_date, XSDDate):
+            self.establishment_date = XSDDate(self.establishment_date)
+
+        if self.closure_date is not None and not isinstance(self.closure_date, XSDDate):
+            self.closure_date = XSDDate(self.closure_date)
+
+        if not isinstance(self.monitor_parameters, list):
+            self.monitor_parameters = [self.monitor_parameters] if self.monitor_parameters is not None else []
+        self.monitor_parameters = [v if isinstance(v, AirQualityParameterId) else AirQualityParameterId(v) for v in self.monitor_parameters]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AQSMeasurement(Measurement):
+    """
+    An air quality measurement from the EPA AQS monitoring network
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["AQSMeasurement"]
+    class_class_curie: ClassVar[str] = "exposome_schema:AQSMeasurement"
+    class_name: ClassVar[str] = "AQSMeasurement"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.AQSMeasurement
+
+    id: Union[str, AQSMeasurementId] = None
+    monitoring_site: Optional[Union[str, AQSMonitoringSiteId]] = None
+    parameter_code: Optional[str] = None
+    parameter_name: Optional[str] = None
+    measurement_value: Optional[float] = None
+    measurement_unit: Optional[str] = None
+    measurement_date: Optional[Union[str, XSDDate]] = None
+    measurement_time: Optional[Union[str, XSDTime]] = None
+    sample_duration: Optional[str] = None
+    detection_limit: Optional[float] = None
+    uncertainty: Optional[float] = None
+    quality_indicator: Optional[str] = None
+    spatiotemporal_index: Optional[Union[str, SpatiotemporalIndexId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AQSMeasurementId):
+            self.id = AQSMeasurementId(self.id)
+
+        if self.monitoring_site is not None and not isinstance(self.monitoring_site, AQSMonitoringSiteId):
+            self.monitoring_site = AQSMonitoringSiteId(self.monitoring_site)
+
+        if self.parameter_code is not None and not isinstance(self.parameter_code, str):
+            self.parameter_code = str(self.parameter_code)
+
+        if self.parameter_name is not None and not isinstance(self.parameter_name, str):
+            self.parameter_name = str(self.parameter_name)
+
+        if self.measurement_value is not None and not isinstance(self.measurement_value, float):
+            self.measurement_value = float(self.measurement_value)
+
+        if self.measurement_unit is not None and not isinstance(self.measurement_unit, str):
+            self.measurement_unit = str(self.measurement_unit)
+
+        if self.measurement_date is not None and not isinstance(self.measurement_date, XSDDate):
+            self.measurement_date = XSDDate(self.measurement_date)
+
+        if self.measurement_time is not None and not isinstance(self.measurement_time, XSDTime):
+            self.measurement_time = XSDTime(self.measurement_time)
+
+        if self.sample_duration is not None and not isinstance(self.sample_duration, str):
+            self.sample_duration = str(self.sample_duration)
+
+        if self.detection_limit is not None and not isinstance(self.detection_limit, float):
+            self.detection_limit = float(self.detection_limit)
+
+        if self.uncertainty is not None and not isinstance(self.uncertainty, float):
+            self.uncertainty = float(self.uncertainty)
+
+        if self.quality_indicator is not None and not isinstance(self.quality_indicator, str):
+            self.quality_indicator = str(self.quality_indicator)
+
+        if self.spatiotemporal_index is not None and not isinstance(self.spatiotemporal_index, SpatiotemporalIndexId):
+            self.spatiotemporal_index = SpatiotemporalIndexId(self.spatiotemporal_index)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AirQualityParameter(NamedThing):
+    """
+    An air quality parameter measured by monitoring networks
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["AirQualityParameter"]
+    class_class_curie: ClassVar[str] = "exposome_schema:AirQualityParameter"
+    class_name: ClassVar[str] = "AirQualityParameter"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.AirQualityParameter
+
+    id: Union[str, AirQualityParameterId] = None
+    parameter_code: Optional[str] = None
+    parameter_name: Optional[str] = None
+    cas_number: Optional[str] = None
+    measurement_scale: Optional[str] = None
+    standard_units: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AirQualityParameterId):
+            self.id = AirQualityParameterId(self.id)
+
+        if self.parameter_code is not None and not isinstance(self.parameter_code, str):
+            self.parameter_code = str(self.parameter_code)
+
+        if self.parameter_name is not None and not isinstance(self.parameter_name, str):
+            self.parameter_name = str(self.parameter_name)
+
+        if self.cas_number is not None and not isinstance(self.cas_number, str):
+            self.cas_number = str(self.cas_number)
+
+        if self.measurement_scale is not None and not isinstance(self.measurement_scale, str):
+            self.measurement_scale = str(self.measurement_scale)
+
+        if self.standard_units is not None and not isinstance(self.standard_units, str):
+            self.standard_units = str(self.standard_units)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ACSEstimate(Measurement):
+    """
+    A demographic or socioeconomic estimate from the American Community Survey
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ACSEstimate"]
+    class_class_curie: ClassVar[str] = "exposome_schema:ACSEstimate"
+    class_name: ClassVar[str] = "ACSEstimate"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ACSEstimate
+
+    id: Union[str, ACSEstimateId] = None
+    census_geography: Optional[Union[str, CensusGeographyId]] = None
+    variable_code: Optional[str] = None
+    variable_name: Optional[str] = None
+    estimate_value: Optional[float] = None
+    margin_of_error: Optional[float] = None
+    survey_year: Optional[int] = None
+    survey_period: Optional[str] = None
+    spatiotemporal_index: Optional[Union[str, SpatiotemporalIndexId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ACSEstimateId):
+            self.id = ACSEstimateId(self.id)
+
+        if self.census_geography is not None and not isinstance(self.census_geography, CensusGeographyId):
+            self.census_geography = CensusGeographyId(self.census_geography)
+
+        if self.variable_code is not None and not isinstance(self.variable_code, str):
+            self.variable_code = str(self.variable_code)
+
+        if self.variable_name is not None and not isinstance(self.variable_name, str):
+            self.variable_name = str(self.variable_name)
+
+        if self.estimate_value is not None and not isinstance(self.estimate_value, float):
+            self.estimate_value = float(self.estimate_value)
+
+        if self.margin_of_error is not None and not isinstance(self.margin_of_error, float):
+            self.margin_of_error = float(self.margin_of_error)
+
+        if self.survey_year is not None and not isinstance(self.survey_year, int):
+            self.survey_year = int(self.survey_year)
+
+        if self.survey_period is not None and not isinstance(self.survey_period, str):
+            self.survey_period = str(self.survey_period)
+
+        if self.spatiotemporal_index is not None and not isinstance(self.spatiotemporal_index, SpatiotemporalIndexId):
+            self.spatiotemporal_index = SpatiotemporalIndexId(self.spatiotemporal_index)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ACSVariable(NamedThing):
+    """
+    A variable measured in the American Community Survey
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ACSVariable"]
+    class_class_curie: ClassVar[str] = "exposome_schema:ACSVariable"
+    class_name: ClassVar[str] = "ACSVariable"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ACSVariable
+
+    id: Union[str, ACSVariableId] = None
+    variable_code: Optional[str] = None
+    variable_name: Optional[str] = None
+    variable_category: Optional[Union[str, "ACSVariableCategoryEnum"]] = None
+    universe: Optional[str] = None
+    data_type: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ACSVariableId):
+            self.id = ACSVariableId(self.id)
+
+        if self.variable_code is not None and not isinstance(self.variable_code, str):
+            self.variable_code = str(self.variable_code)
+
+        if self.variable_name is not None and not isinstance(self.variable_name, str):
+            self.variable_name = str(self.variable_name)
+
+        if self.variable_category is not None and not isinstance(self.variable_category, ACSVariableCategoryEnum):
+            self.variable_category = ACSVariableCategoryEnum(self.variable_category)
+
+        if self.universe is not None and not isinstance(self.universe, str):
+            self.universe = str(self.universe)
+
+        if self.data_type is not None and not isinstance(self.data_type, str):
+            self.data_type = str(self.data_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DemographicData(NamedThing):
+    """
+    Demographic information for a geographic area
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["DemographicData"]
+    class_class_curie: ClassVar[str] = "exposome_schema:DemographicData"
+    class_name: ClassVar[str] = "DemographicData"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.DemographicData
+
+    id: Union[str, DemographicDataId] = None
+    census_geography: Optional[Union[str, CensusGeographyId]] = None
+    total_population: Optional[int] = None
+    population_density: Optional[float] = None
+    median_age: Optional[float] = None
+    median_household_income: Optional[float] = None
+    spatiotemporal_index: Optional[Union[str, SpatiotemporalIndexId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DemographicDataId):
+            self.id = DemographicDataId(self.id)
+
+        if self.census_geography is not None and not isinstance(self.census_geography, CensusGeographyId):
+            self.census_geography = CensusGeographyId(self.census_geography)
+
+        if self.total_population is not None and not isinstance(self.total_population, int):
+            self.total_population = int(self.total_population)
+
+        if self.population_density is not None and not isinstance(self.population_density, float):
+            self.population_density = float(self.population_density)
+
+        if self.median_age is not None and not isinstance(self.median_age, float):
+            self.median_age = float(self.median_age)
+
+        if self.median_household_income is not None and not isinstance(self.median_household_income, float):
+            self.median_household_income = float(self.median_household_income)
+
+        if self.spatiotemporal_index is not None and not isinstance(self.spatiotemporal_index, SpatiotemporalIndexId):
+            self.spatiotemporal_index = SpatiotemporalIndexId(self.spatiotemporal_index)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class GeolocatedDataset(NamedThing):
+    """
+    A dataset with geographic and temporal indexing using H3
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["GeolocatedDataset"]
+    class_class_curie: ClassVar[str] = "exposome_schema:GeolocatedDataset"
+    class_name: ClassVar[str] = "GeolocatedDataset"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.GeolocatedDataset
+
+    id: Union[str, GeolocatedDatasetId] = None
+    dataset_name: Optional[str] = None
+    dataset_type: Optional[str] = None
+    coverage_area: Optional[str] = None
+    temporal_coverage_start: Optional[Union[str, XSDDate]] = None
+    temporal_coverage_end: Optional[Union[str, XSDDate]] = None
+    h3_resolution_levels: Optional[Union[int, list[int]]] = empty_list()
+    data_source: Optional[Union[str, "DataSourceEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GeolocatedDatasetId):
+            self.id = GeolocatedDatasetId(self.id)
+
+        if self.dataset_name is not None and not isinstance(self.dataset_name, str):
+            self.dataset_name = str(self.dataset_name)
+
+        if self.dataset_type is not None and not isinstance(self.dataset_type, str):
+            self.dataset_type = str(self.dataset_type)
+
+        if self.coverage_area is not None and not isinstance(self.coverage_area, str):
+            self.coverage_area = str(self.coverage_area)
+
+        if self.temporal_coverage_start is not None and not isinstance(self.temporal_coverage_start, XSDDate):
+            self.temporal_coverage_start = XSDDate(self.temporal_coverage_start)
+
+        if self.temporal_coverage_end is not None and not isinstance(self.temporal_coverage_end, XSDDate):
+            self.temporal_coverage_end = XSDDate(self.temporal_coverage_end)
+
+        if not isinstance(self.h3_resolution_levels, list):
+            self.h3_resolution_levels = [self.h3_resolution_levels] if self.h3_resolution_levels is not None else []
+        self.h3_resolution_levels = [v if isinstance(v, int) else int(v) for v in self.h3_resolution_levels]
+
+        if self.data_source is not None and not isinstance(self.data_source, DataSourceEnum):
+            self.data_source = DataSourceEnum(self.data_source)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class DatabaseRecord(NamedThing):
     """
     A record from an external database
@@ -1852,6 +2533,15 @@ class ExposomeDatabase(YAMLRoot):
     biological_entities: Optional[Union[dict[Union[str, BiologicalEntityId], Union[dict, BiologicalEntity]], list[Union[dict, BiologicalEntity]]]] = empty_dict()
     database_records: Optional[Union[dict[Union[str, DatabaseRecordId], Union[dict, DatabaseRecord]], list[Union[dict, DatabaseRecord]]]] = empty_dict()
     associations: Optional[Union[dict[Union[str, AssociationId], Union[dict, Association]], list[Union[dict, Association]]]] = empty_dict()
+    geo_locations: Optional[Union[dict[Union[str, GeoLocationId], Union[dict, GeoLocation]], list[Union[dict, GeoLocation]]]] = empty_dict()
+    h3_spatial_indices: Optional[Union[dict[Union[str, H3SpatialIndexId], Union[dict, H3SpatialIndex]], list[Union[dict, H3SpatialIndex]]]] = empty_dict()
+    geographic_entities: Optional[Union[dict[Union[str, GeographicEntityId], Union[dict, GeographicEntity]], list[Union[dict, GeographicEntity]]]] = empty_dict()
+    spatiotemporal_indices: Optional[Union[dict[Union[str, SpatiotemporalIndexId], Union[dict, SpatiotemporalIndex]], list[Union[dict, SpatiotemporalIndex]]]] = empty_dict()
+    aqs_monitoring_sites: Optional[Union[dict[Union[str, AQSMonitoringSiteId], Union[dict, AQSMonitoringSite]], list[Union[dict, AQSMonitoringSite]]]] = empty_dict()
+    aqs_measurements: Optional[Union[dict[Union[str, AQSMeasurementId], Union[dict, AQSMeasurement]], list[Union[dict, AQSMeasurement]]]] = empty_dict()
+    acs_estimates: Optional[Union[dict[Union[str, ACSEstimateId], Union[dict, ACSEstimate]], list[Union[dict, ACSEstimate]]]] = empty_dict()
+    demographic_data: Optional[Union[dict[Union[str, DemographicDataId], Union[dict, DemographicData]], list[Union[dict, DemographicData]]]] = empty_dict()
+    geolocated_datasets: Optional[Union[dict[Union[str, GeolocatedDatasetId], Union[dict, GeolocatedDataset]], list[Union[dict, GeolocatedDataset]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         self._normalize_inlined_as_list(slot_name="chemical_entities", slot_type=ChemicalEntity, key_name="id", keyed=True)
@@ -1875,6 +2565,24 @@ class ExposomeDatabase(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="database_records", slot_type=DatabaseRecord, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="associations", slot_type=Association, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="geo_locations", slot_type=GeoLocation, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="h3_spatial_indices", slot_type=H3SpatialIndex, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="geographic_entities", slot_type=GeographicEntity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="spatiotemporal_indices", slot_type=SpatiotemporalIndex, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aqs_monitoring_sites", slot_type=AQSMonitoringSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aqs_measurements", slot_type=AQSMeasurement, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="acs_estimates", slot_type=ACSEstimate, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="demographic_data", slot_type=DemographicData, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="geolocated_datasets", slot_type=GeolocatedDataset, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -2055,6 +2763,12 @@ class DataSourceEnum(EnumDefinitionImpl):
     Wweia = PermissibleValue(
         text="Wweia",
         description="What We Eat In America")
+    Aqs = PermissibleValue(
+        text="Aqs",
+        description="EPA Air Quality System")
+    Acs = PermissibleValue(
+        text="Acs",
+        description="American Community Survey")
     Other = PermissibleValue(
         text="Other",
         description="Other data source")
@@ -2154,6 +2868,209 @@ class SummaryStatisticEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="SummaryStatisticEnum",
         description="Types of summary statistics",
+    )
+
+class GeographicLevelEnum(EnumDefinitionImpl):
+    """
+    Levels of geographic aggregation
+    """
+    Global = PermissibleValue(
+        text="Global",
+        description="Global level")
+    Country = PermissibleValue(
+        text="Country",
+        description="Country level")
+    State = PermissibleValue(
+        text="State",
+        description="State or province level")
+    County = PermissibleValue(
+        text="County",
+        description="County level")
+    City = PermissibleValue(
+        text="City",
+        description="City or municipality level")
+    Neighborhood = PermissibleValue(
+        text="Neighborhood",
+        description="Neighborhood level")
+    PostalCode = PermissibleValue(
+        text="PostalCode",
+        description="Postal code or ZIP code level")
+    Custom = PermissibleValue(
+        text="Custom",
+        description="Custom geographic boundary")
+
+    _defn = EnumDefinition(
+        name="GeographicLevelEnum",
+        description="Levels of geographic aggregation",
+    )
+
+class CensusGeographicLevelEnum(EnumDefinitionImpl):
+    """
+    US Census geographic hierarchy levels
+    """
+    Nation = PermissibleValue(
+        text="Nation",
+        description="National level")
+    State = PermissibleValue(
+        text="State",
+        description="State level")
+    County = PermissibleValue(
+        text="County",
+        description="County level")
+    Tract = PermissibleValue(
+        text="Tract",
+        description="Census tract level")
+    BlockGroup = PermissibleValue(
+        text="BlockGroup",
+        description="Block group level")
+    Block = PermissibleValue(
+        text="Block",
+        description="Census block level (not available in ACS)")
+    Place = PermissibleValue(
+        text="Place",
+        description="Incorporated place (city/town)")
+    MetropolitanStatisticalArea = PermissibleValue(
+        text="MetropolitanStatisticalArea",
+        description="Metropolitan Statistical Area (MSA)")
+    CongressionalDistrict = PermissibleValue(
+        text="CongressionalDistrict",
+        description="Congressional district")
+    ZctaZipCode = PermissibleValue(
+        text="ZctaZipCode",
+        description="ZIP Code Tabulation Area (ZCTA)")
+
+    _defn = EnumDefinition(
+        name="CensusGeographicLevelEnum",
+        description="US Census geographic hierarchy levels",
+    )
+
+class TemporalResolutionEnum(EnumDefinitionImpl):
+    """
+    Temporal resolution of data
+    """
+    Instantaneous = PermissibleValue(
+        text="Instantaneous",
+        description="Single point in time")
+    Hourly = PermissibleValue(
+        text="Hourly",
+        description="Hourly aggregation")
+    Daily = PermissibleValue(
+        text="Daily",
+        description="Daily aggregation")
+    Weekly = PermissibleValue(
+        text="Weekly",
+        description="Weekly aggregation")
+    Monthly = PermissibleValue(
+        text="Monthly",
+        description="Monthly aggregation")
+    Quarterly = PermissibleValue(
+        text="Quarterly",
+        description="Quarterly aggregation")
+    Annual = PermissibleValue(
+        text="Annual",
+        description="Annual aggregation")
+    Decadal = PermissibleValue(
+        text="Decadal",
+        description="Decadal aggregation")
+    Custom = PermissibleValue(
+        text="Custom",
+        description="Custom temporal resolution")
+
+    _defn = EnumDefinition(
+        name="TemporalResolutionEnum",
+        description="Temporal resolution of data",
+    )
+
+class MonitoringSiteTypeEnum(EnumDefinitionImpl):
+    """
+    Types of environmental monitoring sites
+    """
+    Urban = PermissibleValue(
+        text="Urban",
+        description="Urban monitoring site")
+    Suburban = PermissibleValue(
+        text="Suburban",
+        description="Suburban monitoring site")
+    Rural = PermissibleValue(
+        text="Rural",
+        description="Rural monitoring site")
+    NearRoad = PermissibleValue(
+        text="NearRoad",
+        description="Near-road monitoring site")
+    Industrial = PermissibleValue(
+        text="Industrial",
+        description="Industrial area monitoring site")
+    Background = PermissibleValue(
+        text="Background",
+        description="Background monitoring site")
+    Mobile = PermissibleValue(
+        text="Mobile",
+        description="Mobile monitoring site")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other site type")
+
+    _defn = EnumDefinition(
+        name="MonitoringSiteTypeEnum",
+        description="Types of environmental monitoring sites",
+    )
+
+class ACSVariableCategoryEnum(EnumDefinitionImpl):
+    """
+    Categories of American Community Survey variables
+    """
+    Age = PermissibleValue(
+        text="Age",
+        description="Age and sex")
+    Race = PermissibleValue(
+        text="Race",
+        description="Race and ethnicity")
+    Household = PermissibleValue(
+        text="Household",
+        description="Household composition")
+    Housing = PermissibleValue(
+        text="Housing",
+        description="Housing characteristics")
+    Income = PermissibleValue(
+        text="Income",
+        description="Income and earnings")
+    Employment = PermissibleValue(
+        text="Employment",
+        description="Employment and occupation")
+    Education = PermissibleValue(
+        text="Education",
+        description="Educational attainment")
+    Poverty = PermissibleValue(
+        text="Poverty",
+        description="Poverty status")
+    Transportation = PermissibleValue(
+        text="Transportation",
+        description="Transportation and commuting")
+    Health = PermissibleValue(
+        text="Health",
+        description="Health insurance coverage")
+    Veterans = PermissibleValue(
+        text="Veterans",
+        description="Veteran status")
+    Disability = PermissibleValue(
+        text="Disability",
+        description="Disability status")
+    Language = PermissibleValue(
+        text="Language",
+        description="Language spoken at home")
+    Immigration = PermissibleValue(
+        text="Immigration",
+        description="Citizenship and immigration")
+    Ancestry = PermissibleValue(
+        text="Ancestry",
+        description="Ancestry and origin")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other variable category")
+
+    _defn = EnumDefinition(
+        name="ACSVariableCategoryEnum",
+        description="Categories of American Community Survey variables",
     )
 
 # Slots
@@ -2492,6 +3409,203 @@ slots.triggers_key_event = Slot(uri=EXPOSOME_SCHEMA.triggers_key_event, name="tr
 slots.measured_in_study = Slot(uri=EXPOSOME_SCHEMA.measured_in_study, name="measured_in_study", curie=EXPOSOME_SCHEMA.curie('measured_in_study'),
                    model_uri=EXPOSOME_SCHEMA.measured_in_study, domain=Measurement, range=Optional[Union[str, StudyId]])
 
+slots.latitude = Slot(uri=WGS84.lat, name="latitude", curie=WGS84.curie('lat'),
+                   model_uri=EXPOSOME_SCHEMA.latitude, domain=None, range=Optional[float])
+
+slots.longitude = Slot(uri=WGS84.long, name="longitude", curie=WGS84.curie('long'),
+                   model_uri=EXPOSOME_SCHEMA.longitude, domain=None, range=Optional[float])
+
+slots.elevation = Slot(uri=EXPOSOME_SCHEMA.elevation, name="elevation", curie=EXPOSOME_SCHEMA.curie('elevation'),
+                   model_uri=EXPOSOME_SCHEMA.elevation, domain=None, range=Optional[float])
+
+slots.h3_index = Slot(uri=EXPOSOME_SCHEMA.h3_index, name="h3_index", curie=EXPOSOME_SCHEMA.curie('h3_index'),
+                   model_uri=EXPOSOME_SCHEMA.h3_index, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9a-f]{15}$'))
+
+slots.h3_resolution = Slot(uri=EXPOSOME_SCHEMA.h3_resolution, name="h3_resolution", curie=EXPOSOME_SCHEMA.curie('h3_resolution'),
+                   model_uri=EXPOSOME_SCHEMA.h3_resolution, domain=None, range=Optional[int])
+
+slots.coordinate_uncertainty = Slot(uri=EXPOSOME_SCHEMA.coordinate_uncertainty, name="coordinate_uncertainty", curie=EXPOSOME_SCHEMA.curie('coordinate_uncertainty'),
+                   model_uri=EXPOSOME_SCHEMA.coordinate_uncertainty, domain=None, range=Optional[float])
+
+slots.center_latitude = Slot(uri=EXPOSOME_SCHEMA.center_latitude, name="center_latitude", curie=EXPOSOME_SCHEMA.curie('center_latitude'),
+                   model_uri=EXPOSOME_SCHEMA.center_latitude, domain=None, range=Optional[float])
+
+slots.center_longitude = Slot(uri=EXPOSOME_SCHEMA.center_longitude, name="center_longitude", curie=EXPOSOME_SCHEMA.curie('center_longitude'),
+                   model_uri=EXPOSOME_SCHEMA.center_longitude, domain=None, range=Optional[float])
+
+slots.parent_h3_index = Slot(uri=EXPOSOME_SCHEMA.parent_h3_index, name="parent_h3_index", curie=EXPOSOME_SCHEMA.curie('parent_h3_index'),
+                   model_uri=EXPOSOME_SCHEMA.parent_h3_index, domain=None, range=Optional[str])
+
+slots.child_h3_indices = Slot(uri=EXPOSOME_SCHEMA.child_h3_indices, name="child_h3_indices", curie=EXPOSOME_SCHEMA.curie('child_h3_indices'),
+                   model_uri=EXPOSOME_SCHEMA.child_h3_indices, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.geo_location = Slot(uri=EXPOSOME_SCHEMA.geo_location, name="geo_location", curie=EXPOSOME_SCHEMA.curie('geo_location'),
+                   model_uri=EXPOSOME_SCHEMA.geo_location, domain=None, range=Optional[Union[str, GeoLocationId]])
+
+slots.geographic_level = Slot(uri=EXPOSOME_SCHEMA.geographic_level, name="geographic_level", curie=EXPOSOME_SCHEMA.curie('geographic_level'),
+                   model_uri=EXPOSOME_SCHEMA.geographic_level, domain=None, range=Optional[Union[str, "GeographicLevelEnum"]])
+
+slots.geographic_identifier = Slot(uri=EXPOSOME_SCHEMA.geographic_identifier, name="geographic_identifier", curie=EXPOSOME_SCHEMA.curie('geographic_identifier'),
+                   model_uri=EXPOSOME_SCHEMA.geographic_identifier, domain=None, range=Optional[str])
+
+slots.boundary_polygon = Slot(uri=EXPOSOME_SCHEMA.boundary_polygon, name="boundary_polygon", curie=EXPOSOME_SCHEMA.curie('boundary_polygon'),
+                   model_uri=EXPOSOME_SCHEMA.boundary_polygon, domain=None, range=Optional[str])
+
+slots.census_geographic_level = Slot(uri=EXPOSOME_SCHEMA.census_geographic_level, name="census_geographic_level", curie=EXPOSOME_SCHEMA.curie('census_geographic_level'),
+                   model_uri=EXPOSOME_SCHEMA.census_geographic_level, domain=None, range=Optional[Union[str, "CensusGeographicLevelEnum"]])
+
+slots.geoid = Slot(uri=EXPOSOME_SCHEMA.geoid, name="geoid", curie=EXPOSOME_SCHEMA.curie('geoid'),
+                   model_uri=EXPOSOME_SCHEMA.geoid, domain=None, range=Optional[str])
+
+slots.state_fips = Slot(uri=EXPOSOME_SCHEMA.state_fips, name="state_fips", curie=EXPOSOME_SCHEMA.curie('state_fips'),
+                   model_uri=EXPOSOME_SCHEMA.state_fips, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^\d{2}$'))
+
+slots.county_fips = Slot(uri=EXPOSOME_SCHEMA.county_fips, name="county_fips", curie=EXPOSOME_SCHEMA.curie('county_fips'),
+                   model_uri=EXPOSOME_SCHEMA.county_fips, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^\d{3}$'))
+
+slots.tract_code = Slot(uri=EXPOSOME_SCHEMA.tract_code, name="tract_code", curie=EXPOSOME_SCHEMA.curie('tract_code'),
+                   model_uri=EXPOSOME_SCHEMA.tract_code, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^\d{6}$'))
+
+slots.block_group_code = Slot(uri=EXPOSOME_SCHEMA.block_group_code, name="block_group_code", curie=EXPOSOME_SCHEMA.curie('block_group_code'),
+                   model_uri=EXPOSOME_SCHEMA.block_group_code, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^\d$'))
+
+slots.start_date = Slot(uri=EXPOSOME_SCHEMA.start_date, name="start_date", curie=EXPOSOME_SCHEMA.curie('start_date'),
+                   model_uri=EXPOSOME_SCHEMA.start_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.end_date = Slot(uri=EXPOSOME_SCHEMA.end_date, name="end_date", curie=EXPOSOME_SCHEMA.curie('end_date'),
+                   model_uri=EXPOSOME_SCHEMA.end_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.temporal_resolution = Slot(uri=EXPOSOME_SCHEMA.temporal_resolution, name="temporal_resolution", curie=EXPOSOME_SCHEMA.curie('temporal_resolution'),
+                   model_uri=EXPOSOME_SCHEMA.temporal_resolution, domain=None, range=Optional[Union[str, "TemporalResolutionEnum"]])
+
+slots.time_point = Slot(uri=EXPOSOME_SCHEMA.time_point, name="time_point", curie=EXPOSOME_SCHEMA.curie('time_point'),
+                   model_uri=EXPOSOME_SCHEMA.time_point, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.time_range_start = Slot(uri=EXPOSOME_SCHEMA.time_range_start, name="time_range_start", curie=EXPOSOME_SCHEMA.curie('time_range_start'),
+                   model_uri=EXPOSOME_SCHEMA.time_range_start, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.time_range_end = Slot(uri=EXPOSOME_SCHEMA.time_range_end, name="time_range_end", curie=EXPOSOME_SCHEMA.curie('time_range_end'),
+                   model_uri=EXPOSOME_SCHEMA.time_range_end, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.h3_spatial_index = Slot(uri=EXPOSOME_SCHEMA.h3_spatial_index, name="h3_spatial_index", curie=EXPOSOME_SCHEMA.curie('h3_spatial_index'),
+                   model_uri=EXPOSOME_SCHEMA.h3_spatial_index, domain=None, range=Optional[Union[str, H3SpatialIndexId]])
+
+slots.spatiotemporal_index = Slot(uri=EXPOSOME_SCHEMA.spatiotemporal_index, name="spatiotemporal_index", curie=EXPOSOME_SCHEMA.curie('spatiotemporal_index'),
+                   model_uri=EXPOSOME_SCHEMA.spatiotemporal_index, domain=None, range=Optional[Union[str, SpatiotemporalIndexId]])
+
+slots.site_id = Slot(uri=EXPOSOME_SCHEMA.site_id, name="site_id", curie=EXPOSOME_SCHEMA.curie('site_id'),
+                   model_uri=EXPOSOME_SCHEMA.site_id, domain=None, range=Optional[str])
+
+slots.site_name = Slot(uri=EXPOSOME_SCHEMA.site_name, name="site_name", curie=EXPOSOME_SCHEMA.curie('site_name'),
+                   model_uri=EXPOSOME_SCHEMA.site_name, domain=None, range=Optional[str])
+
+slots.site_type = Slot(uri=EXPOSOME_SCHEMA.site_type, name="site_type", curie=EXPOSOME_SCHEMA.curie('site_type'),
+                   model_uri=EXPOSOME_SCHEMA.site_type, domain=None, range=Optional[Union[str, "MonitoringSiteTypeEnum"]])
+
+slots.monitoring_agency = Slot(uri=EXPOSOME_SCHEMA.monitoring_agency, name="monitoring_agency", curie=EXPOSOME_SCHEMA.curie('monitoring_agency'),
+                   model_uri=EXPOSOME_SCHEMA.monitoring_agency, domain=None, range=Optional[str])
+
+slots.monitoring_site = Slot(uri=EXPOSOME_SCHEMA.monitoring_site, name="monitoring_site", curie=EXPOSOME_SCHEMA.curie('monitoring_site'),
+                   model_uri=EXPOSOME_SCHEMA.monitoring_site, domain=None, range=Optional[Union[str, AQSMonitoringSiteId]])
+
+slots.establishment_date = Slot(uri=EXPOSOME_SCHEMA.establishment_date, name="establishment_date", curie=EXPOSOME_SCHEMA.curie('establishment_date'),
+                   model_uri=EXPOSOME_SCHEMA.establishment_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.closure_date = Slot(uri=EXPOSOME_SCHEMA.closure_date, name="closure_date", curie=EXPOSOME_SCHEMA.curie('closure_date'),
+                   model_uri=EXPOSOME_SCHEMA.closure_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.monitor_parameters = Slot(uri=EXPOSOME_SCHEMA.monitor_parameters, name="monitor_parameters", curie=EXPOSOME_SCHEMA.curie('monitor_parameters'),
+                   model_uri=EXPOSOME_SCHEMA.monitor_parameters, domain=None, range=Optional[Union[Union[str, AirQualityParameterId], list[Union[str, AirQualityParameterId]]]])
+
+slots.parameter_code = Slot(uri=EXPOSOME_SCHEMA.parameter_code, name="parameter_code", curie=EXPOSOME_SCHEMA.curie('parameter_code'),
+                   model_uri=EXPOSOME_SCHEMA.parameter_code, domain=None, range=Optional[str])
+
+slots.parameter_name = Slot(uri=EXPOSOME_SCHEMA.parameter_name, name="parameter_name", curie=EXPOSOME_SCHEMA.curie('parameter_name'),
+                   model_uri=EXPOSOME_SCHEMA.parameter_name, domain=None, range=Optional[str])
+
+slots.measurement_time = Slot(uri=EXPOSOME_SCHEMA.measurement_time, name="measurement_time", curie=EXPOSOME_SCHEMA.curie('measurement_time'),
+                   model_uri=EXPOSOME_SCHEMA.measurement_time, domain=None, range=Optional[Union[str, XSDTime]])
+
+slots.sample_duration = Slot(uri=EXPOSOME_SCHEMA.sample_duration, name="sample_duration", curie=EXPOSOME_SCHEMA.curie('sample_duration'),
+                   model_uri=EXPOSOME_SCHEMA.sample_duration, domain=None, range=Optional[str])
+
+slots.detection_limit = Slot(uri=EXPOSOME_SCHEMA.detection_limit, name="detection_limit", curie=EXPOSOME_SCHEMA.curie('detection_limit'),
+                   model_uri=EXPOSOME_SCHEMA.detection_limit, domain=None, range=Optional[float])
+
+slots.uncertainty = Slot(uri=EXPOSOME_SCHEMA.uncertainty, name="uncertainty", curie=EXPOSOME_SCHEMA.curie('uncertainty'),
+                   model_uri=EXPOSOME_SCHEMA.uncertainty, domain=None, range=Optional[float])
+
+slots.quality_indicator = Slot(uri=EXPOSOME_SCHEMA.quality_indicator, name="quality_indicator", curie=EXPOSOME_SCHEMA.curie('quality_indicator'),
+                   model_uri=EXPOSOME_SCHEMA.quality_indicator, domain=None, range=Optional[str])
+
+slots.measurement_scale = Slot(uri=EXPOSOME_SCHEMA.measurement_scale, name="measurement_scale", curie=EXPOSOME_SCHEMA.curie('measurement_scale'),
+                   model_uri=EXPOSOME_SCHEMA.measurement_scale, domain=None, range=Optional[str])
+
+slots.standard_units = Slot(uri=EXPOSOME_SCHEMA.standard_units, name="standard_units", curie=EXPOSOME_SCHEMA.curie('standard_units'),
+                   model_uri=EXPOSOME_SCHEMA.standard_units, domain=None, range=Optional[str])
+
+slots.census_geography = Slot(uri=EXPOSOME_SCHEMA.census_geography, name="census_geography", curie=EXPOSOME_SCHEMA.curie('census_geography'),
+                   model_uri=EXPOSOME_SCHEMA.census_geography, domain=None, range=Optional[Union[str, CensusGeographyId]])
+
+slots.variable_code = Slot(uri=EXPOSOME_SCHEMA.variable_code, name="variable_code", curie=EXPOSOME_SCHEMA.curie('variable_code'),
+                   model_uri=EXPOSOME_SCHEMA.variable_code, domain=None, range=Optional[str])
+
+slots.variable_category = Slot(uri=EXPOSOME_SCHEMA.variable_category, name="variable_category", curie=EXPOSOME_SCHEMA.curie('variable_category'),
+                   model_uri=EXPOSOME_SCHEMA.variable_category, domain=None, range=Optional[Union[str, "ACSVariableCategoryEnum"]])
+
+slots.estimate_value = Slot(uri=EXPOSOME_SCHEMA.estimate_value, name="estimate_value", curie=EXPOSOME_SCHEMA.curie('estimate_value'),
+                   model_uri=EXPOSOME_SCHEMA.estimate_value, domain=None, range=Optional[float])
+
+slots.margin_of_error = Slot(uri=EXPOSOME_SCHEMA.margin_of_error, name="margin_of_error", curie=EXPOSOME_SCHEMA.curie('margin_of_error'),
+                   model_uri=EXPOSOME_SCHEMA.margin_of_error, domain=None, range=Optional[float])
+
+slots.survey_year = Slot(uri=EXPOSOME_SCHEMA.survey_year, name="survey_year", curie=EXPOSOME_SCHEMA.curie('survey_year'),
+                   model_uri=EXPOSOME_SCHEMA.survey_year, domain=None, range=Optional[int])
+
+slots.survey_period = Slot(uri=EXPOSOME_SCHEMA.survey_period, name="survey_period", curie=EXPOSOME_SCHEMA.curie('survey_period'),
+                   model_uri=EXPOSOME_SCHEMA.survey_period, domain=None, range=Optional[str])
+
+slots.universe = Slot(uri=EXPOSOME_SCHEMA.universe, name="universe", curie=EXPOSOME_SCHEMA.curie('universe'),
+                   model_uri=EXPOSOME_SCHEMA.universe, domain=None, range=Optional[str])
+
+slots.data_type = Slot(uri=EXPOSOME_SCHEMA.data_type, name="data_type", curie=EXPOSOME_SCHEMA.curie('data_type'),
+                   model_uri=EXPOSOME_SCHEMA.data_type, domain=None, range=Optional[str])
+
+slots.total_population = Slot(uri=EXPOSOME_SCHEMA.total_population, name="total_population", curie=EXPOSOME_SCHEMA.curie('total_population'),
+                   model_uri=EXPOSOME_SCHEMA.total_population, domain=None, range=Optional[int])
+
+slots.population_density = Slot(uri=EXPOSOME_SCHEMA.population_density, name="population_density", curie=EXPOSOME_SCHEMA.curie('population_density'),
+                   model_uri=EXPOSOME_SCHEMA.population_density, domain=None, range=Optional[float])
+
+slots.median_age = Slot(uri=EXPOSOME_SCHEMA.median_age, name="median_age", curie=EXPOSOME_SCHEMA.curie('median_age'),
+                   model_uri=EXPOSOME_SCHEMA.median_age, domain=None, range=Optional[float])
+
+slots.median_household_income = Slot(uri=EXPOSOME_SCHEMA.median_household_income, name="median_household_income", curie=EXPOSOME_SCHEMA.curie('median_household_income'),
+                   model_uri=EXPOSOME_SCHEMA.median_household_income, domain=None, range=Optional[float])
+
+slots.dataset_name = Slot(uri=EXPOSOME_SCHEMA.dataset_name, name="dataset_name", curie=EXPOSOME_SCHEMA.curie('dataset_name'),
+                   model_uri=EXPOSOME_SCHEMA.dataset_name, domain=None, range=Optional[str])
+
+slots.dataset_type = Slot(uri=EXPOSOME_SCHEMA.dataset_type, name="dataset_type", curie=EXPOSOME_SCHEMA.curie('dataset_type'),
+                   model_uri=EXPOSOME_SCHEMA.dataset_type, domain=None, range=Optional[str])
+
+slots.coverage_area = Slot(uri=EXPOSOME_SCHEMA.coverage_area, name="coverage_area", curie=EXPOSOME_SCHEMA.curie('coverage_area'),
+                   model_uri=EXPOSOME_SCHEMA.coverage_area, domain=None, range=Optional[str])
+
+slots.temporal_coverage_start = Slot(uri=EXPOSOME_SCHEMA.temporal_coverage_start, name="temporal_coverage_start", curie=EXPOSOME_SCHEMA.curie('temporal_coverage_start'),
+                   model_uri=EXPOSOME_SCHEMA.temporal_coverage_start, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.temporal_coverage_end = Slot(uri=EXPOSOME_SCHEMA.temporal_coverage_end, name="temporal_coverage_end", curie=EXPOSOME_SCHEMA.curie('temporal_coverage_end'),
+                   model_uri=EXPOSOME_SCHEMA.temporal_coverage_end, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.h3_resolution_levels = Slot(uri=EXPOSOME_SCHEMA.h3_resolution_levels, name="h3_resolution_levels", curie=EXPOSOME_SCHEMA.curie('h3_resolution_levels'),
+                   model_uri=EXPOSOME_SCHEMA.h3_resolution_levels, domain=None, range=Optional[Union[int, list[int]]])
+
 slots.exposomeDatabase__chemical_entities = Slot(uri=EXPOSOME_SCHEMA.chemical_entities, name="exposomeDatabase__chemical_entities", curie=EXPOSOME_SCHEMA.curie('chemical_entities'),
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__chemical_entities, domain=None, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]])
 
@@ -2524,3 +3638,30 @@ slots.exposomeDatabase__database_records = Slot(uri=EXPOSOME_SCHEMA.database_rec
 
 slots.exposomeDatabase__associations = Slot(uri=EXPOSOME_SCHEMA.associations, name="exposomeDatabase__associations", curie=EXPOSOME_SCHEMA.curie('associations'),
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__associations, domain=None, range=Optional[Union[dict[Union[str, AssociationId], Union[dict, Association]], list[Union[dict, Association]]]])
+
+slots.exposomeDatabase__geo_locations = Slot(uri=EXPOSOME_SCHEMA.geo_locations, name="exposomeDatabase__geo_locations", curie=EXPOSOME_SCHEMA.curie('geo_locations'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__geo_locations, domain=None, range=Optional[Union[dict[Union[str, GeoLocationId], Union[dict, GeoLocation]], list[Union[dict, GeoLocation]]]])
+
+slots.exposomeDatabase__h3_spatial_indices = Slot(uri=EXPOSOME_SCHEMA.h3_spatial_indices, name="exposomeDatabase__h3_spatial_indices", curie=EXPOSOME_SCHEMA.curie('h3_spatial_indices'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__h3_spatial_indices, domain=None, range=Optional[Union[dict[Union[str, H3SpatialIndexId], Union[dict, H3SpatialIndex]], list[Union[dict, H3SpatialIndex]]]])
+
+slots.exposomeDatabase__geographic_entities = Slot(uri=EXPOSOME_SCHEMA.geographic_entities, name="exposomeDatabase__geographic_entities", curie=EXPOSOME_SCHEMA.curie('geographic_entities'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__geographic_entities, domain=None, range=Optional[Union[dict[Union[str, GeographicEntityId], Union[dict, GeographicEntity]], list[Union[dict, GeographicEntity]]]])
+
+slots.exposomeDatabase__spatiotemporal_indices = Slot(uri=EXPOSOME_SCHEMA.spatiotemporal_indices, name="exposomeDatabase__spatiotemporal_indices", curie=EXPOSOME_SCHEMA.curie('spatiotemporal_indices'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__spatiotemporal_indices, domain=None, range=Optional[Union[dict[Union[str, SpatiotemporalIndexId], Union[dict, SpatiotemporalIndex]], list[Union[dict, SpatiotemporalIndex]]]])
+
+slots.exposomeDatabase__aqs_monitoring_sites = Slot(uri=EXPOSOME_SCHEMA.aqs_monitoring_sites, name="exposomeDatabase__aqs_monitoring_sites", curie=EXPOSOME_SCHEMA.curie('aqs_monitoring_sites'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__aqs_monitoring_sites, domain=None, range=Optional[Union[dict[Union[str, AQSMonitoringSiteId], Union[dict, AQSMonitoringSite]], list[Union[dict, AQSMonitoringSite]]]])
+
+slots.exposomeDatabase__aqs_measurements = Slot(uri=EXPOSOME_SCHEMA.aqs_measurements, name="exposomeDatabase__aqs_measurements", curie=EXPOSOME_SCHEMA.curie('aqs_measurements'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__aqs_measurements, domain=None, range=Optional[Union[dict[Union[str, AQSMeasurementId], Union[dict, AQSMeasurement]], list[Union[dict, AQSMeasurement]]]])
+
+slots.exposomeDatabase__acs_estimates = Slot(uri=EXPOSOME_SCHEMA.acs_estimates, name="exposomeDatabase__acs_estimates", curie=EXPOSOME_SCHEMA.curie('acs_estimates'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__acs_estimates, domain=None, range=Optional[Union[dict[Union[str, ACSEstimateId], Union[dict, ACSEstimate]], list[Union[dict, ACSEstimate]]]])
+
+slots.exposomeDatabase__demographic_data = Slot(uri=EXPOSOME_SCHEMA.demographic_data, name="exposomeDatabase__demographic_data", curie=EXPOSOME_SCHEMA.curie('demographic_data'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__demographic_data, domain=None, range=Optional[Union[dict[Union[str, DemographicDataId], Union[dict, DemographicData]], list[Union[dict, DemographicData]]]])
+
+slots.exposomeDatabase__geolocated_datasets = Slot(uri=EXPOSOME_SCHEMA.geolocated_datasets, name="exposomeDatabase__geolocated_datasets", curie=EXPOSOME_SCHEMA.curie('geolocated_datasets'),
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__geolocated_datasets, domain=None, range=Optional[Union[dict[Union[str, GeolocatedDatasetId], Union[dict, GeolocatedDataset]], list[Union[dict, GeolocatedDataset]]]])
