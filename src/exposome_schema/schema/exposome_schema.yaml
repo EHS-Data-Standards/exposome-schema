@@ -63,8 +63,8 @@ classes:
     ExposureEvent:
     abstract: true
     description: >-
-      An event in which a BiologicalEntity is exposed to a StimulusEntity and results in
-      a BiologicalResponse
+      An event in which a BiologicalEntity is exposed 
+      to a StimulusEntity and results in a BiologicalResponse
     annotations:
       must_not_have_id_slot: true
     slots:
@@ -116,6 +116,12 @@ classes:
       - inchi
       - smiles
       - molecular_formula
+      
+  BehavioralEntity:
+    is_a: StimulusEntity
+    
+  DietEntity:
+    is_a: StimulusEntity
 
   BiologicalResponse:
     abstract: true
@@ -154,7 +160,8 @@ classes:
     is_a: NamedThing
     class_uri: ExO:0000002
     description: >-
-      An 
+      External, non-genetic, and internal stimuli, that can be chemical, physical, 
+      biological, and psychosocial in nature, that an individual interacts with
     slots:
       - exposure_stimulus
         required: true
