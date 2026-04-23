@@ -171,15 +171,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       
@@ -207,6 +198,15 @@
 </a>
 <nav aria-label="Identifier and Mapping Information" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annotations">
+<span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#schema-source">
 <span class="md-ellipsis">
@@ -267,90 +267,47 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-exposureevent">Class: ExposureEvent</h1>
-<p><em>An event in which an organism is exposed to a chemical or environmental factor</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
+<p><em>An event in which a BiologicalEntity is exposed to a StimulusEntity and results in a BiologicalResponse</em></p>
 <p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/ExposureEvent">exposome_schema:ExposureEvent</a></p>
 <div class="mermaid"> classDiagram
     class ExposureEvent
     click ExposureEvent href "../ExposureEvent/"
-      NamedThing &lt;|-- ExposureEvent
-        click NamedThing href "../NamedThing/"
-
-
-      ExposureEvent &lt;|-- ChemicalExposure
-        click ChemicalExposure href "../ChemicalExposure/"
-      ExposureEvent &lt;|-- DietaryExposure
-        click DietaryExposure href "../DietaryExposure/"
-      ExposureEvent &lt;|-- EnvironmentalExposure
-        click EnvironmentalExposure href "../EnvironmentalExposure/"
-      ExposureEvent &lt;|-- OccupationalExposure
-        click OccupationalExposure href "../OccupationalExposure/"
-
-
-      ExposureEvent : category
-
-      ExposureEvent : description
-
-      ExposureEvent : exposed_to_chemical
+      ExposureEvent : exposure_outcome
 
 
 
 
 
-        ExposureEvent --&gt; "0..1" ChemicalEntity : exposed_to_chemical
-        click ChemicalEntity href "../ChemicalEntity/"
+        ExposureEvent --&gt; "1" BiologicalResponse : exposure_outcome
+        click BiologicalResponse href "../BiologicalResponse/"
 
 
 
-      ExposureEvent : exposure_concentration
-
-      ExposureEvent : exposure_duration
-
-      ExposureEvent : exposure_medium
+      ExposureEvent : exposure_receiver
 
 
 
 
 
-        ExposureEvent --&gt; "0..1" ExposureMediumEnum : exposure_medium
-        click ExposureMediumEnum href "../ExposureMediumEnum/"
+        ExposureEvent --&gt; "1" BiologicalEntity : exposure_receiver
+        click BiologicalEntity href "../BiologicalEntity/"
 
 
 
-      ExposureEvent : exposure_route
+      ExposureEvent : exposure_stimulus
 
 
 
 
 
-        ExposureEvent --&gt; "0..1" ExposureRouteEnum : exposure_route
-        click ExposureRouteEnum href "../ExposureRouteEnum/"
+        ExposureEvent --&gt; "1" StimulusEntity : exposure_stimulus
+        click StimulusEntity href "../StimulusEntity/"
 
 
-
-      ExposureEvent : id
-
-      ExposureEvent : name
-
-      ExposureEvent : xref
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../NamedThing/">NamedThing</a><ul>
-<li><strong>ExposureEvent</strong><ul>
-<li><a href="../ChemicalExposure/">ChemicalExposure</a></li>
-<li><a href="../DietaryExposure/">DietaryExposure</a></li>
-<li><a href="../EnvironmentalExposure/">EnvironmentalExposure</a></li>
-<li><a href="../OccupationalExposure/">OccupationalExposure</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -363,64 +320,22 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>The chemical entity involved in the exposure</td>
+<td><a href="../exposure_stimulus/">exposure_stimulus</a></td>
+<td>1 <br/> <a href="../StimulusEntity/">StimulusEntity</a></td>
+<td>The stimulus involved in the exposure</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../exposure_route/">exposure_route</a></td>
-<td>0..1 <br/> <a href="../ExposureRouteEnum/">ExposureRouteEnum</a></td>
-<td>Route of exposure</td>
+<td><a href="../exposure_outcome/">exposure_outcome</a></td>
+<td>1 <br/> <a href="../BiologicalResponse/">BiologicalResponse</a></td>
+<td>The biological response resulting from the exposure event</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../exposure_duration/">exposure_duration</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Duration of exposure</td>
+<td><a href="../exposure_receiver/">exposure_receiver</a></td>
+<td>1 <br/> <a href="../BiologicalEntity/">BiologicalEntity</a></td>
+<td>The organism, cell, tissue, or population being exposed</td>
 <td>direct</td>
-</tr>
-<tr>
-<td><a href="../exposure_concentration/">exposure_concentration</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Concentration of exposure</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../exposure_medium/">exposure_medium</a></td>
-<td>0..1 <br/> <a href="../ExposureMediumEnum/">ExposureMediumEnum</a></td>
-<td>Medium through which exposure occurs</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable name for a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable description for a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../category/">category</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>A category or type for a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../xref/">xref</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>External database cross-references</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
 </table>
@@ -442,6 +357,12 @@
 <td><a href="./">ExposureEvent</a></td>
 </tr>
 <tr>
+<td><a href="../ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td><a href="../exposure/">exposure</a></td>
+<td>range</td>
+<td><a href="./">ExposureEvent</a></td>
+</tr>
+<tr>
 <td><a href="../ExposomeDatabase/">ExposomeDatabase</a></td>
 <td><a href="../exposures/">exposures</a></td>
 <td>range</td>
@@ -450,6 +371,21 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>must_not_have_id_slot</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/diatomsRcool/exposome-schema</li>
@@ -478,137 +414,64 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: ExposureEvent
-description: An event in which an organism is exposed to a chemical or environmental
-  factor
+annotations:
+  must_not_have_id_slot:
+    tag: must_not_have_id_slot
+    value: true
+description: An event in which a BiologicalEntity is exposed to a StimulusEntity and
+  results in a BiologicalResponse
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
-abstract: true
 slots:
-- exposed_to_chemical
-- exposure_route
-- exposure_duration
-- exposure_concentration
-- exposure_medium
+- exposure_stimulus
+- exposure_outcome
+- exposure_receiver
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: ExposureEvent
-description: An event in which an organism is exposed to a chemical or environmental
-  factor
+annotations:
+  must_not_have_id_slot:
+    tag: must_not_have_id_slot
+    value: true
+description: An event in which a BiologicalEntity is exposed to a StimulusEntity and
+  results in a BiologicalResponse
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
-abstract: true
 attributes:
-  exposed_to_chemical:
-    name: exposed_to_chemical
-    description: The chemical entity involved in the exposure
+  exposure_stimulus:
+    name: exposure_stimulus
+    description: The stimulus involved in the exposure
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
-    slot_uri: CHEBI:24431
-    alias: exposed_to_chemical
+    alias: exposure_stimulus
     owner: ExposureEvent
     domain_of:
     - ExposureEvent
-    range: ChemicalEntity
-  exposure_route:
-    name: exposure_route
-    description: Route of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_route
-    owner: ExposureEvent
-    domain_of:
-    - ExposureEvent
-    range: ExposureRouteEnum
-  exposure_duration:
-    name: exposure_duration
-    description: Duration of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_duration
-    owner: ExposureEvent
-    domain_of:
-    - ExposureEvent
-    range: string
-  exposure_concentration:
-    name: exposure_concentration
-    description: Concentration of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_concentration
-    owner: ExposureEvent
-    domain_of:
-    - ExposureEvent
-    range: float
-  exposure_medium:
-    name: exposure_medium
-    description: Medium through which exposure occurs
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_medium
-    owner: ExposureEvent
-    domain_of:
-    - ExposureEvent
-    range: ExposureMediumEnum
-  id:
-    name: id
-    description: A unique identifier for a thing
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    slot_uri: schema:identifier
-    identifier: true
-    alias: id
-    owner: ExposureEvent
-    domain_of:
-    - NamedThing
-    range: uriorcurie
+    range: StimulusEntity
     required: true
-  name:
-    name: name
-    description: A human-readable name for a thing
+  exposure_outcome:
+    name: exposure_outcome
+    description: The biological response resulting from the exposure event
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
-    slot_uri: schema:name
-    alias: name
+    alias: exposure_outcome
     owner: ExposureEvent
     domain_of:
-    - NamedThing
-    range: string
-  description:
-    name: description
-    description: A human-readable description for a thing
+    - ExposureEvent
+    range: BiologicalResponse
+    required: true
+  exposure_receiver:
+    name: exposure_receiver
+    description: The organism, cell, tissue, or population being exposed
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
-    slot_uri: schema:description
-    alias: description
+    alias: exposure_receiver
     owner: ExposureEvent
     domain_of:
-    - NamedThing
-    range: string
-  category:
-    name: category
-    description: A category or type for a thing
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: category
-    owner: ExposureEvent
-    domain_of:
-    - NamedThing
-    range: string
-    multivalued: true
-  xref:
-    name: xref
-    description: External database cross-references
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: xref
-    owner: ExposureEvent
-    domain_of:
-    - NamedThing
-    range: uriorcurie
-    multivalued: true
+    - ExposureEvent
+    range: BiologicalEntity
+    required: true
 
 </code></pre>
 </details>

@@ -433,13 +433,18 @@ Alias: association_type</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../GeneToDiseaseAssociation/">GeneToDiseaseAssociation</a></td>
-<td>An association between a gene and a disease</td>
+<td><a href="../ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td>An association between an exposure and a disease</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
 <td>An association between an exposure and a phenotype</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GeneToDiseaseAssociation/">GeneToDiseaseAssociation</a></td>
+<td>An association between a gene and a disease</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -482,6 +487,7 @@ rank: 1000
 alias: association_type
 domain_of:
 - ExposureToPhenotypeAssociation
+- ExposureToDiseaseAssociation
 - GeneToDiseaseAssociation
 range: string
 

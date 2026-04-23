@@ -272,8 +272,8 @@
 <div class="mermaid"> classDiagram
     class ChemicalEntity
     click ChemicalEntity href "../ChemicalEntity/"
-      NamedThing &lt;|-- ChemicalEntity
-        click NamedThing href "../NamedThing/"
+      StimulusEntity &lt;|-- ChemicalEntity
+        click StimulusEntity href "../StimulusEntity/"
 
       ChemicalEntity : cas_number
 
@@ -306,7 +306,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../StimulusEntity/">StimulusEntity</a><ul>
 <li><strong>ChemicalEntity</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -413,36 +416,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../ChemicalExposure/">ChemicalExposure</a></td>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../DietaryExposure/">DietaryExposure</a></td>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../EnvironmentalExposure/">EnvironmentalExposure</a></td>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../OccupationalExposure/">OccupationalExposure</a></td>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
 <td><a href="../AdverseOutcomePathway/">AdverseOutcomePathway</a></td>
 <td><a href="../stressors/">stressors</a></td>
 <td>range</td>
@@ -493,7 +466,7 @@
 <pre><code class="language-yaml">name: ChemicalEntity
 description: A chemical entity including compounds, drugs, and metabolites
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
+is_a: StimulusEntity
 slots:
 - chebi_id
 - dtxsid
@@ -512,7 +485,7 @@ class_uri: CHEBI:24431
 <pre><code class="language-yaml">name: ChemicalEntity
 description: A chemical entity including compounds, drugs, and metabolites
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
+is_a: StimulusEntity
 attributes:
   chebi_id:
     name: chebi_id

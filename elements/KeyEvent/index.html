@@ -268,7 +268,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-keyevent">Class: KeyEvent</h1>
 <p><em>A measurable change in biological state that is a step in an Adverse Outcome Pathway</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_1000000">ECTO:1000000</a></p>
+<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/KeyEvent">exposome_schema:KeyEvent</a></p>
 <div class="mermaid"> classDiagram
     class KeyEvent
     click KeyEvent href "../KeyEvent/"
@@ -317,8 +317,8 @@
 
 
 
-        KeyEvent --&gt; "0..1" CellType : occurs_in_cell_type
-        click CellType href "../CellType/"
+        KeyEvent --&gt; "0..1" Cell : occurs_in_cell_type
+        click Cell href "../Cell/"
 
 
 
@@ -373,7 +373,7 @@
 </tr>
 <tr>
 <td><a href="../occurs_in_cell_type/">occurs_in_cell_type</a></td>
-<td>0..1 <br/> <a href="../CellType/">CellType</a></td>
+<td>0..1 <br/> <a href="../Cell/">Cell</a></td>
 <td>Cell type where event occurs</td>
 <td>direct</td>
 </tr>
@@ -462,7 +462,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>ECTO:1000000</td>
+<td>exposome_schema:KeyEvent</td>
 </tr>
 <tr>
 <td>native</td>
@@ -486,7 +486,6 @@ slots:
 - level_of_biological_organization
 - occurs_in_cell_type
 - occurs_in_anatomy
-class_uri: ECTO:1000000
 
 </code></pre>
 </details>
@@ -552,13 +551,12 @@ attributes:
     domain_of:
     - MolecularInitiatingEvent
     - KeyEvent
-    range: CellType
+    range: Cell
   occurs_in_anatomy:
     name: occurs_in_anatomy
     description: Anatomical location where event occurs
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
-    slot_uri: UBERON:0001062
     alias: occurs_in_anatomy
     owner: KeyEvent
     domain_of:
@@ -622,7 +620,6 @@ attributes:
     - NamedThing
     range: uriorcurie
     multivalued: true
-class_uri: ECTO:1000000
 
 </code></pre>
 </details>

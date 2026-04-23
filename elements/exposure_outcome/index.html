@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/phenotype_category/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/exposure_outcome/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: phenotype_category - exposome-schema</title>
+        <title>Slot: exposure_outcome - exposome-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-phenotype_category" class="md-skip">
+        <a href="#slot-exposure_outcome" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: phenotype_category
+              Slot: exposure_outcome
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-phenotype_category">Slot: phenotype_category</h1>
-<p><em>Category of phenotype</em></p>
-<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/phenotype_category">exposome_schema:phenotype_category</a>
-Alias: phenotype_category</p>
+<h1 id="slot-exposure_outcome">Slot: exposure_outcome</h1>
+<p><em>The biological response resulting from the exposure event</em></p>
+<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/exposure_outcome">exposome_schema:exposure_outcome</a>
+Alias: exposure_outcome</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,25 +433,20 @@ Alias: phenotype_category</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Phenotype/">Phenotype</a></td>
-<td>An observable characteristic or trait</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ZebrafishPhenotype/">ZebrafishPhenotype</a></td>
-<td>A phenotype observed in zebrafish</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MammalianPhenotype/">MammalianPhenotype</a></td>
-<td>A phenotype observed in mammalian model organisms</td>
+<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td>An event in which a BiologicalEntity is exposed to a StimulusEntity and resul...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../BiologicalResponse/">BiologicalResponse</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -469,25 +464,26 @@ Alias: phenotype_category</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>exposome_schema:phenotype_category</td>
+<td>exposome_schema:exposure_outcome</td>
 </tr>
 <tr>
 <td>native</td>
-<td>exposome_schema:phenotype_category</td>
+<td>exposome_schema:exposure_outcome</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: phenotype_category
-description: Category of phenotype
+<pre><code class="language-yaml">name: exposure_outcome
+description: The biological response resulting from the exposure event
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 rank: 1000
-alias: phenotype_category
+alias: exposure_outcome
 domain_of:
-- Phenotype
-range: string
+- ExposureEvent
+range: BiologicalResponse
+required: true
 
 </code></pre>
 

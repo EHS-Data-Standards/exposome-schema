@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/disease_category/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/receiver/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: disease_category - exposome-schema</title>
+        <title>Slot: receiver - exposome-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-disease_category" class="md-skip">
+        <a href="#slot-receiver" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: disease_category
+              Slot: receiver
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-disease_category">Slot: disease_category</h1>
-<p><em>Category of disease</em></p>
-<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/disease_category">exposome_schema:disease_category</a>
-Alias: disease_category</p>
+<h1 id="slot-receiver">Slot: receiver</h1>
+<p><em>The organism, cell, tissue, or population being exposed in an association</em></p>
+<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/receiver">exposome_schema:receiver</a>
+Alias: receiver</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,15 +433,25 @@ Alias: disease_category</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Disease/">Disease</a></td>
-<td>A disease or medical condition</td>
+<td><a href="../ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td>An association between an exposure and a disease</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalToGeneAssociation/">ChemicalToGeneAssociation</a></td>
+<td>An association between a chemical and a gene</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
+<td>An association between an exposure and a phenotype</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../BiologicalEntity/">BiologicalEntity</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -459,25 +469,27 @@ Alias: disease_category</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>exposome_schema:disease_category</td>
+<td>exposome_schema:receiver</td>
 </tr>
 <tr>
 <td>native</td>
-<td>exposome_schema:disease_category</td>
+<td>exposome_schema:receiver</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: disease_category
-description: Category of disease
+<pre><code class="language-yaml">name: receiver
+description: The organism, cell, tissue, or population being exposed in an association
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 rank: 1000
-alias: disease_category
+alias: receiver
 domain_of:
-- Disease
-range: string
+- ExposureToPhenotypeAssociation
+- ExposureToDiseaseAssociation
+- ChemicalToGeneAssociation
+range: BiologicalEntity
 
 </code></pre>
 

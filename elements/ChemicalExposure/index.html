@@ -259,31 +259,31 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-chemicalexposure">Class: ChemicalExposure</h1>
 <p><em>Exposure to a chemical substance</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_0000006">ECTO:0000006</a></p>
+<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_0000231">ECTO:0000231</a></p>
 <div class="mermaid"> classDiagram
     class ChemicalExposure
     click ChemicalExposure href "../ChemicalExposure/"
-      ExposureEvent &lt;|-- ChemicalExposure
-        click ExposureEvent href "../ExposureEvent/"
+      Exposure &lt;|-- ChemicalExposure
+        click Exposure href "../Exposure/"
 
       ChemicalExposure : category
 
       ChemicalExposure : description
 
-      ChemicalExposure : exposed_to_chemical
-
-
-
-
-
-        ChemicalExposure --&gt; "0..1" ChemicalEntity : exposed_to_chemical
-        click ChemicalEntity href "../ChemicalEntity/"
-
-
-
       ChemicalExposure : exposure_concentration
 
       ChemicalExposure : exposure_duration
+
+      ChemicalExposure : exposure_frequency
+
+
+
+
+
+        ChemicalExposure --&gt; "0..1" ExposureFrequencyEnum : exposure_frequency
+        click ExposureFrequencyEnum href "../ExposureFrequencyEnum/"
+
+
 
       ChemicalExposure : exposure_medium
 
@@ -318,7 +318,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
-<li><a href="../ExposureEvent/">ExposureEvent</a><ul>
+<li><a href="../Exposure/">Exposure</a><ul>
 <li><strong>ChemicalExposure</strong></li>
 </ul>
 </li>
@@ -337,34 +337,34 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>The chemical entity involved in the exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
 <td><a href="../exposure_route/">exposure_route</a></td>
 <td>0..1 <br/> <a href="../ExposureRouteEnum/">ExposureRouteEnum</a></td>
 <td>Route of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_duration/">exposure_duration</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Duration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
+</tr>
+<tr>
+<td><a href="../exposure_frequency/">exposure_frequency</a></td>
+<td>0..1 <br/> <a href="../ExposureFrequencyEnum/">ExposureFrequencyEnum</a></td>
+<td>The temporal pattern of exposure, describing how often contact with a stimulu...</td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_concentration/">exposure_concentration</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Concentration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_medium/">exposure_medium</a></td>
 <td>0..1 <br/> <a href="../ExposureMediumEnum/">ExposureMediumEnum</a></td>
 <td>Medium through which exposure occurs</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -414,7 +414,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>ECTO:0000006</td>
+<td>ECTO:0000231</td>
 </tr>
 <tr>
 <td>native</td>
@@ -429,8 +429,8 @@
 <pre><code class="language-yaml">name: ChemicalExposure
 description: Exposure to a chemical substance
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
-class_uri: ECTO:0000006
+is_a: Exposure
+class_uri: ECTO:0000231
 
 </code></pre>
 </details>
@@ -439,19 +439,8 @@ class_uri: ECTO:0000006
 <pre><code class="language-yaml">name: ChemicalExposure
 description: Exposure to a chemical substance
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
+is_a: Exposure
 attributes:
-  exposed_to_chemical:
-    name: exposed_to_chemical
-    description: The chemical entity involved in the exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    slot_uri: CHEBI:24431
-    alias: exposed_to_chemical
-    owner: ChemicalExposure
-    domain_of:
-    - ExposureEvent
-    range: ChemicalEntity
   exposure_route:
     name: exposure_route
     description: Route of exposure
@@ -460,7 +449,7 @@ attributes:
     alias: exposure_route
     owner: ChemicalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: ExposureRouteEnum
   exposure_duration:
     name: exposure_duration
@@ -470,8 +459,19 @@ attributes:
     alias: exposure_duration
     owner: ChemicalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: string
+  exposure_frequency:
+    name: exposure_frequency
+    description: The temporal pattern of exposure, describing how often contact with
+      a stimulus occurs over a defined period
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    rank: 1000
+    alias: exposure_frequency
+    owner: ChemicalExposure
+    domain_of:
+    - Exposure
+    range: ExposureFrequencyEnum
   exposure_concentration:
     name: exposure_concentration
     description: Concentration of exposure
@@ -480,7 +480,7 @@ attributes:
     alias: exposure_concentration
     owner: ChemicalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: float
   exposure_medium:
     name: exposure_medium
@@ -490,7 +490,7 @@ attributes:
     alias: exposure_medium
     owner: ChemicalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: ExposureMediumEnum
   id:
     name: id
@@ -549,7 +549,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     multivalued: true
-class_uri: ECTO:0000006
+class_uri: ECTO:0000231
 
 </code></pre>
 </details>

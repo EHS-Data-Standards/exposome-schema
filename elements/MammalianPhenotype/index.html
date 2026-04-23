@@ -270,8 +270,6 @@
 
       MammalianPhenotype : description
 
-      MammalianPhenotype : hp_id
-
       MammalianPhenotype : id
 
       MammalianPhenotype : mp_id
@@ -279,8 +277,6 @@
       MammalianPhenotype : name
 
       MammalianPhenotype : onset_age
-
-      MammalianPhenotype : phenotype_category
 
       MammalianPhenotype : severity
 
@@ -293,9 +289,12 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../BiologicalResponse/">BiologicalResponse</a><ul>
 <li><a href="../HealthOutcome/">HealthOutcome</a><ul>
 <li><a href="../Phenotype/">Phenotype</a><ul>
 <li><strong>MammalianPhenotype</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -321,21 +320,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../hp_id/">hp_id</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Human Phenotype Ontology identifier</td>
-<td><a href="../Phenotype/">Phenotype</a></td>
-</tr>
-<tr>
 <td><a href="../upheno_id/">upheno_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unified phenotype ontology identifier</td>
-<td><a href="../Phenotype/">Phenotype</a></td>
-</tr>
-<tr>
-<td><a href="../phenotype_category/">phenotype_category</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Category of phenotype</td>
 <td><a href="../Phenotype/">Phenotype</a></td>
 </tr>
 <tr>
@@ -438,17 +425,6 @@ attributes:
     - MammalianPhenotype
     range: uriorcurie
     pattern: ^MP:\d{7}$
-  hp_id:
-    name: hp_id
-    description: Human Phenotype Ontology identifier
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: hp_id
-    owner: MammalianPhenotype
-    domain_of:
-    - Phenotype
-    range: uriorcurie
-    pattern: ^HP:\d{7}$
   upheno_id:
     name: upheno_id
     description: Unified phenotype ontology identifier
@@ -460,16 +436,6 @@ attributes:
     - Phenotype
     range: uriorcurie
     pattern: ^UPHENO:\d+$
-  phenotype_category:
-    name: phenotype_category
-    description: Category of phenotype
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: phenotype_category
-    owner: MammalianPhenotype
-    domain_of:
-    - Phenotype
-    range: string
   severity:
     name: severity
     description: Severity of phenotype or disease

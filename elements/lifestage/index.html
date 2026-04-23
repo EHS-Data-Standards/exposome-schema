@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/exposed_to_chemical/">
+        <link rel="canonical" href="https://diatomsRcool.github.io/exposome-schema/elements/lifestage/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: exposed_to_chemical - exposome-schema</title>
+        <title>Slot: lifestage - exposome-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-exposed_to_chemical" class="md-skip">
+        <a href="#slot-lifestage" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: exposed_to_chemical
+              Slot: lifestage
             
           </span>
         </div>
@@ -416,10 +416,10 @@
   
 
 
-<h1 id="slot-exposed_to_chemical">Slot: exposed_to_chemical</h1>
-<p><em>The chemical entity involved in the exposure</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/CHEBI_24431">CHEBI:24431</a>
-Alias: exposed_to_chemical</p>
+<h1 id="slot-lifestage">Slot: lifestage</h1>
+<p><em>Lifestage of the organism (e.g. embryo, larva, adult)</em></p>
+<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/lifestage">exposome_schema:lifestage</a>
+Alias: lifestage</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -433,35 +433,15 @@ Alias: exposed_to_chemical</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-<td>An event in which an organism is exposed to a chemical or environmental facto...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DietaryExposure/">DietaryExposure</a></td>
-<td>Exposure through dietary consumption</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OccupationalExposure/">OccupationalExposure</a></td>
-<td>Exposure in an occupational setting</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalExposure/">ChemicalExposure</a></td>
-<td>Exposure to a chemical substance</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnvironmentalExposure/">EnvironmentalExposure</a></td>
-<td>Exposure to environmental factors</td>
+<td><a href="../Organism/">Organism</a></td>
+<td>An individual organism</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ChemicalEntity/">ChemicalEntity</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -479,26 +459,25 @@ Alias: exposed_to_chemical</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>CHEBI:24431</td>
+<td>exposome_schema:lifestage</td>
 </tr>
 <tr>
 <td>native</td>
-<td>exposome_schema:exposed_to_chemical</td>
+<td>exposome_schema:lifestage</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: exposed_to_chemical
-description: The chemical entity involved in the exposure
+<pre><code class="language-yaml">name: lifestage
+description: Lifestage of the organism (e.g. embryo, larva, adult)
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 rank: 1000
-slot_uri: CHEBI:24431
-alias: exposed_to_chemical
+alias: lifestage
 domain_of:
-- ExposureEvent
-range: ChemicalEntity
+- Organism
+range: string
 
 </code></pre>
 

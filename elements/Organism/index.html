@@ -272,6 +272,8 @@
 
       Organism : id
 
+      Organism : lifestage
+
       Organism : name
 
       Organism : species
@@ -313,6 +315,12 @@
 <td><a href="../taxon_id/">taxon_id</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>NCBI Taxonomy identifier</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lifestage/">lifestage</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Lifestage of the organism (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -382,6 +390,7 @@ is_a: BiologicalEntity
 slots:
 - species
 - taxon_id
+- lifestage
 
 </code></pre>
 </details>
@@ -402,6 +411,7 @@ attributes:
     domain_of:
     - Participant
     - Organism
+    - Population
     range: string
   taxon_id:
     name: taxon_id
@@ -409,6 +419,16 @@ attributes:
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
     alias: taxon_id
+    owner: Organism
+    domain_of:
+    - Organism
+    range: string
+  lifestage:
+    name: lifestage
+    description: Lifestage of the organism (e.g. embryo, larva, adult)
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    rank: 1000
+    alias: lifestage
     owner: Organism
     domain_of:
     - Organism

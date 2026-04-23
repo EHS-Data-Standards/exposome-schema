@@ -433,13 +433,8 @@ Alias: exposure_duration</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-<td>An event in which an organism is exposed to a chemical or environmental facto...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DietaryExposure/">DietaryExposure</a></td>
-<td>Exposure through dietary consumption</td>
+<td><a href="../PassiveExposure/">PassiveExposure</a></td>
+<td>Indirect, unintentional, or incidental contact with a stimulus</td>
 <td>no</td>
 </tr>
 <tr>
@@ -448,13 +443,43 @@ Alias: exposure_duration</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../SesExposure/">SesExposure</a></td>
+<td>Exposure to stimulus related to socioeconomic factors</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChemicalExposure/">ChemicalExposure</a></td>
 <td>Exposure to a chemical substance</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EnvironmentalExposure/">EnvironmentalExposure</a></td>
-<td>Exposure to environmental factors</td>
+<td><a href="../Exposure/">Exposure</a></td>
+<td>External, non-genetic, and internal stimuli, that can be chemical, physical, ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BehavioralExposure/">BehavioralExposure</a></td>
+<td>Exposure wherein the receiver engages in a behavior that mediates an exposure...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ActiveExposure/">ActiveExposure</a></td>
+<td>Direct, intentional contact with a stimulus</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PrenatalExposure/">PrenatalExposure</a></td>
+<td>Exposure of a mammalian embryo or fetus via the mother</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DietaryExposure/">DietaryExposure</a></td>
+<td>Exposure through dietary consumption</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentalExposure/">ExperimentalExposure</a></td>
+<td>Exposure to a treatment in an empirical experimental setting</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -496,7 +521,7 @@ from_schema: https://w3id.org/diatomsRcool/exposome-schema
 rank: 1000
 alias: exposure_duration
 domain_of:
-- ExposureEvent
+- Exposure
 range: string
 
 </code></pre>

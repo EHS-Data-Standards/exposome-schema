@@ -268,10 +268,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-biologicalentity">Class: BiologicalEntity</h1>
 <p><em>Biological entities including genes, proteins, cells, and anatomical structures</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
-<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/BiologicalEntity">exposome_schema:BiologicalEntity</a></p>
+<p>URI: <a href="CARO:0030000">CARO:0030000</a></p>
 <div class="mermaid"> classDiagram
     class BiologicalEntity
     click BiologicalEntity href "../BiologicalEntity/"
@@ -283,12 +280,14 @@
         click Gene href "../Gene/"
       BiologicalEntity &lt;|-- Protein
         click Protein href "../Protein/"
-      BiologicalEntity &lt;|-- CellType
-        click CellType href "../CellType/"
+      BiologicalEntity &lt;|-- Cell
+        click Cell href "../Cell/"
       BiologicalEntity &lt;|-- AnatomicalEntity
         click AnatomicalEntity href "../AnatomicalEntity/"
       BiologicalEntity &lt;|-- Organism
         click Organism href "../Organism/"
+      BiologicalEntity &lt;|-- Population
+        click Population href "../Population/"
 
 
       BiologicalEntity : category
@@ -309,9 +308,10 @@
 <li><strong>BiologicalEntity</strong><ul>
 <li><a href="../Gene/">Gene</a></li>
 <li><a href="../Protein/">Protein</a></li>
-<li><a href="../CellType/">CellType</a></li>
+<li><a href="../Cell/">Cell</a></li>
 <li><a href="../AnatomicalEntity/">AnatomicalEntity</a></li>
 <li><a href="../Organism/">Organism</a></li>
+<li><a href="../Population/">Population</a></li>
 </ul>
 </li>
 </ul>
@@ -372,6 +372,30 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../exposure_receiver/">exposure_receiver</a></td>
+<td>range</td>
+<td><a href="./">BiologicalEntity</a></td>
+</tr>
+<tr>
+<td><a href="../ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
+<td><a href="../receiver/">receiver</a></td>
+<td>range</td>
+<td><a href="./">BiologicalEntity</a></td>
+</tr>
+<tr>
+<td><a href="../ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td><a href="../receiver/">receiver</a></td>
+<td>range</td>
+<td><a href="./">BiologicalEntity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalToGeneAssociation/">ChemicalToGeneAssociation</a></td>
+<td><a href="../receiver/">receiver</a></td>
+<td>range</td>
+<td><a href="./">BiologicalEntity</a></td>
+</tr>
+<tr>
 <td><a href="../ExposomeDatabase/">ExposomeDatabase</a></td>
 <td><a href="../biological_entities/">biological_entities</a></td>
 <td>range</td>
@@ -395,7 +419,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>exposome_schema:BiologicalEntity</td>
+<td>CARO:0030000</td>
 </tr>
 <tr>
 <td>native</td>
@@ -412,7 +436,7 @@ description: Biological entities including genes, proteins, cells, and anatomica
   structures
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 is_a: NamedThing
-abstract: true
+class_uri: CARO:0030000
 
 </code></pre>
 </details>
@@ -423,7 +447,6 @@ description: Biological entities including genes, proteins, cells, and anatomica
   structures
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 is_a: NamedThing
-abstract: true
 attributes:
   id:
     name: id
@@ -482,6 +505,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     multivalued: true
+class_uri: CARO:0030000
 
 </code></pre>
 </details>

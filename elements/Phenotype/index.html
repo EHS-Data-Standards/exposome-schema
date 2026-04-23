@@ -268,7 +268,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-phenotype">Class: Phenotype</h1>
 <p><em>An observable characteristic or trait</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/HP_0000118">HP:0000118</a></p>
+<p>URI: <a href="http://purl.obolibrary.org/obo/UPHENO_0001001">UPHENO:0001001</a></p>
 <div class="mermaid"> classDiagram
     class Phenotype
     click Phenotype href "../Phenotype/"
@@ -280,21 +280,19 @@
         click MammalianPhenotype href "../MammalianPhenotype/"
       Phenotype &lt;|-- ZebrafishPhenotype
         click ZebrafishPhenotype href "../ZebrafishPhenotype/"
+      Phenotype &lt;|-- HumanPhenotype
+        click HumanPhenotype href "../HumanPhenotype/"
 
 
       Phenotype : category
 
       Phenotype : description
 
-      Phenotype : hp_id
-
       Phenotype : id
 
       Phenotype : name
 
       Phenotype : onset_age
-
-      Phenotype : phenotype_category
 
       Phenotype : severity
 
@@ -307,10 +305,14 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../BiologicalResponse/">BiologicalResponse</a><ul>
 <li><a href="../HealthOutcome/">HealthOutcome</a><ul>
 <li><strong>Phenotype</strong><ul>
 <li><a href="../MammalianPhenotype/">MammalianPhenotype</a></li>
 <li><a href="../ZebrafishPhenotype/">ZebrafishPhenotype</a></li>
+<li><a href="../HumanPhenotype/">HumanPhenotype</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -330,21 +332,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../hp_id/">hp_id</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Human Phenotype Ontology identifier</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../upheno_id/">upheno_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unified phenotype ontology identifier</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../phenotype_category/">phenotype_category</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Category of phenotype</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -438,7 +428,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>HP:0000118</td>
+<td>UPHENO:0001001</td>
 </tr>
 <tr>
 <td>native</td>
@@ -455,12 +445,10 @@ description: An observable characteristic or trait
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 is_a: HealthOutcome
 slots:
-- hp_id
 - upheno_id
-- phenotype_category
 - severity
 - onset_age
-class_uri: HP:0000118
+class_uri: UPHENO:0001001
 
 </code></pre>
 </details>
@@ -471,17 +459,6 @@ description: An observable characteristic or trait
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
 is_a: HealthOutcome
 attributes:
-  hp_id:
-    name: hp_id
-    description: Human Phenotype Ontology identifier
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: hp_id
-    owner: Phenotype
-    domain_of:
-    - Phenotype
-    range: uriorcurie
-    pattern: ^HP:\d{7}$
   upheno_id:
     name: upheno_id
     description: Unified phenotype ontology identifier
@@ -493,16 +470,6 @@ attributes:
     - Phenotype
     range: uriorcurie
     pattern: ^UPHENO:\d+$
-  phenotype_category:
-    name: phenotype_category
-    description: Category of phenotype
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: phenotype_category
-    owner: Phenotype
-    domain_of:
-    - Phenotype
-    range: string
   severity:
     name: severity
     description: Severity of phenotype or disease
@@ -580,7 +547,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     multivalued: true
-class_uri: HP:0000118
+class_uri: UPHENO:0001001
 
 </code></pre>
 </details>

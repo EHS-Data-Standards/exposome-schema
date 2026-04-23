@@ -274,20 +274,18 @@
     click NamedThing href "../NamedThing/"
       NamedThing &lt;|-- BiologicalEntity
         click BiologicalEntity href "../BiologicalEntity/"
-      NamedThing &lt;|-- ChemicalEntity
-        click ChemicalEntity href "../ChemicalEntity/"
-      NamedThing &lt;|-- ExposureEvent
-        click ExposureEvent href "../ExposureEvent/"
+      NamedThing &lt;|-- StimulusEntity
+        click StimulusEntity href "../StimulusEntity/"
       NamedThing &lt;|-- BiologicalResponse
         click BiologicalResponse href "../BiologicalResponse/"
-      NamedThing &lt;|-- HealthOutcome
-        click HealthOutcome href "../HealthOutcome/"
       NamedThing &lt;|-- StudyEntity
         click StudyEntity href "../StudyEntity/"
       NamedThing &lt;|-- Measurement
         click Measurement href "../Measurement/"
       NamedThing &lt;|-- Association
         click Association href "../Association/"
+      NamedThing &lt;|-- Exposure
+        click Exposure href "../Exposure/"
       NamedThing &lt;|-- AdverseOutcomePathway
         click AdverseOutcomePathway href "../AdverseOutcomePathway/"
 
@@ -307,13 +305,12 @@
 <ul>
 <li><strong>NamedThing</strong><ul>
 <li><a href="../BiologicalEntity/">BiologicalEntity</a></li>
-<li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
-<li><a href="../ExposureEvent/">ExposureEvent</a></li>
+<li><a href="../StimulusEntity/">StimulusEntity</a></li>
 <li><a href="../BiologicalResponse/">BiologicalResponse</a></li>
-<li><a href="../HealthOutcome/">HealthOutcome</a></li>
 <li><a href="../StudyEntity/">StudyEntity</a></li>
 <li><a href="../Measurement/">Measurement</a></li>
 <li><a href="../Association/">Association</a></li>
+<li><a href="../Exposure/">Exposure</a></li>
 <li><a href="../AdverseOutcomePathway/">AdverseOutcomePathway</a></li>
 </ul>
 </li>
@@ -451,6 +448,7 @@ attributes:
     domain_of:
     - NamedThing
     range: uriorcurie
+    required: true
   name:
     name: name
     description: A human-readable name for a thing

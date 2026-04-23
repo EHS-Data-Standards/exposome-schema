@@ -259,31 +259,31 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-occupationalexposure">Class: OccupationalExposure</h1>
 <p><em>Exposure in an occupational setting</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_0000002">ECTO:0000002</a></p>
+<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_0001591">ECTO:0001591</a></p>
 <div class="mermaid"> classDiagram
     class OccupationalExposure
     click OccupationalExposure href "../OccupationalExposure/"
-      ExposureEvent &lt;|-- OccupationalExposure
-        click ExposureEvent href "../ExposureEvent/"
+      Exposure &lt;|-- OccupationalExposure
+        click Exposure href "../Exposure/"
 
       OccupationalExposure : category
 
       OccupationalExposure : description
 
-      OccupationalExposure : exposed_to_chemical
-
-
-
-
-
-        OccupationalExposure --&gt; "0..1" ChemicalEntity : exposed_to_chemical
-        click ChemicalEntity href "../ChemicalEntity/"
-
-
-
       OccupationalExposure : exposure_concentration
 
       OccupationalExposure : exposure_duration
+
+      OccupationalExposure : exposure_frequency
+
+
+
+
+
+        OccupationalExposure --&gt; "0..1" ExposureFrequencyEnum : exposure_frequency
+        click ExposureFrequencyEnum href "../ExposureFrequencyEnum/"
+
+
 
       OccupationalExposure : exposure_medium
 
@@ -322,7 +322,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
-<li><a href="../ExposureEvent/">ExposureEvent</a><ul>
+<li><a href="../Exposure/">Exposure</a><ul>
 <li><strong>OccupationalExposure</strong></li>
 </ul>
 </li>
@@ -353,34 +353,34 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>The chemical entity involved in the exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
 <td><a href="../exposure_route/">exposure_route</a></td>
 <td>0..1 <br/> <a href="../ExposureRouteEnum/">ExposureRouteEnum</a></td>
 <td>Route of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_duration/">exposure_duration</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Duration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
+</tr>
+<tr>
+<td><a href="../exposure_frequency/">exposure_frequency</a></td>
+<td>0..1 <br/> <a href="../ExposureFrequencyEnum/">ExposureFrequencyEnum</a></td>
+<td>The temporal pattern of exposure, describing how often contact with a stimulu...</td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_concentration/">exposure_concentration</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Concentration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../exposure_medium/">exposure_medium</a></td>
 <td>0..1 <br/> <a href="../ExposureMediumEnum/">ExposureMediumEnum</a></td>
 <td>Medium through which exposure occurs</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../Exposure/">Exposure</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -430,7 +430,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>ECTO:0000002</td>
+<td>ECTO:0001591</td>
 </tr>
 <tr>
 <td>native</td>
@@ -445,11 +445,11 @@
 <pre><code class="language-yaml">name: OccupationalExposure
 description: Exposure in an occupational setting
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
+is_a: Exposure
 slots:
 - occupation
 - workplace
-class_uri: ECTO:0000002
+class_uri: ECTO:0001591
 
 </code></pre>
 </details>
@@ -458,7 +458,7 @@ class_uri: ECTO:0000002
 <pre><code class="language-yaml">name: OccupationalExposure
 description: Exposure in an occupational setting
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
+is_a: Exposure
 attributes:
   occupation:
     name: occupation
@@ -480,17 +480,6 @@ attributes:
     domain_of:
     - OccupationalExposure
     range: string
-  exposed_to_chemical:
-    name: exposed_to_chemical
-    description: The chemical entity involved in the exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    slot_uri: CHEBI:24431
-    alias: exposed_to_chemical
-    owner: OccupationalExposure
-    domain_of:
-    - ExposureEvent
-    range: ChemicalEntity
   exposure_route:
     name: exposure_route
     description: Route of exposure
@@ -499,7 +488,7 @@ attributes:
     alias: exposure_route
     owner: OccupationalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: ExposureRouteEnum
   exposure_duration:
     name: exposure_duration
@@ -509,8 +498,19 @@ attributes:
     alias: exposure_duration
     owner: OccupationalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: string
+  exposure_frequency:
+    name: exposure_frequency
+    description: The temporal pattern of exposure, describing how often contact with
+      a stimulus occurs over a defined period
+    from_schema: https://w3id.org/diatomsRcool/exposome-schema
+    rank: 1000
+    alias: exposure_frequency
+    owner: OccupationalExposure
+    domain_of:
+    - Exposure
+    range: ExposureFrequencyEnum
   exposure_concentration:
     name: exposure_concentration
     description: Concentration of exposure
@@ -519,7 +519,7 @@ attributes:
     alias: exposure_concentration
     owner: OccupationalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: float
   exposure_medium:
     name: exposure_medium
@@ -529,7 +529,7 @@ attributes:
     alias: exposure_medium
     owner: OccupationalExposure
     domain_of:
-    - ExposureEvent
+    - Exposure
     range: ExposureMediumEnum
   id:
     name: id
@@ -588,7 +588,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     multivalued: true
-class_uri: ECTO:0000002
+class_uri: ECTO:0001591
 
 </code></pre>
 </details>

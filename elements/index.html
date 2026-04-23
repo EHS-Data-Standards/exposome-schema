@@ -521,8 +521,24 @@ Pathways (AOPs) and multi-granularity measurements</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="ChemicalToGeneAssociation/">ChemicalToGeneAssociation</a></td>
+<td>An association between a chemical and a gene</td>
+</tr>
+<tr>
 <td><a href="ExposomeDatabase/">ExposomeDatabase</a></td>
 <td>Container for all exposome data including exposures, chemicals, health outcom...</td>
+</tr>
+<tr>
+<td><a href="ExposureEvent/">ExposureEvent</a></td>
+<td>An event in which a BiologicalEntity is exposed to a StimulusEntity and resul...</td>
+</tr>
+<tr>
+<td><a href="ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td>An association between an exposure and a disease</td>
+</tr>
+<tr>
+<td><a href="ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
+<td>An association between an exposure and a phenotype</td>
 </tr>
 <tr>
 <td><a href="NamedThing/">NamedThing</a></td>
@@ -535,14 +551,6 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
 <td>A relationship between two entities</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalToGeneAssociation/">ChemicalToGeneAssociation</a></td>
-<td>An association between a chemical and a gene</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureToPhenotypeAssociation/">ExposureToPhenotypeAssociation</a></td>
-<td>An association between an exposure and a phenotype</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneticVariantToPhenotypeAssociation/">GeneticVariantToPhenotypeAssociation</a></td>
@@ -562,10 +570,10 @@ Pathways (AOPs) and multi-granularity measurements</p>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnatomicalEntity/">AnatomicalEntity</a></td>
-<td>An anatomical structure or system</td>
+<td>An anatomical structure or system, part of an organism, made of many cells</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CellType/">CellType</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Cell/">Cell</a></td>
 <td>A type of cell</td>
 </tr>
 <tr>
@@ -577,12 +585,44 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>An individual organism</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Population/">Population</a></td>
+<td>A group of organisms of the same species</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
 <td>A protein or polypeptide</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiologicalResponse/">BiologicalResponse</a></td>
 <td>A biological response at the molecular, cellular, or tissue level</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HealthOutcome/">HealthOutcome</a></td>
+<td>A health-related outcome including phenotypes and diseases</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AdverseOutcome/">AdverseOutcome</a></td>
+<td>An adverse health outcome in the context of an Adverse Outcome Pathway</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Disease/">Disease</a></td>
+<td>A disease or medical condition</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Phenotype/">Phenotype</a></td>
+<td>An observable characteristic or trait</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HumanPhenotype/">HumanPhenotype</a></td>
+<td>A phenotype observed in humans</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MammalianPhenotype/">MammalianPhenotype</a></td>
+<td>A phenotype observed in mammalian model organisms</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ZebrafishPhenotype/">ZebrafishPhenotype</a></td>
+<td>A phenotype observed in zebrafish</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="KeyEvent/">KeyEvent</a></td>
@@ -593,12 +633,16 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>The initial molecular-level perturbation that starts an Adverse Outcome Pathw...</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalEntity/">ChemicalEntity</a></td>
-<td>A chemical entity including compounds, drugs, and metabolites</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exposure/">Exposure</a></td>
+<td>External, non-genetic, and internal stimuli, that can be chemical, physical, ...</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureEvent/">ExposureEvent</a></td>
-<td>An event in which an organism is exposed to a chemical or environmental facto...</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ActiveExposure/">ActiveExposure</a></td>
+<td>Direct, intentional contact with a stimulus</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BehavioralExposure/">BehavioralExposure</a></td>
+<td>Exposure wherein the receiver engages in a behavior that mediates an exposure...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalExposure/">ChemicalExposure</a></td>
@@ -609,36 +653,24 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>Exposure through dietary consumption</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnvironmentalExposure/">EnvironmentalExposure</a></td>
-<td>Exposure to environmental factors</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentalExposure/">ExperimentalExposure</a></td>
+<td>Exposure to a treatment in an empirical experimental setting</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OccupationalExposure/">OccupationalExposure</a></td>
 <td>Exposure in an occupational setting</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HealthOutcome/">HealthOutcome</a></td>
-<td>A health-related outcome including phenotypes and diseases</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PassiveExposure/">PassiveExposure</a></td>
+<td>Indirect, unintentional, or incidental contact with a stimulus</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AdverseOutcome/">AdverseOutcome</a></td>
-<td>An adverse health outcome in the context of an Adverse Outcome Pathway</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PrenatalExposure/">PrenatalExposure</a></td>
+<td>Exposure of a mammalian embryo or fetus via the mother</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Disease/">Disease</a></td>
-<td>A disease or medical condition</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Phenotype/">Phenotype</a></td>
-<td>An observable characteristic or trait</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MammalianPhenotype/">MammalianPhenotype</a></td>
-<td>A phenotype observed in mammalian model organisms</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ZebrafishPhenotype/">ZebrafishPhenotype</a></td>
-<td>A phenotype observed in zebrafish</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SesExposure/">SesExposure</a></td>
+<td>Exposure to stimulus related to socioeconomic factors</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
@@ -659,6 +691,22 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PhenotypeMeasurement/">PhenotypeMeasurement</a></td>
 <td>A measurement of a phenotypic trait</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StimulusEntity/">StimulusEntity</a></td>
+<td>Any entity to which a receiver is being exposed</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BehavioralEntity/">BehavioralEntity</a></td>
+<td>A stimulus entity representing a behavior, activity, or lifestyle factor (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalEntity/">ChemicalEntity</a></td>
+<td>A chemical entity including compounds, drugs, and metabolites</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DietEntity/">DietEntity</a></td>
+<td>A stimulus entity representing a food, beverage, dietary pattern, or nutritio...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StudyEntity/">StudyEntity</a></td>
@@ -796,10 +844,6 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>Disease in association</td>
 </tr>
 <tr>
-<td><a href="disease_category/">disease_category</a></td>
-<td>Category of disease</td>
-</tr>
-<tr>
 <td><a href="downstream_event/">downstream_event</a></td>
 <td>Downstream key event</td>
 </tr>
@@ -832,8 +876,12 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>Evidence supporting the relationship</td>
 </tr>
 <tr>
-<td><a href="exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>The chemical entity involved in the exposure</td>
+<td><a href="experimental_result/">experimental_result</a></td>
+<td>The biological response or outcome observed as a result of an experimental ex...</td>
+</tr>
+<tr>
+<td><a href="experimental_subject/">experimental_subject</a></td>
+<td>The organism, cell, tissue, or population that is the subject of an experimen...</td>
 </tr>
 <tr>
 <td><a href="exposure/">exposure</a></td>
@@ -848,12 +896,28 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>Duration of exposure</td>
 </tr>
 <tr>
+<td><a href="exposure_frequency/">exposure_frequency</a></td>
+<td>The temporal pattern of exposure, describing how often contact with a stimulu...</td>
+</tr>
+<tr>
 <td><a href="exposure_medium/">exposure_medium</a></td>
 <td>Medium through which exposure occurs</td>
 </tr>
 <tr>
+<td><a href="exposure_outcome/">exposure_outcome</a></td>
+<td>The biological response resulting from the exposure event</td>
+</tr>
+<tr>
+<td><a href="exposure_receiver/">exposure_receiver</a></td>
+<td>The organism, cell, tissue, or population being exposed</td>
+</tr>
+<tr>
 <td><a href="exposure_route/">exposure_route</a></td>
 <td>Route of exposure</td>
+</tr>
+<tr>
+<td><a href="exposure_stimulus/">exposure_stimulus</a></td>
+<td>The stimulus involved in the exposure</td>
 </tr>
 <tr>
 <td><a href="exposures/">exposures</a></td>
@@ -926,6 +990,10 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td><a href="level_of_biological_organization/">level_of_biological_organization</a></td>
 <td>Level of biological organization</td>
+</tr>
+<tr>
+<td><a href="lifestage/">lifestage</a></td>
+<td>Lifestage of the organism (e</td>
 </tr>
 <tr>
 <td><a href="measured_entity/">measured_entity</a></td>
@@ -1028,10 +1096,6 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <td>The phenotype being measured</td>
 </tr>
 <tr>
-<td><a href="phenotype_category/">phenotype_category</a></td>
-<td>Category of phenotype</td>
-</tr>
-<tr>
 <td><a href="population/">population</a></td>
 <td>Study population description</td>
 </tr>
@@ -1046,6 +1110,10 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td><a href="publications/">publications</a></td>
 <td>Related publications</td>
+</tr>
+<tr>
+<td><a href="receiver/">receiver</a></td>
+<td>The organism, cell, tissue, or population being exposed in an association</td>
 </tr>
 <tr>
 <td><a href="record_url/">record_url</a></td>
@@ -1085,7 +1153,7 @@ Pathways (AOPs) and multi-granularity measurements</p>
 </tr>
 <tr>
 <td><a href="source_database_record/">source_database_record</a></td>
-<td>Reference to source database record</td>
+<td>Identifier or record reference in the source database</td>
 </tr>
 <tr>
 <td><a href="species/">species</a></td>
@@ -1126,6 +1194,10 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td><a href="taxon_id/">taxon_id</a></td>
 <td>NCBI Taxonomy identifier</td>
+</tr>
+<tr>
+<td><a href="treatment/">treatment</a></td>
+<td>The experimental stimulus or intervention applied to subjects in an experimen...</td>
 </tr>
 <tr>
 <td><a href="triggers_key_event/">triggers_key_event</a></td>
@@ -1177,6 +1249,10 @@ Pathways (AOPs) and multi-granularity measurements</p>
 <tr>
 <td><a href="DataSourceEnum/">DataSourceEnum</a></td>
 <td>Data sources and repositories</td>
+</tr>
+<tr>
+<td><a href="ExposureFrequencyEnum/">ExposureFrequencyEnum</a></td>
+<td>Frequency of exposure</td>
 </tr>
 <tr>
 <td><a href="ExposureMediumEnum/">ExposureMediumEnum</a></td>

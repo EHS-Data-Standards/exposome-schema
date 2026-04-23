@@ -275,8 +275,8 @@
 <div class="mermaid"> classDiagram
     class HealthOutcome
     click HealthOutcome href "../HealthOutcome/"
-      NamedThing &lt;|-- HealthOutcome
-        click NamedThing href "../NamedThing/"
+      BiologicalResponse &lt;|-- HealthOutcome
+        click BiologicalResponse href "../BiologicalResponse/"
 
 
       HealthOutcome &lt;|-- Phenotype
@@ -302,10 +302,13 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../BiologicalResponse/">BiologicalResponse</a><ul>
 <li><strong>HealthOutcome</strong><ul>
 <li><a href="../Phenotype/">Phenotype</a></li>
 <li><a href="../Disease/">Disease</a></li>
 <li><a href="../AdverseOutcome/">AdverseOutcome</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -404,7 +407,7 @@
 <pre><code class="language-yaml">name: HealthOutcome
 description: A health-related outcome including phenotypes and diseases
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
+is_a: BiologicalResponse
 abstract: true
 
 </code></pre>
@@ -414,7 +417,7 @@ abstract: true
 <pre><code class="language-yaml">name: HealthOutcome
 description: A health-related outcome including phenotypes and diseases
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: NamedThing
+is_a: BiologicalResponse
 abstract: true
 attributes:
   id:

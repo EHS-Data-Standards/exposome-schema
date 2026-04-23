@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://diatomsRcool.github.io/exposome-schema/elements/EnvironmentalExposure/" rel="canonical"/>
+<link href="https://diatomsRcool.github.io/exposome-schema/elements/StimulusEntity/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
-<title>Class: EnvironmentalExposure - exposome-schema</title>
+<title>Class: StimulusEntity - exposome-schema</title>
 <link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-environmentalexposure">
+<a class="md-skip" href="#class-stimulusentity">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: EnvironmentalExposure
+              Class: StimulusEntity
             
           </span>
 </div>
@@ -189,6 +189,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -257,71 +266,43 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-environmentalexposure">Class: EnvironmentalExposure</h1>
-<p><em>Exposure to environmental factors</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/ECTO_0000001">ECTO:0000001</a></p>
+<h1 id="class-stimulusentity">Class: StimulusEntity</h1>
+<p><em>Any entity to which a receiver is being exposed</em></p>
+<p>URI: <a href="https://w3id.org/diatomsRcool/exposome-schema/StimulusEntity">exposome_schema:StimulusEntity</a></p>
 <div class="mermaid"> classDiagram
-    class EnvironmentalExposure
-    click EnvironmentalExposure href "../EnvironmentalExposure/"
-      ExposureEvent &lt;|-- EnvironmentalExposure
-        click ExposureEvent href "../ExposureEvent/"
-
-      EnvironmentalExposure : category
-
-      EnvironmentalExposure : description
-
-      EnvironmentalExposure : environmental_context
-
-      EnvironmentalExposure : exposed_to_chemical
+    class StimulusEntity
+    click StimulusEntity href "../StimulusEntity/"
+      NamedThing &lt;|-- StimulusEntity
+        click NamedThing href "../NamedThing/"
 
 
-
-
-
-        EnvironmentalExposure --&gt; "0..1" ChemicalEntity : exposed_to_chemical
+      StimulusEntity &lt;|-- ChemicalEntity
         click ChemicalEntity href "../ChemicalEntity/"
+      StimulusEntity &lt;|-- BehavioralEntity
+        click BehavioralEntity href "../BehavioralEntity/"
+      StimulusEntity &lt;|-- DietEntity
+        click DietEntity href "../DietEntity/"
 
 
+      StimulusEntity : category
 
-      EnvironmentalExposure : exposure_concentration
+      StimulusEntity : description
 
-      EnvironmentalExposure : exposure_duration
+      StimulusEntity : id
 
-      EnvironmentalExposure : exposure_medium
+      StimulusEntity : name
 
-
-
-
-
-        EnvironmentalExposure --&gt; "0..1" ExposureMediumEnum : exposure_medium
-        click ExposureMediumEnum href "../ExposureMediumEnum/"
-
-
-
-      EnvironmentalExposure : exposure_route
-
-
-
-
-
-        EnvironmentalExposure --&gt; "0..1" ExposureRouteEnum : exposure_route
-        click ExposureRouteEnum href "../ExposureRouteEnum/"
-
-
-
-      EnvironmentalExposure : id
-
-      EnvironmentalExposure : name
-
-      EnvironmentalExposure : xref
+      StimulusEntity : xref
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
-<li><a href="../ExposureEvent/">ExposureEvent</a><ul>
-<li><strong>EnvironmentalExposure</strong></li>
+<li><strong>StimulusEntity</strong><ul>
+<li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
+<li><a href="../BehavioralEntity/">BehavioralEntity</a></li>
+<li><a href="../DietEntity/">DietEntity</a></li>
 </ul>
 </li>
 </ul>
@@ -338,42 +319,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../environmental_context/">environmental_context</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Environmental context of exposure</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../exposed_to_chemical/">exposed_to_chemical</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>The chemical entity involved in the exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
-<td><a href="../exposure_route/">exposure_route</a></td>
-<td>0..1 <br/> <a href="../ExposureRouteEnum/">ExposureRouteEnum</a></td>
-<td>Route of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
-<td><a href="../exposure_duration/">exposure_duration</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Duration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
-<td><a href="../exposure_concentration/">exposure_concentration</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Concentration of exposure</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
-<tr>
-<td><a href="../exposure_medium/">exposure_medium</a></td>
-<td>0..1 <br/> <a href="../ExposureMediumEnum/">ExposureMediumEnum</a></td>
-<td>Medium through which exposure occurs</td>
-<td><a href="../ExposureEvent/">ExposureEvent</a></td>
-</tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
@@ -406,6 +351,25 @@
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../ExposureEvent/">ExposureEvent</a></td>
+<td><a href="../exposure_stimulus/">exposure_stimulus</a></td>
+<td>range</td>
+<td><a href="./">StimulusEntity</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -422,11 +386,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>ECTO:0000001</td>
+<td>exposome_schema:StimulusEntity</td>
 </tr>
 <tr>
 <td>native</td>
-<td>exposome_schema:EnvironmentalExposure</td>
+<td>exposome_schema:StimulusEntity</td>
 </tr>
 </tbody>
 </table>
@@ -434,84 +398,20 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: EnvironmentalExposure
-description: Exposure to environmental factors
+<pre><code class="language-yaml">name: StimulusEntity
+description: Any entity to which a receiver is being exposed
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
-slots:
-- environmental_context
-class_uri: ECTO:0000001
+is_a: NamedThing
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: EnvironmentalExposure
-description: Exposure to environmental factors
+<pre><code class="language-yaml">name: StimulusEntity
+description: Any entity to which a receiver is being exposed
 from_schema: https://w3id.org/diatomsRcool/exposome-schema
-is_a: ExposureEvent
+is_a: NamedThing
 attributes:
-  environmental_context:
-    name: environmental_context
-    description: Environmental context of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: environmental_context
-    owner: EnvironmentalExposure
-    domain_of:
-    - EnvironmentalExposure
-    range: string
-  exposed_to_chemical:
-    name: exposed_to_chemical
-    description: The chemical entity involved in the exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    slot_uri: CHEBI:24431
-    alias: exposed_to_chemical
-    owner: EnvironmentalExposure
-    domain_of:
-    - ExposureEvent
-    range: ChemicalEntity
-  exposure_route:
-    name: exposure_route
-    description: Route of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_route
-    owner: EnvironmentalExposure
-    domain_of:
-    - ExposureEvent
-    range: ExposureRouteEnum
-  exposure_duration:
-    name: exposure_duration
-    description: Duration of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_duration
-    owner: EnvironmentalExposure
-    domain_of:
-    - ExposureEvent
-    range: string
-  exposure_concentration:
-    name: exposure_concentration
-    description: Concentration of exposure
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_concentration
-    owner: EnvironmentalExposure
-    domain_of:
-    - ExposureEvent
-    range: float
-  exposure_medium:
-    name: exposure_medium
-    description: Medium through which exposure occurs
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: exposure_medium
-    owner: EnvironmentalExposure
-    domain_of:
-    - ExposureEvent
-    range: ExposureMediumEnum
   id:
     name: id
     description: A unique identifier for a thing
@@ -520,7 +420,7 @@ attributes:
     slot_uri: schema:identifier
     identifier: true
     alias: id
-    owner: EnvironmentalExposure
+    owner: StimulusEntity
     domain_of:
     - NamedThing
     range: uriorcurie
@@ -532,7 +432,7 @@ attributes:
     rank: 1000
     slot_uri: schema:name
     alias: name
-    owner: EnvironmentalExposure
+    owner: StimulusEntity
     domain_of:
     - NamedThing
     range: string
@@ -543,7 +443,7 @@ attributes:
     rank: 1000
     slot_uri: schema:description
     alias: description
-    owner: EnvironmentalExposure
+    owner: StimulusEntity
     domain_of:
     - NamedThing
     range: string
@@ -553,7 +453,7 @@ attributes:
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
     alias: category
-    owner: EnvironmentalExposure
+    owner: StimulusEntity
     domain_of:
     - NamedThing
     range: string
@@ -564,12 +464,11 @@ attributes:
     from_schema: https://w3id.org/diatomsRcool/exposome-schema
     rank: 1000
     alias: xref
-    owner: EnvironmentalExposure
+    owner: StimulusEntity
     domain_of:
     - NamedThing
     range: uriorcurie
     multivalued: true
-class_uri: ECTO:0000001
 
 </code></pre>
 </details>

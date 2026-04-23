@@ -290,8 +290,6 @@
 
       Disease : description
 
-      Disease : disease_category
-
       Disease : id
 
       Disease : mondo_id
@@ -305,8 +303,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../BiologicalResponse/">BiologicalResponse</a><ul>
 <li><a href="../HealthOutcome/">HealthOutcome</a><ul>
 <li><strong>Disease</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -327,12 +328,6 @@
 <td><a href="../mondo_id/">mondo_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>MONDO disease identifier</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../disease_category/">disease_category</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Category of disease</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -385,6 +380,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ExposureToDiseaseAssociation/">ExposureToDiseaseAssociation</a></td>
+<td><a href="../disease/">disease</a></td>
+<td>range</td>
+<td><a href="./">Disease</a></td>
+</tr>
+<tr>
 <td><a href="../GeneToDiseaseAssociation/">GeneToDiseaseAssociation</a></td>
 <td><a href="../disease/">disease</a></td>
 <td>range</td>
@@ -426,7 +427,6 @@ from_schema: https://w3id.org/diatomsRcool/exposome-schema
 is_a: HealthOutcome
 slots:
 - mondo_id
-- disease_category
 - affected_anatomy
 class_uri: MONDO:0000001
 
@@ -450,16 +450,6 @@ attributes:
     - Disease
     range: uriorcurie
     pattern: ^MONDO:\d{7}$
-  disease_category:
-    name: disease_category
-    description: Category of disease
-    from_schema: https://w3id.org/diatomsRcool/exposome-schema
-    rank: 1000
-    alias: disease_category
-    owner: Disease
-    domain_of:
-    - Disease
-    range: string
   affected_anatomy:
     name: affected_anatomy
     description: Anatomical location affected
