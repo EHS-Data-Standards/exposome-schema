@@ -1,7 +1,7 @@
 id: exposome_schema:exposure_001
 name: Occupational benzene exposure
 description: Exposure to benzene in an industrial setting
-exposure_route: Inhalation
+exposure_route: inhalation
 exposure_duration: 8 hours
 exposure_concentration: 0.5
-exposure_medium: Air
+exposure_medium: air

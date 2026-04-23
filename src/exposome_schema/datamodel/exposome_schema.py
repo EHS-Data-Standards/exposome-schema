@@ -1,5 +1,5 @@
 # Auto generated from exposome_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-05T10:56:49
+# Generation date: 2026-04-23T14:29:23
 # Schema: exposome-schema
 #
 # id: https://w3id.org/diatomsRcool/exposome-schema
@@ -66,6 +66,7 @@ version = None
 
 # Namespaces
 AOPWIKI = CurieNamespace('AOPWIKI', 'https://aopwiki.org/aops/')
+CARO = CurieNamespace('CARO', 'http://example.org/UNKNOWN/CARO/')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'http://identifiers.org/chembl.compound/')
 CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
@@ -75,6 +76,7 @@ DTXSID = CurieNamespace('DTXSID', 'https://comptox.epa.gov/dashboard/dsstoxdb/re
 ECTO = CurieNamespace('ECTO', 'http://purl.obolibrary.org/obo/ECTO_')
 EFO = CurieNamespace('EFO', 'http://identifiers.org/efo/')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
+EXO = CurieNamespace('ExO', 'http://example.org/UNKNOWN/ExO/')
 FOODON = CurieNamespace('FOODON', 'http://purl.obolibrary.org/obo/FOODON_')
 GWAS = CurieNamespace('GWAS', 'https://www.ebi.ac.uk/gwas/studies/')
 GXA = CurieNamespace('GXA', 'https://www.ebi.ac.uk/gxa/experiments/')
@@ -90,6 +92,7 @@ RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UPHENO = CurieNamespace('UPHENO', 'http://purl.obolibrary.org/obo/UPHENO_')
 USDA_PESTICIDE = CurieNamespace('USDA_PESTICIDE', 'https://www.ams.usda.gov/datasets/pdp/')
+XCO = CurieNamespace('XCO', 'http://example.org/UNKNOWN/XCO/')
 ZP = CurieNamespace('ZP', 'http://purl.obolibrary.org/obo/ZP_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 CHEAR = CurieNamespace('chear', 'http://hadatac.org/ont/chear#')
@@ -110,11 +113,19 @@ class BiologicalEntityId(NamedThingId):
     pass
 
 
-class ChemicalEntityId(NamedThingId):
+class StimulusEntityId(NamedThingId):
     pass
 
 
-class ExposureEventId(NamedThingId):
+class ChemicalEntityId(StimulusEntityId):
+    pass
+
+
+class BehavioralEntityId(StimulusEntityId):
+    pass
+
+
+class DietEntityId(StimulusEntityId):
     pass
 
 
@@ -122,7 +133,7 @@ class BiologicalResponseId(NamedThingId):
     pass
 
 
-class HealthOutcomeId(NamedThingId):
+class HealthOutcomeId(BiologicalResponseId):
     pass
 
 
@@ -138,19 +149,43 @@ class AssociationId(NamedThingId):
     pass
 
 
-class ChemicalExposureId(ExposureEventId):
+class ExposureId(NamedThingId):
     pass
 
 
-class DietaryExposureId(ExposureEventId):
+class ActiveExposureId(ExposureId):
     pass
 
 
-class EnvironmentalExposureId(ExposureEventId):
+class PassiveExposureId(ExposureId):
     pass
 
 
-class OccupationalExposureId(ExposureEventId):
+class ChemicalExposureId(ExposureId):
+    pass
+
+
+class DietaryExposureId(ExposureId):
+    pass
+
+
+class OccupationalExposureId(ExposureId):
+    pass
+
+
+class ExperimentalExposureId(ExposureId):
+    pass
+
+
+class PrenatalExposureId(ExposureId):
+    pass
+
+
+class BehavioralExposureId(ExposureId):
+    pass
+
+
+class SesExposureId(ExposureId):
     pass
 
 
@@ -171,6 +206,10 @@ class MammalianPhenotypeId(PhenotypeId):
 
 
 class ZebrafishPhenotypeId(PhenotypeId):
+    pass
+
+
+class HumanPhenotypeId(PhenotypeId):
     pass
 
 
@@ -226,7 +265,7 @@ class ProteinId(BiologicalEntityId):
     pass
 
 
-class CellTypeId(BiologicalEntityId):
+class CellId(BiologicalEntityId):
     pass
 
 
@@ -238,11 +277,7 @@ class OrganismId(BiologicalEntityId):
     pass
 
 
-class ExposureToPhenotypeAssociationId(AssociationId):
-    pass
-
-
-class ChemicalToGeneAssociationId(AssociationId):
+class PopulationId(BiologicalEntityId):
     pass
 
 
@@ -252,6 +287,41 @@ class GeneToDiseaseAssociationId(AssociationId):
 
 class GeneticVariantToPhenotypeAssociationId(AssociationId):
     pass
+
+
+@dataclass(repr=False)
+class ExposureEvent(YAMLRoot):
+    """
+    An event in which a BiologicalEntity is exposed to a StimulusEntity and results in a BiologicalResponse
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ExposureEvent"]
+    class_class_curie: ClassVar[str] = "exposome_schema:ExposureEvent"
+    class_name: ClassVar[str] = "ExposureEvent"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExposureEvent
+
+    exposure_stimulus: Union[str, StimulusEntityId] = None
+    exposure_outcome: Union[str, BiologicalResponseId] = None
+    exposure_receiver: Union[str, BiologicalEntityId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.exposure_stimulus):
+            self.MissingRequiredField("exposure_stimulus")
+        if not isinstance(self.exposure_stimulus, StimulusEntityId):
+            self.exposure_stimulus = StimulusEntityId(self.exposure_stimulus)
+
+        if self._is_empty(self.exposure_outcome):
+            self.MissingRequiredField("exposure_outcome")
+        if not isinstance(self.exposure_outcome, BiologicalResponseId):
+            self.exposure_outcome = BiologicalResponseId(self.exposure_outcome)
+
+        if self._is_empty(self.exposure_receiver):
+            self.MissingRequiredField("exposure_receiver")
+        if not isinstance(self.exposure_receiver, BiologicalEntityId):
+            self.exposure_receiver = BiologicalEntityId(self.exposure_receiver)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -302,15 +372,47 @@ class BiologicalEntity(NamedThing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["BiologicalEntity"]
-    class_class_curie: ClassVar[str] = "exposome_schema:BiologicalEntity"
+    class_class_uri: ClassVar[URIRef] = CARO["0030000"]
+    class_class_curie: ClassVar[str] = "CARO:0030000"
     class_name: ClassVar[str] = "BiologicalEntity"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.BiologicalEntity
 
     id: Union[str, BiologicalEntityId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BiologicalEntityId):
+            self.id = BiologicalEntityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
 @dataclass(repr=False)
-class ChemicalEntity(NamedThing):
+class StimulusEntity(NamedThing):
+    """
+    Any entity to which a receiver is being exposed
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["StimulusEntity"]
+    class_class_curie: ClassVar[str] = "exposome_schema:StimulusEntity"
+    class_name: ClassVar[str] = "StimulusEntity"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.StimulusEntity
+
+    id: Union[str, StimulusEntityId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StimulusEntityId):
+            self.id = StimulusEntityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChemicalEntity(StimulusEntity):
     """
     A chemical entity including compounds, drugs, and metabolites
     """
@@ -365,39 +467,49 @@ class ChemicalEntity(NamedThing):
 
 
 @dataclass(repr=False)
-class ExposureEvent(NamedThing):
+class BehavioralEntity(StimulusEntity):
     """
-    An event in which an organism is exposed to a chemical or environmental factor
+    A stimulus entity representing a behavior, activity, or lifestyle factor (e.g. smoking, physical activity, sleep)
+    to which an individual may be exposed or that may mediate an exposure
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ExposureEvent"]
-    class_class_curie: ClassVar[str] = "exposome_schema:ExposureEvent"
-    class_name: ClassVar[str] = "ExposureEvent"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExposureEvent
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["BehavioralEntity"]
+    class_class_curie: ClassVar[str] = "exposome_schema:BehavioralEntity"
+    class_name: ClassVar[str] = "BehavioralEntity"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.BehavioralEntity
 
-    id: Union[str, ExposureEventId] = None
-    exposed_to_chemical: Optional[Union[str, ChemicalEntityId]] = None
-    exposure_route: Optional[Union[str, "ExposureRouteEnum"]] = None
-    exposure_duration: Optional[str] = None
-    exposure_concentration: Optional[float] = None
-    exposure_medium: Optional[Union[str, "ExposureMediumEnum"]] = None
+    id: Union[str, BehavioralEntityId] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.exposed_to_chemical is not None and not isinstance(self.exposed_to_chemical, ChemicalEntityId):
-            self.exposed_to_chemical = ChemicalEntityId(self.exposed_to_chemical)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BehavioralEntityId):
+            self.id = BehavioralEntityId(self.id)
 
-        if self.exposure_route is not None and not isinstance(self.exposure_route, ExposureRouteEnum):
-            self.exposure_route = ExposureRouteEnum(self.exposure_route)
+        super().__post_init__(**kwargs)
 
-        if self.exposure_duration is not None and not isinstance(self.exposure_duration, str):
-            self.exposure_duration = str(self.exposure_duration)
 
-        if self.exposure_concentration is not None and not isinstance(self.exposure_concentration, float):
-            self.exposure_concentration = float(self.exposure_concentration)
+@dataclass(repr=False)
+class DietEntity(StimulusEntity):
+    """
+    A stimulus entity representing a food, beverage, dietary pattern, or nutritional component consumed by an
+    individual
+    """
+    _inherited_slots: ClassVar[list[str]] = []
 
-        if self.exposure_medium is not None and not isinstance(self.exposure_medium, ExposureMediumEnum):
-            self.exposure_medium = ExposureMediumEnum(self.exposure_medium)
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["DietEntity"]
+    class_class_curie: ClassVar[str] = "exposome_schema:DietEntity"
+    class_name: ClassVar[str] = "DietEntity"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.DietEntity
+
+    id: Union[str, DietEntityId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DietEntityId):
+            self.id = DietEntityId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -417,7 +529,7 @@ class BiologicalResponse(NamedThing):
     id: Union[str, BiologicalResponseId] = None
 
 @dataclass(repr=False)
-class HealthOutcome(NamedThing):
+class HealthOutcome(BiologicalResponse):
     """
     A health-related outcome including phenotypes and diseases
     """
@@ -473,14 +585,103 @@ class Association(NamedThing):
     id: Union[str, AssociationId] = None
 
 @dataclass(repr=False)
-class ChemicalExposure(ExposureEvent):
+class Exposure(NamedThing):
+    """
+    External, non-genetic, and internal stimuli, that can be chemical, physical, biological, and psychosocial in
+    nature, that an individual interacts with
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXO["0000002"]
+    class_class_curie: ClassVar[str] = "ExO:0000002"
+    class_name: ClassVar[str] = "Exposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.Exposure
+
+    id: Union[str, ExposureId] = None
+    exposure_route: Optional[Union[str, "ExposureRouteEnum"]] = None
+    exposure_duration: Optional[str] = None
+    exposure_frequency: Optional[Union[str, "ExposureFrequencyEnum"]] = None
+    exposure_concentration: Optional[float] = None
+    exposure_medium: Optional[Union[str, "ExposureMediumEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.exposure_route is not None and not isinstance(self.exposure_route, ExposureRouteEnum):
+            self.exposure_route = ExposureRouteEnum(self.exposure_route)
+
+        if self.exposure_duration is not None and not isinstance(self.exposure_duration, str):
+            self.exposure_duration = str(self.exposure_duration)
+
+        if self.exposure_frequency is not None and not isinstance(self.exposure_frequency, ExposureFrequencyEnum):
+            self.exposure_frequency = ExposureFrequencyEnum(self.exposure_frequency)
+
+        if self.exposure_concentration is not None and not isinstance(self.exposure_concentration, float):
+            self.exposure_concentration = float(self.exposure_concentration)
+
+        if self.exposure_medium is not None and not isinstance(self.exposure_medium, ExposureMediumEnum):
+            self.exposure_medium = ExposureMediumEnum(self.exposure_medium)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ActiveExposure(Exposure):
+    """
+    Direct, intentional contact with a stimulus
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ActiveExposure"]
+    class_class_curie: ClassVar[str] = "exposome_schema:ActiveExposure"
+    class_name: ClassVar[str] = "ActiveExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ActiveExposure
+
+    id: Union[str, ActiveExposureId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ActiveExposureId):
+            self.id = ActiveExposureId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PassiveExposure(Exposure):
+    """
+    Indirect, unintentional, or incidental contact with a stimulus
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["PassiveExposure"]
+    class_class_curie: ClassVar[str] = "exposome_schema:PassiveExposure"
+    class_name: ClassVar[str] = "PassiveExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.PassiveExposure
+
+    id: Union[str, PassiveExposureId] = None
+    environmental_context: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PassiveExposureId):
+            self.id = PassiveExposureId(self.id)
+
+        if self.environmental_context is not None and not isinstance(self.environmental_context, str):
+            self.environmental_context = str(self.environmental_context)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChemicalExposure(Exposure):
     """
     Exposure to a chemical substance
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ECTO["0000006"]
-    class_class_curie: ClassVar[str] = "ECTO:0000006"
+    class_class_uri: ClassVar[URIRef] = ECTO["0000231"]
+    class_class_curie: ClassVar[str] = "ECTO:0000231"
     class_name: ClassVar[str] = "ChemicalExposure"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ChemicalExposure
 
@@ -496,7 +697,7 @@ class ChemicalExposure(ExposureEvent):
 
 
 @dataclass(repr=False)
-class DietaryExposure(ExposureEvent):
+class DietaryExposure(Exposure):
     """
     Exposure through dietary consumption
     """
@@ -527,41 +728,14 @@ class DietaryExposure(ExposureEvent):
 
 
 @dataclass(repr=False)
-class EnvironmentalExposure(ExposureEvent):
-    """
-    Exposure to environmental factors
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ECTO["0000001"]
-    class_class_curie: ClassVar[str] = "ECTO:0000001"
-    class_name: ClassVar[str] = "EnvironmentalExposure"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.EnvironmentalExposure
-
-    id: Union[str, EnvironmentalExposureId] = None
-    environmental_context: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, EnvironmentalExposureId):
-            self.id = EnvironmentalExposureId(self.id)
-
-        if self.environmental_context is not None and not isinstance(self.environmental_context, str):
-            self.environmental_context = str(self.environmental_context)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class OccupationalExposure(ExposureEvent):
+class OccupationalExposure(Exposure):
     """
     Exposure in an occupational setting
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ECTO["0000002"]
-    class_class_curie: ClassVar[str] = "ECTO:0000002"
+    class_class_uri: ClassVar[URIRef] = ECTO["0001591"]
+    class_class_curie: ClassVar[str] = "ECTO:0001591"
     class_name: ClassVar[str] = "OccupationalExposure"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.OccupationalExposure
 
@@ -585,21 +759,123 @@ class OccupationalExposure(ExposureEvent):
 
 
 @dataclass(repr=False)
+class ExperimentalExposure(Exposure):
+    """
+    Exposure to a treatment in an empirical experimental setting
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = XCO["0000000"]
+    class_class_curie: ClassVar[str] = "XCO:0000000"
+    class_name: ClassVar[str] = "ExperimentalExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExperimentalExposure
+
+    id: Union[str, ExperimentalExposureId] = None
+    treatment: Optional[str] = None
+    experimental_subject: Optional[str] = None
+    experimental_result: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ExperimentalExposureId):
+            self.id = ExperimentalExposureId(self.id)
+
+        if self.treatment is not None and not isinstance(self.treatment, str):
+            self.treatment = str(self.treatment)
+
+        if self.experimental_subject is not None and not isinstance(self.experimental_subject, str):
+            self.experimental_subject = str(self.experimental_subject)
+
+        if self.experimental_result is not None and not isinstance(self.experimental_result, str):
+            self.experimental_result = str(self.experimental_result)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PrenatalExposure(Exposure):
+    """
+    Exposure of a mammalian embryo or fetus via the mother
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["PrenatalExposure"]
+    class_class_curie: ClassVar[str] = "exposome_schema:PrenatalExposure"
+    class_name: ClassVar[str] = "PrenatalExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.PrenatalExposure
+
+    id: Union[str, PrenatalExposureId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PrenatalExposureId):
+            self.id = PrenatalExposureId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BehavioralExposure(Exposure):
+    """
+    Exposure wherein the receiver engages in a behavior that mediates an exposure  or leads to a health outcome
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["BehavioralExposure"]
+    class_class_curie: ClassVar[str] = "exposome_schema:BehavioralExposure"
+    class_name: ClassVar[str] = "BehavioralExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.BehavioralExposure
+
+    id: Union[str, BehavioralExposureId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BehavioralExposureId):
+            self.id = BehavioralExposureId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SesExposure(Exposure):
+    """
+    Exposure to stimulus related to socioeconomic factors
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["SesExposure"]
+    class_class_curie: ClassVar[str] = "exposome_schema:SesExposure"
+    class_name: ClassVar[str] = "SesExposure"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.SesExposure
+
+    id: Union[str, SesExposureId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SesExposureId):
+            self.id = SesExposureId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Phenotype(HealthOutcome):
     """
     An observable characteristic or trait
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = HP["0000118"]
-    class_class_curie: ClassVar[str] = "HP:0000118"
+    class_class_uri: ClassVar[URIRef] = UPHENO["0001001"]
+    class_class_curie: ClassVar[str] = "UPHENO:0001001"
     class_name: ClassVar[str] = "Phenotype"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.Phenotype
 
     id: Union[str, PhenotypeId] = None
-    hp_id: Optional[Union[str, URIorCURIE]] = None
     upheno_id: Optional[Union[str, URIorCURIE]] = None
-    phenotype_category: Optional[str] = None
     severity: Optional[str] = None
     onset_age: Optional[str] = None
 
@@ -609,14 +885,8 @@ class Phenotype(HealthOutcome):
         if not isinstance(self.id, PhenotypeId):
             self.id = PhenotypeId(self.id)
 
-        if self.hp_id is not None and not isinstance(self.hp_id, URIorCURIE):
-            self.hp_id = URIorCURIE(self.hp_id)
-
         if self.upheno_id is not None and not isinstance(self.upheno_id, URIorCURIE):
             self.upheno_id = URIorCURIE(self.upheno_id)
-
-        if self.phenotype_category is not None and not isinstance(self.phenotype_category, str):
-            self.phenotype_category = str(self.phenotype_category)
 
         if self.severity is not None and not isinstance(self.severity, str):
             self.severity = str(self.severity)
@@ -641,7 +911,6 @@ class Disease(HealthOutcome):
 
     id: Union[str, DiseaseId] = None
     mondo_id: Optional[Union[str, URIorCURIE]] = None
-    disease_category: Optional[str] = None
     affected_anatomy: Optional[Union[str, AnatomicalEntityId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -652,9 +921,6 @@ class Disease(HealthOutcome):
 
         if self.mondo_id is not None and not isinstance(self.mondo_id, URIorCURIE):
             self.mondo_id = URIorCURIE(self.mondo_id)
-
-        if self.disease_category is not None and not isinstance(self.disease_category, str):
-            self.disease_category = str(self.disease_category)
 
         if self.affected_anatomy is not None and not isinstance(self.affected_anatomy, AnatomicalEntityId):
             self.affected_anatomy = AnatomicalEntityId(self.affected_anatomy)
@@ -744,6 +1010,33 @@ class ZebrafishPhenotype(Phenotype):
 
 
 @dataclass(repr=False)
+class HumanPhenotype(Phenotype):
+    """
+    A phenotype observed in humans
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HP["0000001"]
+    class_class_curie: ClassVar[str] = "HP:0000001"
+    class_name: ClassVar[str] = "HumanPhenotype"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.HumanPhenotype
+
+    id: Union[str, HumanPhenotypeId] = None
+    hp_id: Optional[Union[str, URIorCURIE]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HumanPhenotypeId):
+            self.id = HumanPhenotypeId(self.id)
+
+        if self.hp_id is not None and not isinstance(self.hp_id, URIorCURIE):
+            self.hp_id = URIorCURIE(self.hp_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class AdverseOutcomePathway(NamedThing):
     """
     A sequence of causally linked events at different levels of biological organization that lead from exposure to
@@ -801,8 +1094,8 @@ class MolecularInitiatingEvent(BiologicalResponse):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ECTO["3000000"]
-    class_class_curie: ClassVar[str] = "ECTO:3000000"
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["MolecularInitiatingEvent"]
+    class_class_curie: ClassVar[str] = "exposome_schema:MolecularInitiatingEvent"
     class_name: ClassVar[str] = "MolecularInitiatingEvent"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.MolecularInitiatingEvent
 
@@ -810,7 +1103,7 @@ class MolecularInitiatingEvent(BiologicalResponse):
     biological_process: Optional[str] = None
     biological_object: Optional[str] = None
     biological_action: Optional[str] = None
-    occurs_in_cell_type: Optional[Union[str, CellTypeId]] = None
+    occurs_in_cell_type: Optional[Union[str, CellId]] = None
     occurs_in_anatomy: Optional[Union[str, AnatomicalEntityId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -828,8 +1121,8 @@ class MolecularInitiatingEvent(BiologicalResponse):
         if self.biological_action is not None and not isinstance(self.biological_action, str):
             self.biological_action = str(self.biological_action)
 
-        if self.occurs_in_cell_type is not None and not isinstance(self.occurs_in_cell_type, CellTypeId):
-            self.occurs_in_cell_type = CellTypeId(self.occurs_in_cell_type)
+        if self.occurs_in_cell_type is not None and not isinstance(self.occurs_in_cell_type, CellId):
+            self.occurs_in_cell_type = CellId(self.occurs_in_cell_type)
 
         if self.occurs_in_anatomy is not None and not isinstance(self.occurs_in_anatomy, AnatomicalEntityId):
             self.occurs_in_anatomy = AnatomicalEntityId(self.occurs_in_anatomy)
@@ -844,8 +1137,8 @@ class KeyEvent(BiologicalResponse):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ECTO["1000000"]
-    class_class_curie: ClassVar[str] = "ECTO:1000000"
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["KeyEvent"]
+    class_class_curie: ClassVar[str] = "exposome_schema:KeyEvent"
     class_name: ClassVar[str] = "KeyEvent"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.KeyEvent
 
@@ -854,7 +1147,7 @@ class KeyEvent(BiologicalResponse):
     biological_object: Optional[str] = None
     biological_action: Optional[str] = None
     level_of_biological_organization: Optional[Union[str, "BiologicalOrganizationLevelEnum"]] = None
-    occurs_in_cell_type: Optional[Union[str, CellTypeId]] = None
+    occurs_in_cell_type: Optional[Union[str, CellId]] = None
     occurs_in_anatomy: Optional[Union[str, AnatomicalEntityId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -875,8 +1168,8 @@ class KeyEvent(BiologicalResponse):
         if self.level_of_biological_organization is not None and not isinstance(self.level_of_biological_organization, BiologicalOrganizationLevelEnum):
             self.level_of_biological_organization = BiologicalOrganizationLevelEnum(self.level_of_biological_organization)
 
-        if self.occurs_in_cell_type is not None and not isinstance(self.occurs_in_cell_type, CellTypeId):
-            self.occurs_in_cell_type = CellTypeId(self.occurs_in_cell_type)
+        if self.occurs_in_cell_type is not None and not isinstance(self.occurs_in_cell_type, CellId):
+            self.occurs_in_cell_type = CellId(self.occurs_in_cell_type)
 
         if self.occurs_in_anatomy is not None and not isinstance(self.occurs_in_anatomy, AnatomicalEntityId):
             self.occurs_in_anatomy = AnatomicalEntityId(self.occurs_in_anatomy)
@@ -1312,7 +1605,7 @@ class Protein(BiologicalEntity):
 
 
 @dataclass(repr=False)
-class CellType(BiologicalEntity):
+class Cell(BiologicalEntity):
     """
     A type of cell
     """
@@ -1320,17 +1613,17 @@ class CellType(BiologicalEntity):
 
     class_class_uri: ClassVar[URIRef] = CL["0000000"]
     class_class_curie: ClassVar[str] = "CL:0000000"
-    class_name: ClassVar[str] = "CellType"
-    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.CellType
+    class_name: ClassVar[str] = "Cell"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.Cell
 
-    id: Union[str, CellTypeId] = None
+    id: Union[str, CellId] = None
     cl_id: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, CellTypeId):
-            self.id = CellTypeId(self.id)
+        if not isinstance(self.id, CellId):
+            self.id = CellId(self.id)
 
         if self.cl_id is not None and not isinstance(self.cl_id, URIorCURIE):
             self.cl_id = URIorCURIE(self.cl_id)
@@ -1341,7 +1634,7 @@ class CellType(BiologicalEntity):
 @dataclass(repr=False)
 class AnatomicalEntity(BiologicalEntity):
     """
-    An anatomical structure or system
+    An anatomical structure or system, part of an organism, made of many cells
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1380,6 +1673,7 @@ class Organism(BiologicalEntity):
     id: Union[str, OrganismId] = None
     species: Optional[str] = None
     taxon_id: Optional[str] = None
+    lifestage: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1393,11 +1687,41 @@ class Organism(BiologicalEntity):
         if self.taxon_id is not None and not isinstance(self.taxon_id, str):
             self.taxon_id = str(self.taxon_id)
 
+        if self.lifestage is not None and not isinstance(self.lifestage, str):
+            self.lifestage = str(self.lifestage)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ExposureToPhenotypeAssociation(Association):
+class Population(BiologicalEntity):
+    """
+    A group of organisms of the same species
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["Population"]
+    class_class_curie: ClassVar[str] = "exposome_schema:Population"
+    class_name: ClassVar[str] = "Population"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.Population
+
+    id: Union[str, PopulationId] = None
+    species: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PopulationId):
+            self.id = PopulationId(self.id)
+
+        if self.species is not None and not isinstance(self.species, str):
+            self.species = str(self.species)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ExposureToPhenotypeAssociation(YAMLRoot):
     """
     An association between an exposure and a phenotype
     """
@@ -1408,23 +1732,21 @@ class ExposureToPhenotypeAssociation(Association):
     class_name: ClassVar[str] = "ExposureToPhenotypeAssociation"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExposureToPhenotypeAssociation
 
-    id: Union[str, ExposureToPhenotypeAssociationId] = None
-    exposure: Optional[Union[str, ExposureEventId]] = None
+    exposure: Optional[Union[dict, ExposureEvent]] = None
     phenotype: Optional[Union[str, PhenotypeId]] = None
+    receiver: Optional[Union[str, BiologicalEntityId]] = None
     association_type: Optional[str] = None
     evidence: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ExposureToPhenotypeAssociationId):
-            self.id = ExposureToPhenotypeAssociationId(self.id)
-
-        if self.exposure is not None and not isinstance(self.exposure, ExposureEventId):
-            self.exposure = ExposureEventId(self.exposure)
+        if self.exposure is not None and not isinstance(self.exposure, ExposureEvent):
+            self.exposure = ExposureEvent(**as_dict(self.exposure))
 
         if self.phenotype is not None and not isinstance(self.phenotype, PhenotypeId):
             self.phenotype = PhenotypeId(self.phenotype)
+
+        if self.receiver is not None and not isinstance(self.receiver, BiologicalEntityId):
+            self.receiver = BiologicalEntityId(self.receiver)
 
         if self.association_type is not None and not isinstance(self.association_type, str):
             self.association_type = str(self.association_type)
@@ -1436,7 +1758,44 @@ class ExposureToPhenotypeAssociation(Association):
 
 
 @dataclass(repr=False)
-class ChemicalToGeneAssociation(Association):
+class ExposureToDiseaseAssociation(YAMLRoot):
+    """
+    An association between an exposure and a disease
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA["ExposureToDiseaseAssociation"]
+    class_class_curie: ClassVar[str] = "exposome_schema:ExposureToDiseaseAssociation"
+    class_name: ClassVar[str] = "ExposureToDiseaseAssociation"
+    class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExposureToDiseaseAssociation
+
+    exposure: Optional[Union[dict, ExposureEvent]] = None
+    disease: Optional[Union[str, DiseaseId]] = None
+    receiver: Optional[Union[str, BiologicalEntityId]] = None
+    evidence: Optional[str] = None
+    association_type: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.exposure is not None and not isinstance(self.exposure, ExposureEvent):
+            self.exposure = ExposureEvent(**as_dict(self.exposure))
+
+        if self.disease is not None and not isinstance(self.disease, DiseaseId):
+            self.disease = DiseaseId(self.disease)
+
+        if self.receiver is not None and not isinstance(self.receiver, BiologicalEntityId):
+            self.receiver = BiologicalEntityId(self.receiver)
+
+        if self.evidence is not None and not isinstance(self.evidence, str):
+            self.evidence = str(self.evidence)
+
+        if self.association_type is not None and not isinstance(self.association_type, str):
+            self.association_type = str(self.association_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChemicalToGeneAssociation(YAMLRoot):
     """
     An association between a chemical and a gene
     """
@@ -1447,22 +1806,20 @@ class ChemicalToGeneAssociation(Association):
     class_name: ClassVar[str] = "ChemicalToGeneAssociation"
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ChemicalToGeneAssociation
 
-    id: Union[str, ChemicalToGeneAssociationId] = None
     chemical: Optional[Union[str, ChemicalEntityId]] = None
     gene: Optional[Union[str, GeneId]] = None
+    receiver: Optional[Union[str, BiologicalEntityId]] = None
     interaction_type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChemicalToGeneAssociationId):
-            self.id = ChemicalToGeneAssociationId(self.id)
-
         if self.chemical is not None and not isinstance(self.chemical, ChemicalEntityId):
             self.chemical = ChemicalEntityId(self.chemical)
 
         if self.gene is not None and not isinstance(self.gene, GeneId):
             self.gene = GeneId(self.gene)
+
+        if self.receiver is not None and not isinstance(self.receiver, BiologicalEntityId):
+            self.receiver = BiologicalEntityId(self.receiver)
 
         if self.interaction_type is not None and not isinstance(self.interaction_type, str):
             self.interaction_type = str(self.interaction_type)
@@ -1557,7 +1914,7 @@ class ExposomeDatabase(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = EXPOSOME_SCHEMA.ExposomeDatabase
 
     chemical_entities: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
-    exposures: Optional[Union[dict[Union[str, ExposureEventId], Union[dict, ExposureEvent]], list[Union[dict, ExposureEvent]]]] = empty_dict()
+    exposures: Optional[Union[Union[dict, ExposureEvent], list[Union[dict, ExposureEvent]]]] = empty_list()
     health_outcomes: Optional[Union[dict[Union[str, HealthOutcomeId], Union[dict, HealthOutcome]], list[Union[dict, HealthOutcome]]]] = empty_dict()
     adverse_outcome_pathways: Optional[Union[dict[Union[str, AdverseOutcomePathwayId], Union[dict, AdverseOutcomePathway]], list[Union[dict, AdverseOutcomePathway]]]] = empty_dict()
     studies: Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]] = empty_dict()
@@ -1571,7 +1928,9 @@ class ExposomeDatabase(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         self._normalize_inlined_as_list(slot_name="chemical_entities", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="exposures", slot_type=ExposureEvent, key_name="id", keyed=True)
+        if not isinstance(self.exposures, list):
+            self.exposures = [self.exposures] if self.exposures is not None else []
+        self.exposures = [v if isinstance(v, ExposureEvent) else ExposureEvent(**as_dict(v)) for v in self.exposures]
 
         self._normalize_inlined_as_list(slot_name="health_outcomes", slot_type=HealthOutcome, key_name="id", keyed=True)
 
@@ -1597,27 +1956,55 @@ class ExposomeDatabase(YAMLRoot):
 
 
 # Enumerations
+class ExposureFrequencyEnum(EnumDefinitionImpl):
+    """
+    Frequency of exposure
+    """
+    acute = PermissibleValue(
+        text="acute",
+        description="Single or short-term exposure")
+    subacute = PermissibleValue(
+        text="subacute",
+        description="Repeated exposure over a short period")
+    subchronic = PermissibleValue(
+        text="subchronic",
+        description="Repeated exposure over an intermediate period")
+    chronic = PermissibleValue(
+        text="chronic",
+        description="Long-term or repeated exposure over a long period")
+    intermittent = PermissibleValue(
+        text="intermittent",
+        description="Exposure occurring at irregular intervals")
+    unknown = PermissibleValue(
+        text="unknown",
+        description="Unknown frequency")
+
+    _defn = EnumDefinition(
+        name="ExposureFrequencyEnum",
+        description="Frequency of exposure",
+    )
+
 class ExposureRouteEnum(EnumDefinitionImpl):
     """
     Routes of exposure to chemicals or environmental factors
     """
-    Oral = PermissibleValue(
-        text="Oral",
+    oral = PermissibleValue(
+        text="oral",
         description="Oral ingestion",
         meaning=ECTO["0000895"])
-    Dermal = PermissibleValue(
-        text="Dermal",
+    dermal = PermissibleValue(
+        text="dermal",
         description="Dermal contact",
         meaning=ECTO["0000896"])
-    Inhalation = PermissibleValue(
-        text="Inhalation",
+    inhalation = PermissibleValue(
+        text="inhalation",
         description="Inhalation",
         meaning=ECTO["0000897"])
-    Injection = PermissibleValue(
-        text="Injection",
+    injection = PermissibleValue(
+        text="injection",
         description="Injection")
-    Unknown = PermissibleValue(
-        text="Unknown",
+    unknown = PermissibleValue(
+        text="unknown",
         description="Unknown route")
 
     _defn = EnumDefinition(
@@ -1629,30 +2016,30 @@ class ExposureMediumEnum(EnumDefinitionImpl):
     """
     Medium through which exposure occurs
     """
-    Air = PermissibleValue(
-        text="Air",
+    air = PermissibleValue(
+        text="air",
         description="Air",
         meaning=ENVO["00002005"])
-    Water = PermissibleValue(
-        text="Water",
+    water = PermissibleValue(
+        text="water",
         description="Water",
         meaning=ENVO["00002006"])
-    Food = PermissibleValue(
-        text="Food",
+    food = PermissibleValue(
+        text="food",
         description="Food",
         meaning=FOODON["00002403"])
-    Soil = PermissibleValue(
-        text="Soil",
+    soil = PermissibleValue(
+        text="soil",
         description="Soil",
         meaning=ENVO["00001998"])
-    Dust = PermissibleValue(
-        text="Dust",
+    dust = PermissibleValue(
+        text="dust",
         description="Dust")
-    ConsumerProduct = PermissibleValue(
-        text="ConsumerProduct",
+    consumer_product = PermissibleValue(
+        text="consumer_product",
         description="Consumer product")
-    Unknown = PermissibleValue(
-        text="Unknown",
+    unknown = PermissibleValue(
+        text="unknown",
         description="Unknown medium")
 
     _defn = EnumDefinition(
@@ -1664,28 +2051,28 @@ class BiologicalOrganizationLevelEnum(EnumDefinitionImpl):
     """
     Levels of biological organization
     """
-    Molecular = PermissibleValue(
-        text="Molecular",
+    molecular = PermissibleValue(
+        text="molecular",
         description="Molecular level",
         meaning=EFO["0001432"])
-    Cellular = PermissibleValue(
-        text="Cellular",
+    cellular = PermissibleValue(
+        text="cellular",
         description="Cellular level",
         meaning=CL["0000000"])
-    Tissue = PermissibleValue(
-        text="Tissue",
+    tissue = PermissibleValue(
+        text="tissue",
         description="Tissue level",
         meaning=UBERON["0000479"])
-    Organ = PermissibleValue(
-        text="Organ",
+    organ = PermissibleValue(
+        text="organ",
         description="Organ level",
         meaning=UBERON["0000062"])
-    Organism = PermissibleValue(
-        text="Organism",
+    organism = PermissibleValue(
+        text="organism",
         description="Organism level",
         meaning=UBERON["0000468"])
-    Population = PermissibleValue(
-        text="Population",
+    population = PermissibleValue(
+        text="population",
         description="Population level")
 
     _defn = EnumDefinition(
@@ -1697,31 +2084,31 @@ class StudyTypeEnum(EnumDefinitionImpl):
     """
     Types of research studies
     """
-    Cohort = PermissibleValue(
-        text="Cohort",
+    cohort = PermissibleValue(
+        text="cohort",
         description="Cohort study",
         meaning=EFO["0001444"])
-    CrossSectional = PermissibleValue(
-        text="CrossSectional",
+    cross_sectional = PermissibleValue(
+        text="cross_sectional",
         description="Cross-sectional study",
         meaning=EFO["0001745"])
-    CaseControl = PermissibleValue(
-        text="CaseControl",
+    case_control = PermissibleValue(
+        text="case_control",
         description="Case-control study",
         meaning=EFO["0001427"])
-    RandomizedControlledTrial = PermissibleValue(
-        text="RandomizedControlledTrial",
+    randomized_controlled_trial = PermissibleValue(
+        text="randomized_controlled_trial",
         description="Randomized controlled trial",
         meaning=EFO["0001427"])
-    Survey = PermissibleValue(
-        text="Survey",
+    survey = PermissibleValue(
+        text="survey",
         description="Survey")
-    Gwas = PermissibleValue(
-        text="Gwas",
+    gwas = PermissibleValue(
+        text="gwas",
         description="Genome-wide association study",
         meaning=EFO["0000508"])
-    Other = PermissibleValue(
-        text="Other",
+    other = PermissibleValue(
+        text="other",
         description="Other study type")
 
     _defn = EnumDefinition(
@@ -1733,47 +2120,47 @@ class DataSourceEnum(EnumDefinitionImpl):
     """
     Data sources and repositories
     """
-    Nhanes = PermissibleValue(
-        text="Nhanes",
+    nhanes = PermissibleValue(
+        text="nhanes",
         description="National Health and Nutrition Examination Survey")
-    Chear = PermissibleValue(
-        text="Chear",
+    chear = PermissibleValue(
+        text="chear",
         description="Children's Health Exposure Analysis Resource")
-    Hhear = PermissibleValue(
-        text="Hhear",
+    hhear = PermissibleValue(
+        text="hhear",
         description="Human Health Exposure Analysis Resource")
-    AopWiki = PermissibleValue(
-        text="AopWiki",
+    aop_wiki = PermissibleValue(
+        text="aop_wiki",
         description="AOP Wiki")
-    Ctd = PermissibleValue(
-        text="Ctd",
+    ctd = PermissibleValue(
+        text="ctd",
         description="Comparative Toxicogenomics Database")
-    ToxCast = PermissibleValue(
-        text="ToxCast",
+    tox_cast = PermissibleValue(
+        text="tox_cast",
         description="ToxCast")
-    Tox21 = PermissibleValue(
-        text="Tox21",
+    tox21 = PermissibleValue(
+        text="tox21",
         description="Tox21")
-    ChemBl = PermissibleValue(
-        text="ChemBl",
+    chem_bl = PermissibleValue(
+        text="chem_bl",
         description="ChEMBL")
-    CompTox = PermissibleValue(
-        text="CompTox",
+    comp_tox = PermissibleValue(
+        text="comp_tox",
         description="CompTox Dashboard")
-    GwasCatalog = PermissibleValue(
-        text="GwasCatalog",
+    gwas_catalog = PermissibleValue(
+        text="gwas_catalog",
         description="GWAS Catalog")
-    GeneExpressionAtlas = PermissibleValue(
-        text="GeneExpressionAtlas",
+    gene_expression_atlas = PermissibleValue(
+        text="gene_expression_atlas",
         description="Gene Expression Atlas")
-    UsdaPesticide = PermissibleValue(
-        text="UsdaPesticide",
+    usda_pesticide = PermissibleValue(
+        text="usda_pesticide",
         description="USDA Pesticide Data Program")
-    Wweia = PermissibleValue(
-        text="Wweia",
+    wweia = PermissibleValue(
+        text="wweia",
         description="What We Eat In America")
-    Other = PermissibleValue(
-        text="Other",
+    other = PermissibleValue(
+        text="other",
         description="Other data source")
 
     _defn = EnumDefinition(
@@ -1785,16 +2172,16 @@ class SexEnum(EnumDefinitionImpl):
     """
     Biological sex
     """
-    Male = PermissibleValue(
-        text="Male",
+    male = PermissibleValue(
+        text="male",
         description="Male",
         meaning=PATO["0000384"])
-    Female = PermissibleValue(
-        text="Female",
+    female = PermissibleValue(
+        text="female",
         description="Female",
         meaning=PATO["0000383"])
-    Unknown = PermissibleValue(
-        text="Unknown",
+    unknown = PermissibleValue(
+        text="unknown",
         description="Unknown")
 
     _defn = EnumDefinition(
@@ -1806,32 +2193,32 @@ class SampleTypeEnum(EnumDefinitionImpl):
     """
     Types of biological samples
     """
-    Blood = PermissibleValue(
-        text="Blood",
+    blood = PermissibleValue(
+        text="blood",
         description="Blood sample")
-    Urine = PermissibleValue(
-        text="Urine",
+    urine = PermissibleValue(
+        text="urine",
         description="Urine sample")
-    Serum = PermissibleValue(
-        text="Serum",
+    serum = PermissibleValue(
+        text="serum",
         description="Serum sample")
-    Plasma = PermissibleValue(
-        text="Plasma",
+    plasma = PermissibleValue(
+        text="plasma",
         description="Plasma sample")
-    Tissue = PermissibleValue(
-        text="Tissue",
+    tissue = PermissibleValue(
+        text="tissue",
         description="Tissue sample")
-    Saliva = PermissibleValue(
-        text="Saliva",
+    saliva = PermissibleValue(
+        text="saliva",
         description="Saliva sample")
-    Hair = PermissibleValue(
-        text="Hair",
+    hair = PermissibleValue(
+        text="hair",
         description="Hair sample")
-    Nail = PermissibleValue(
-        text="Nail",
+    nail = PermissibleValue(
+        text="nail",
         description="Nail sample")
-    Other = PermissibleValue(
-        text="Other",
+    other = PermissibleValue(
+        text="other",
         description="Other sample type")
 
     _defn = EnumDefinition(
@@ -1843,29 +2230,29 @@ class SummaryStatisticEnum(EnumDefinitionImpl):
     """
     Types of summary statistics
     """
-    Mean = PermissibleValue(
-        text="Mean",
+    mean = PermissibleValue(
+        text="mean",
         description="Arithmetic mean")
-    Median = PermissibleValue(
-        text="Median",
+    median = PermissibleValue(
+        text="median",
         description="Median")
-    Mode = PermissibleValue(
-        text="Mode",
+    mode = PermissibleValue(
+        text="mode",
         description="Mode")
-    Percentile = PermissibleValue(
-        text="Percentile",
+    percentile = PermissibleValue(
+        text="percentile",
         description="Percentile")
-    StandardDeviation = PermissibleValue(
-        text="StandardDeviation",
+    standard_deviation = PermissibleValue(
+        text="standard_deviation",
         description="Standard deviation")
-    Variance = PermissibleValue(
-        text="Variance",
+    variance = PermissibleValue(
+        text="variance",
         description="Variance")
-    Range = PermissibleValue(
-        text="Range",
+    range = PermissibleValue(
+        text="range",
         description="Range")
-    InterquartileRange = PermissibleValue(
-        text="InterquartileRange",
+    interquartile_range = PermissibleValue(
+        text="interquartile_range",
         description="Interquartile range")
 
     _defn = EnumDefinition(
@@ -1919,8 +2306,8 @@ slots.smiles = Slot(uri=EXPOSOME_SCHEMA.smiles, name="smiles", curie=EXPOSOME_SC
 slots.molecular_formula = Slot(uri=EXPOSOME_SCHEMA.molecular_formula, name="molecular_formula", curie=EXPOSOME_SCHEMA.curie('molecular_formula'),
                    model_uri=EXPOSOME_SCHEMA.molecular_formula, domain=None, range=Optional[str])
 
-slots.exposed_to_chemical = Slot(uri=CHEBI['24431'], name="exposed_to_chemical", curie=CHEBI.curie('24431'),
-                   model_uri=EXPOSOME_SCHEMA.exposed_to_chemical, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+slots.exposure_stimulus = Slot(uri=EXPOSOME_SCHEMA.exposure_stimulus, name="exposure_stimulus", curie=EXPOSOME_SCHEMA.curie('exposure_stimulus'),
+                   model_uri=EXPOSOME_SCHEMA.exposure_stimulus, domain=None, range=Union[str, StimulusEntityId])
 
 slots.exposure_route = Slot(uri=EXPOSOME_SCHEMA.exposure_route, name="exposure_route", curie=EXPOSOME_SCHEMA.curie('exposure_route'),
                    model_uri=EXPOSOME_SCHEMA.exposure_route, domain=None, range=Optional[Union[str, "ExposureRouteEnum"]])
@@ -1933,6 +2320,15 @@ slots.exposure_concentration = Slot(uri=EXPOSOME_SCHEMA.exposure_concentration, 
 
 slots.exposure_medium = Slot(uri=EXPOSOME_SCHEMA.exposure_medium, name="exposure_medium", curie=EXPOSOME_SCHEMA.curie('exposure_medium'),
                    model_uri=EXPOSOME_SCHEMA.exposure_medium, domain=None, range=Optional[Union[str, "ExposureMediumEnum"]])
+
+slots.exposure_frequency = Slot(uri=EXPOSOME_SCHEMA.exposure_frequency, name="exposure_frequency", curie=EXPOSOME_SCHEMA.curie('exposure_frequency'),
+                   model_uri=EXPOSOME_SCHEMA.exposure_frequency, domain=None, range=Optional[Union[str, "ExposureFrequencyEnum"]])
+
+slots.exposure_outcome = Slot(uri=EXPOSOME_SCHEMA.exposure_outcome, name="exposure_outcome", curie=EXPOSOME_SCHEMA.curie('exposure_outcome'),
+                   model_uri=EXPOSOME_SCHEMA.exposure_outcome, domain=None, range=Union[str, BiologicalResponseId])
+
+slots.exposure_receiver = Slot(uri=EXPOSOME_SCHEMA.exposure_receiver, name="exposure_receiver", curie=EXPOSOME_SCHEMA.curie('exposure_receiver'),
+                   model_uri=EXPOSOME_SCHEMA.exposure_receiver, domain=None, range=Union[str, BiologicalEntityId])
 
 slots.food_item = Slot(uri=EXPOSOME_SCHEMA.food_item, name="food_item", curie=EXPOSOME_SCHEMA.curie('food_item'),
                    model_uri=EXPOSOME_SCHEMA.food_item, domain=None, range=Optional[str])
@@ -1949,6 +2345,15 @@ slots.occupation = Slot(uri=EXPOSOME_SCHEMA.occupation, name="occupation", curie
 slots.workplace = Slot(uri=EXPOSOME_SCHEMA.workplace, name="workplace", curie=EXPOSOME_SCHEMA.curie('workplace'),
                    model_uri=EXPOSOME_SCHEMA.workplace, domain=None, range=Optional[str])
 
+slots.treatment = Slot(uri=EXPOSOME_SCHEMA.treatment, name="treatment", curie=EXPOSOME_SCHEMA.curie('treatment'),
+                   model_uri=EXPOSOME_SCHEMA.treatment, domain=None, range=Optional[str])
+
+slots.experimental_subject = Slot(uri=EXPOSOME_SCHEMA.experimental_subject, name="experimental_subject", curie=EXPOSOME_SCHEMA.curie('experimental_subject'),
+                   model_uri=EXPOSOME_SCHEMA.experimental_subject, domain=None, range=Optional[str])
+
+slots.experimental_result = Slot(uri=EXPOSOME_SCHEMA.experimental_result, name="experimental_result", curie=EXPOSOME_SCHEMA.curie('experimental_result'),
+                   model_uri=EXPOSOME_SCHEMA.experimental_result, domain=None, range=Optional[str])
+
 slots.hp_id = Slot(uri=EXPOSOME_SCHEMA.hp_id, name="hp_id", curie=EXPOSOME_SCHEMA.curie('hp_id'),
                    model_uri=EXPOSOME_SCHEMA.hp_id, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^HP:\d{7}$'))
@@ -1956,9 +2361,6 @@ slots.hp_id = Slot(uri=EXPOSOME_SCHEMA.hp_id, name="hp_id", curie=EXPOSOME_SCHEM
 slots.upheno_id = Slot(uri=EXPOSOME_SCHEMA.upheno_id, name="upheno_id", curie=EXPOSOME_SCHEMA.curie('upheno_id'),
                    model_uri=EXPOSOME_SCHEMA.upheno_id, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^UPHENO:\d+$'))
-
-slots.phenotype_category = Slot(uri=EXPOSOME_SCHEMA.phenotype_category, name="phenotype_category", curie=EXPOSOME_SCHEMA.curie('phenotype_category'),
-                   model_uri=EXPOSOME_SCHEMA.phenotype_category, domain=None, range=Optional[str])
 
 slots.severity = Slot(uri=EXPOSOME_SCHEMA.severity, name="severity", curie=EXPOSOME_SCHEMA.curie('severity'),
                    model_uri=EXPOSOME_SCHEMA.severity, domain=None, range=Optional[str])
@@ -1969,9 +2371,6 @@ slots.onset_age = Slot(uri=EXPOSOME_SCHEMA.onset_age, name="onset_age", curie=EX
 slots.mondo_id = Slot(uri=EXPOSOME_SCHEMA.mondo_id, name="mondo_id", curie=EXPOSOME_SCHEMA.curie('mondo_id'),
                    model_uri=EXPOSOME_SCHEMA.mondo_id, domain=None, range=Optional[Union[str, URIorCURIE]],
                    pattern=re.compile(r'^MONDO:\d{7}$'))
-
-slots.disease_category = Slot(uri=EXPOSOME_SCHEMA.disease_category, name="disease_category", curie=EXPOSOME_SCHEMA.curie('disease_category'),
-                   model_uri=EXPOSOME_SCHEMA.disease_category, domain=None, range=Optional[str])
 
 slots.affected_anatomy = Slot(uri=EXPOSOME_SCHEMA.affected_anatomy, name="affected_anatomy", curie=EXPOSOME_SCHEMA.curie('affected_anatomy'),
                    model_uri=EXPOSOME_SCHEMA.affected_anatomy, domain=None, range=Optional[Union[str, AnatomicalEntityId]])
@@ -2015,9 +2414,9 @@ slots.biological_action = Slot(uri=EXPOSOME_SCHEMA.biological_action, name="biol
                    model_uri=EXPOSOME_SCHEMA.biological_action, domain=None, range=Optional[str])
 
 slots.occurs_in_cell_type = Slot(uri=CL['0000000'], name="occurs_in_cell_type", curie=CL.curie('0000000'),
-                   model_uri=EXPOSOME_SCHEMA.occurs_in_cell_type, domain=None, range=Optional[Union[str, CellTypeId]])
+                   model_uri=EXPOSOME_SCHEMA.occurs_in_cell_type, domain=None, range=Optional[Union[str, CellId]])
 
-slots.occurs_in_anatomy = Slot(uri=UBERON['0001062'], name="occurs_in_anatomy", curie=UBERON.curie('0001062'),
+slots.occurs_in_anatomy = Slot(uri=EXPOSOME_SCHEMA.occurs_in_anatomy, name="occurs_in_anatomy", curie=EXPOSOME_SCHEMA.curie('occurs_in_anatomy'),
                    model_uri=EXPOSOME_SCHEMA.occurs_in_anatomy, domain=None, range=Optional[Union[str, AnatomicalEntityId]])
 
 slots.level_of_biological_organization = Slot(uri=EXPOSOME_SCHEMA.level_of_biological_organization, name="level_of_biological_organization", curie=EXPOSOME_SCHEMA.curie('level_of_biological_organization'),
@@ -2101,9 +2500,6 @@ slots.measurement_date = Slot(uri=EXPOSOME_SCHEMA.measurement_date, name="measur
 slots.sample_type = Slot(uri=EXPOSOME_SCHEMA.sample_type, name="sample_type", curie=EXPOSOME_SCHEMA.curie('sample_type'),
                    model_uri=EXPOSOME_SCHEMA.sample_type, domain=None, range=Optional[Union[str, "SampleTypeEnum"]])
 
-slots.source_database_record = Slot(uri=EXPOSOME_SCHEMA.source_database_record, name="source_database_record", curie=EXPOSOME_SCHEMA.curie('source_database_record'),
-                   model_uri=EXPOSOME_SCHEMA.source_database_record, domain=None, range=Optional[str])
-
 slots.biomarker_type = Slot(uri=EXPOSOME_SCHEMA.biomarker_type, name="biomarker_type", curie=EXPOSOME_SCHEMA.curie('biomarker_type'),
                    model_uri=EXPOSOME_SCHEMA.biomarker_type, domain=None, range=Optional[str])
 
@@ -2152,6 +2548,15 @@ slots.taxon_id = Slot(uri=EXPOSOME_SCHEMA.taxon_id, name="taxon_id", curie=EXPOS
 slots.source_database = Slot(uri=EXPOSOME_SCHEMA.source_database, name="source_database", curie=EXPOSOME_SCHEMA.curie('source_database'),
                    model_uri=EXPOSOME_SCHEMA.source_database, domain=None, range=Optional[str])
 
+slots.source_database_record = Slot(uri=EXPOSOME_SCHEMA.source_database_record, name="source_database_record", curie=EXPOSOME_SCHEMA.curie('source_database_record'),
+                   model_uri=EXPOSOME_SCHEMA.source_database_record, domain=None, range=Optional[str])
+
+slots.lifestage = Slot(uri=EXPOSOME_SCHEMA.lifestage, name="lifestage", curie=EXPOSOME_SCHEMA.curie('lifestage'),
+                   model_uri=EXPOSOME_SCHEMA.lifestage, domain=None, range=Optional[str])
+
+slots.receiver = Slot(uri=EXPOSOME_SCHEMA.receiver, name="receiver", curie=EXPOSOME_SCHEMA.curie('receiver'),
+                   model_uri=EXPOSOME_SCHEMA.receiver, domain=None, range=Optional[Union[str, BiologicalEntityId]])
+
 slots.record_url = Slot(uri=EXPOSOME_SCHEMA.record_url, name="record_url", curie=EXPOSOME_SCHEMA.curie('record_url'),
                    model_uri=EXPOSOME_SCHEMA.record_url, domain=None, range=Optional[Union[str, URI]])
 
@@ -2165,7 +2570,7 @@ slots.variable_name = Slot(uri=EXPOSOME_SCHEMA.variable_name, name="variable_nam
                    model_uri=EXPOSOME_SCHEMA.variable_name, domain=None, range=Optional[str])
 
 slots.exposure = Slot(uri=EXPOSOME_SCHEMA.exposure, name="exposure", curie=EXPOSOME_SCHEMA.curie('exposure'),
-                   model_uri=EXPOSOME_SCHEMA.exposure, domain=None, range=Optional[Union[str, ExposureEventId]])
+                   model_uri=EXPOSOME_SCHEMA.exposure, domain=None, range=Optional[Union[dict, ExposureEvent]])
 
 slots.chemical = Slot(uri=EXPOSOME_SCHEMA.chemical, name="chemical", curie=EXPOSOME_SCHEMA.curie('chemical'),
                    model_uri=EXPOSOME_SCHEMA.chemical, domain=None, range=Optional[Union[str, ChemicalEntityId]])
@@ -2195,7 +2600,7 @@ slots.effect_size = Slot(uri=EXPOSOME_SCHEMA.effect_size, name="effect_size", cu
                    model_uri=EXPOSOME_SCHEMA.effect_size, domain=None, range=Optional[float])
 
 slots.has_exposure = Slot(uri=ECTO['0000006'], name="has_exposure", curie=ECTO.curie('0000006'),
-                   model_uri=EXPOSOME_SCHEMA.has_exposure, domain=Participant, range=Optional[Union[Union[str, ExposureEventId], list[Union[str, ExposureEventId]]]])
+                   model_uri=EXPOSOME_SCHEMA.has_exposure, domain=Participant, range=Optional[Union[Union[dict, ExposureEvent], list[Union[dict, ExposureEvent]]]])
 
 slots.causes_phenotype = Slot(uri=BIOLINK.causes, name="causes_phenotype", curie=BIOLINK.curie('causes'),
                    model_uri=EXPOSOME_SCHEMA.causes_phenotype, domain=ExposureEvent, range=Optional[Union[Union[str, PhenotypeId], list[Union[str, PhenotypeId]]]])
@@ -2213,7 +2618,7 @@ slots.exposomeDatabase__chemical_entities = Slot(uri=EXPOSOME_SCHEMA.chemical_en
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__chemical_entities, domain=None, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]])
 
 slots.exposomeDatabase__exposures = Slot(uri=EXPOSOME_SCHEMA.exposures, name="exposomeDatabase__exposures", curie=EXPOSOME_SCHEMA.curie('exposures'),
-                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__exposures, domain=None, range=Optional[Union[dict[Union[str, ExposureEventId], Union[dict, ExposureEvent]], list[Union[dict, ExposureEvent]]]])
+                   model_uri=EXPOSOME_SCHEMA.exposomeDatabase__exposures, domain=None, range=Optional[Union[Union[dict, ExposureEvent], list[Union[dict, ExposureEvent]]]])
 
 slots.exposomeDatabase__health_outcomes = Slot(uri=EXPOSOME_SCHEMA.health_outcomes, name="exposomeDatabase__health_outcomes", curie=EXPOSOME_SCHEMA.curie('health_outcomes'),
                    model_uri=EXPOSOME_SCHEMA.exposomeDatabase__health_outcomes, domain=None, range=Optional[Union[dict[Union[str, HealthOutcomeId], Union[dict, HealthOutcome]], list[Union[dict, HealthOutcome]]]])

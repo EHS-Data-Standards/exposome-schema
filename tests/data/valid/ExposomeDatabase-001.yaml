@@ -7,13 +7,12 @@ chemical_entities:
     molecular_formula: C6H6
 
 exposures:
-  - id: exposome_schema:exp_001
-    name: Benzene inhalation exposure
-    exposure_route: Inhalation
-    exposure_medium: Air
+  - exposure_stimulus: CHEBI:16716
+    exposure_outcome: HP:0001945
+    exposure_receiver: NCBITaxon:9606
 
 studies:
   - id: NHANES:2017-2018
     name: NHANES 2017-2018
-    study_type: CrossSectional
-    data_source: Nhanes
+    study_type: cross_sectional
+    data_source: nhanes

@@ -155,27 +155,57 @@ linkml_meta = LinkMLMeta({'default_prefix': 'exposome_schema',
      'source_file': 'src/exposome_schema/schema/exposome_schema.yaml',
      'title': 'exposome-schema'} )
 
+class ExposureFrequencyEnum(str, Enum):
+    """
+    Frequency of exposure
+    """
+    acute = "acute"
+    """
+    Single or short-term exposure
+    """
+    subacute = "subacute"
+    """
+    Repeated exposure over a short period
+    """
+    subchronic = "subchronic"
+    """
+    Repeated exposure over an intermediate period
+    """
+    chronic = "chronic"
+    """
+    Long-term or repeated exposure over a long period
+    """
+    intermittent = "intermittent"
+    """
+    Exposure occurring at irregular intervals
+    """
+    unknown = "unknown"
+    """
+    Unknown frequency
+    """
+
+
 class ExposureRouteEnum(str, Enum):
     """
     Routes of exposure to chemicals or environmental factors
     """
-    Oral = "Oral"
+    oral = "oral"
     """
     Oral ingestion
     """
-    Dermal = "Dermal"
+    dermal = "dermal"
     """
     Dermal contact
     """
-    Inhalation = "Inhalation"
+    inhalation = "inhalation"
     """
     Inhalation
     """
-    Injection = "Injection"
+    injection = "injection"
     """
     Injection
     """
-    Unknown = "Unknown"
+    unknown = "unknown"
     """
     Unknown route
     """
@@ -185,31 +215,31 @@ class ExposureMediumEnum(str, Enum):
     """
     Medium through which exposure occurs
     """
-    Air = "Air"
+    air = "air"
     """
     Air
     """
-    Water = "Water"
+    water = "water"
     """
     Water
     """
-    Food = "Food"
+    food = "food"
     """
     Food
     """
-    Soil = "Soil"
+    soil = "soil"
     """
     Soil
     """
-    Dust = "Dust"
+    dust = "dust"
     """
     Dust
     """
-    ConsumerProduct = "ConsumerProduct"
+    consumer_product = "consumer_product"
     """
     Consumer product
     """
-    Unknown = "Unknown"
+    unknown = "unknown"
     """
     Unknown medium
     """
@@ -219,27 +249,27 @@ class BiologicalOrganizationLevelEnum(str, Enum):
     """
     Levels of biological organization
     """
-    Molecular = "Molecular"
+    molecular = "molecular"
     """
     Molecular level
     """
-    Cellular = "Cellular"
+    cellular = "cellular"
     """
     Cellular level
     """
-    Tissue = "Tissue"
+    tissue = "tissue"
     """
     Tissue level
     """
-    Organ = "Organ"
+    organ = "organ"
     """
     Organ level
     """
-    Organism = "Organism"
+    organism = "organism"
     """
     Organism level
     """
-    Population = "Population"
+    population = "population"
     """
     Population level
     """
@@ -249,31 +279,31 @@ class StudyTypeEnum(str, Enum):
     """
     Types of research studies
     """
-    Cohort = "Cohort"
+    cohort = "cohort"
     """
     Cohort study
     """
-    CrossSectional = "CrossSectional"
+    cross_sectional = "cross_sectional"
     """
     Cross-sectional study
     """
-    CaseControl = "CaseControl"
+    case_control = "case_control"
     """
     Case-control study
     """
-    RandomizedControlledTrial = "RandomizedControlledTrial"
+    randomized_controlled_trial = "randomized_controlled_trial"
     """
     Randomized controlled trial
     """
-    Survey = "Survey"
+    survey = "survey"
     """
     Survey
     """
-    Gwas = "Gwas"
+    gwas = "gwas"
     """
     Genome-wide association study
     """
-    Other = "Other"
+    other = "other"
     """
     Other study type
     """
@@ -283,59 +313,59 @@ class DataSourceEnum(str, Enum):
     """
     Data sources and repositories
     """
-    Nhanes = "Nhanes"
+    nhanes = "nhanes"
     """
     National Health and Nutrition Examination Survey
     """
-    Chear = "Chear"
+    chear = "chear"
     """
     Children's Health Exposure Analysis Resource
     """
-    Hhear = "Hhear"
+    hhear = "hhear"
     """
     Human Health Exposure Analysis Resource
     """
-    AopWiki = "AopWiki"
+    aop_wiki = "aop_wiki"
     """
     AOP Wiki
     """
-    Ctd = "Ctd"
+    ctd = "ctd"
     """
     Comparative Toxicogenomics Database
     """
-    ToxCast = "ToxCast"
+    tox_cast = "tox_cast"
     """
     ToxCast
     """
-    Tox21 = "Tox21"
+    tox21 = "tox21"
     """
     Tox21
     """
-    ChemBl = "ChemBl"
+    chem_bl = "chem_bl"
     """
     ChEMBL
     """
-    CompTox = "CompTox"
+    comp_tox = "comp_tox"
     """
     CompTox Dashboard
     """
-    GwasCatalog = "GwasCatalog"
+    gwas_catalog = "gwas_catalog"
     """
     GWAS Catalog
     """
-    GeneExpressionAtlas = "GeneExpressionAtlas"
+    gene_expression_atlas = "gene_expression_atlas"
     """
     Gene Expression Atlas
     """
-    UsdaPesticide = "UsdaPesticide"
+    usda_pesticide = "usda_pesticide"
     """
     USDA Pesticide Data Program
     """
-    Wweia = "Wweia"
+    wweia = "wweia"
     """
     What We Eat In America
     """
-    Other = "Other"
+    other = "other"
     """
     Other data source
     """
@@ -345,15 +375,15 @@ class SexEnum(str, Enum):
     """
     Biological sex
     """
-    Male = "Male"
+    male = "male"
     """
     Male
     """
-    Female = "Female"
+    female = "female"
     """
     Female
     """
-    Unknown = "Unknown"
+    unknown = "unknown"
     """
     Unknown
     """
@@ -363,39 +393,39 @@ class SampleTypeEnum(str, Enum):
     """
     Types of biological samples
     """
-    Blood = "Blood"
+    blood = "blood"
     """
     Blood sample
     """
-    Urine = "Urine"
+    urine = "urine"
     """
     Urine sample
     """
-    Serum = "Serum"
+    serum = "serum"
     """
     Serum sample
     """
-    Plasma = "Plasma"
+    plasma = "plasma"
     """
     Plasma sample
     """
-    Tissue = "Tissue"
+    tissue = "tissue"
     """
     Tissue sample
     """
-    Saliva = "Saliva"
+    saliva = "saliva"
     """
     Saliva sample
     """
-    Hair = "Hair"
+    hair = "hair"
     """
     Hair sample
     """
-    Nail = "Nail"
+    nail = "nail"
     """
     Nail sample
     """
-    Other = "Other"
+    other = "other"
     """
     Other sample type
     """
@@ -405,39 +435,52 @@ class SummaryStatisticEnum(str, Enum):
     """
     Types of summary statistics
     """
-    Mean = "Mean"
+    mean = "mean"
     """
     Arithmetic mean
     """
-    Median = "Median"
+    median = "median"
     """
     Median
     """
-    Mode = "Mode"
+    mode = "mode"
     """
     Mode
     """
-    Percentile = "Percentile"
+    percentile = "percentile"
     """
     Percentile
     """
-    StandardDeviation = "StandardDeviation"
+    standard_deviation = "standard_deviation"
     """
     Standard deviation
     """
-    Variance = "Variance"
+    variance = "variance"
     """
     Variance
     """
-    Range = "Range"
+    range = "range"
     """
     Range
     """
-    InterquartileRange = "InterquartileRange"
+    interquartile_range = "interquartile_range"
     """
     Interquartile range
     """
 
+
+
+class ExposureEvent(ConfiguredBaseModel):
+    """
+    An event in which a BiologicalEntity is exposed to a StimulusEntity and results in a BiologicalResponse
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'must_not_have_id_slot': {'tag': 'must_not_have_id_slot',
+                                                   'value': True}},
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_stimulus: str = Field(default=..., description="""The stimulus involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    exposure_outcome: str = Field(default=..., description="""The biological response resulting from the exposure event""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    exposure_receiver: str = Field(default=..., description="""The organism, cell, tissue, or population being exposed""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
 
 
 class NamedThing(ConfiguredBaseModel):
@@ -458,7 +501,7 @@ class BiologicalEntity(NamedThing):
     """
     Biological entities including genes, proteins, cells, and anatomical structures
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CARO:0030000',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -468,7 +511,20 @@ class BiologicalEntity(NamedThing):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class ChemicalEntity(NamedThing):
+class StimulusEntity(NamedThing):
+    """
+    Any entity to which a receiver is being exposed
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ChemicalEntity(StimulusEntity):
     """
     A chemical entity including compounds, drugs, and metabolites
     """
@@ -529,18 +585,25 @@ class ChemicalEntity(NamedThing):
         return v
 
 
-class ExposureEvent(NamedThing):
+class BehavioralEntity(StimulusEntity):
     """
-    An event in which an organism is exposed to a chemical or environmental factor
+    A stimulus entity representing a behavior, activity, or lifestyle factor (e.g. smoking, physical activity, sleep) to which an individual may be exposed or that may mediate an exposure
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
-    exposed_to_chemical: Optional[str] = Field(default=None, description="""The chemical entity involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent'], 'slot_uri': 'CHEBI:24431'} })
-    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class DietEntity(StimulusEntity):
+    """
+    A stimulus entity representing a food, beverage, dietary pattern, or nutritional component consumed by an individual
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -562,7 +625,7 @@ class BiologicalResponse(NamedThing):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class HealthOutcome(NamedThing):
+class HealthOutcome(BiologicalResponse):
     """
     A health-related outcome including phenotypes and diseases
     """
@@ -618,18 +681,19 @@ class Association(NamedThing):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class ChemicalExposure(ExposureEvent):
+class Exposure(NamedThing):
     """
-    Exposure to a chemical substance
+    External, non-genetic, and internal stimuli, that can be chemical, physical,  biological, and psychosocial in nature, that an individual interacts with
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:0000006',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'ExO:0000002',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
-    exposed_to_chemical: Optional[str] = Field(default=None, description="""The chemical entity involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent'], 'slot_uri': 'CHEBI:24431'} })
-    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -637,7 +701,63 @@ class ChemicalExposure(ExposureEvent):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class DietaryExposure(ExposureEvent):
+class ActiveExposure(Exposure):
+    """
+    Direct, intentional contact with a stimulus 
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class PassiveExposure(Exposure):
+    """
+    Indirect, unintentional, or incidental contact with a stimulus
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    environmental_context: Optional[str] = Field(default=None, description="""Environmental context of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['PassiveExposure']} })
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ChemicalExposure(Exposure):
+    """
+    Exposure to a chemical substance
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:0000231',
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class DietaryExposure(Exposure):
     """
     Exposure through dietary consumption
     """
@@ -646,11 +766,11 @@ class DietaryExposure(ExposureEvent):
 
     food_item: Optional[str] = Field(default=None, description="""Food item consumed""", json_schema_extra = { "linkml_meta": {'domain_of': ['DietaryExposure']} })
     serving_size: Optional[str] = Field(default=None, description="""Serving size""", json_schema_extra = { "linkml_meta": {'domain_of': ['DietaryExposure']} })
-    exposed_to_chemical: Optional[str] = Field(default=None, description="""The chemical entity involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent'], 'slot_uri': 'CHEBI:24431'} })
-    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -658,40 +778,96 @@ class DietaryExposure(ExposureEvent):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class EnvironmentalExposure(ExposureEvent):
-    """
-    Exposure to environmental factors
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:0000001',
-         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
-
-    environmental_context: Optional[str] = Field(default=None, description="""Environmental context of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['EnvironmentalExposure']} })
-    exposed_to_chemical: Optional[str] = Field(default=None, description="""The chemical entity involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent'], 'slot_uri': 'CHEBI:24431'} })
-    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-
-class OccupationalExposure(ExposureEvent):
+class OccupationalExposure(Exposure):
     """
     Exposure in an occupational setting
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:0000002',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:0001591',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     occupation: Optional[str] = Field(default=None, description="""Occupation related to exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['OccupationalExposure']} })
     workplace: Optional[str] = Field(default=None, description="""Workplace where exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['OccupationalExposure']} })
-    exposed_to_chemical: Optional[str] = Field(default=None, description="""The chemical entity involved in the exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent'], 'slot_uri': 'CHEBI:24431'} })
-    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
-    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureEvent']} })
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ExperimentalExposure(Exposure):
+    """
+    Exposure to a treatment in an empirical experimental setting
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'XCO:0000000',
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    treatment: Optional[str] = Field(default=None, description="""The experimental stimulus or intervention applied to subjects in an experimental exposure setting; instantiates exposure_stimulus""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExperimentalExposure'], 'instantiates': ['exposure_stimulus']} })
+    experimental_subject: Optional[str] = Field(default=None, description="""The organism, cell, tissue, or population that is the subject of an experimental exposure; instantiates exposure_receiver""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExperimentalExposure'], 'instantiates': ['exposure_receiver']} })
+    experimental_result: Optional[str] = Field(default=None, description="""The biological response or outcome observed as a result of an experimental exposure; instantiates exposure_outcome""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExperimentalExposure'], 'instantiates': ['exposure_outcome']} })
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class PrenatalExposure(Exposure):
+    """
+    Exposure of a mammalian embryo or fetus via the mother
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class BehavioralExposure(Exposure):
+    """
+    Exposure wherein the receiver engages in a behavior that mediates an exposure  or leads to a health outcome
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class SesExposure(Exposure):
+    """
+    Exposure to stimulus related to socioeconomic factors
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    exposure_route: Optional[ExposureRouteEnum] = Field(default=None, description="""Route of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_duration: Optional[str] = Field(default=None, description="""Duration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_frequency: Optional[ExposureFrequencyEnum] = Field(default=None, description="""The temporal pattern of exposure, describing how often contact with a stimulus occurs over a defined period""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_concentration: Optional[float] = Field(default=None, description="""Concentration of exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
+    exposure_medium: Optional[ExposureMediumEnum] = Field(default=None, description="""Medium through which exposure occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['Exposure']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -703,12 +879,10 @@ class Phenotype(HealthOutcome):
     """
     An observable characteristic or trait
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'HP:0000118',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'UPHENO:0001001',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
-    hp_id: Optional[str] = Field(default=None, description="""Human Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     upheno_id: Optional[str] = Field(default=None, description="""Unified phenotype ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
-    phenotype_category: Optional[str] = Field(default=None, description="""Category of phenotype""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     severity: Optional[str] = Field(default=None, description="""Severity of phenotype or disease""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     onset_age: Optional[str] = Field(default=None, description="""Age of onset""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -716,19 +890,6 @@ class Phenotype(HealthOutcome):
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
     category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-
-    @field_validator('hp_id')
-    def pattern_hp_id(cls, v):
-        pattern=re.compile(r"^HP:\d{7}$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid hp_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid hp_id format: {v}"
-            raise ValueError(err_msg)
-        return v
 
     @field_validator('upheno_id')
     def pattern_upheno_id(cls, v):
@@ -752,7 +913,6 @@ class Disease(HealthOutcome):
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     mondo_id: Optional[str] = Field(default=None, description="""MONDO disease identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Disease']} })
-    disease_category: Optional[str] = Field(default=None, description="""Category of disease""", json_schema_extra = { "linkml_meta": {'domain_of': ['Disease']} })
     affected_anatomy: Optional[str] = Field(default=None, description="""Anatomical location affected""", json_schema_extra = { "linkml_meta": {'domain_of': ['Disease']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
@@ -796,9 +956,7 @@ class MammalianPhenotype(Phenotype):
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     mp_id: Optional[str] = Field(default=None, description="""Mammalian Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['MammalianPhenotype']} })
-    hp_id: Optional[str] = Field(default=None, description="""Human Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     upheno_id: Optional[str] = Field(default=None, description="""Unified phenotype ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
-    phenotype_category: Optional[str] = Field(default=None, description="""Category of phenotype""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     severity: Optional[str] = Field(default=None, description="""Severity of phenotype or disease""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     onset_age: Optional[str] = Field(default=None, description="""Age of onset""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -817,19 +975,6 @@ class MammalianPhenotype(Phenotype):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.match(v):
             err_msg = f"Invalid mp_id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('hp_id')
-    def pattern_hp_id(cls, v):
-        pattern=re.compile(r"^HP:\d{7}$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid hp_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid hp_id format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -855,9 +1000,7 @@ class ZebrafishPhenotype(Phenotype):
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     zp_id: Optional[str] = Field(default=None, description="""Zebrafish Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['ZebrafishPhenotype']} })
-    hp_id: Optional[str] = Field(default=None, description="""Human Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     upheno_id: Optional[str] = Field(default=None, description="""Unified phenotype ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
-    phenotype_category: Optional[str] = Field(default=None, description="""Category of phenotype""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     severity: Optional[str] = Field(default=None, description="""Severity of phenotype or disease""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     onset_age: Optional[str] = Field(default=None, description="""Age of onset""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
@@ -878,6 +1021,37 @@ class ZebrafishPhenotype(Phenotype):
             err_msg = f"Invalid zp_id format: {v}"
             raise ValueError(err_msg)
         return v
+
+    @field_validator('upheno_id')
+    def pattern_upheno_id(cls, v):
+        pattern=re.compile(r"^UPHENO:\d+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid upheno_id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid upheno_id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class HumanPhenotype(Phenotype):
+    """
+    A phenotype observed in humans
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'HP:0000001',
+         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    hp_id: Optional[str] = Field(default=None, description="""Human Phenotype Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['HumanPhenotype']} })
+    upheno_id: Optional[str] = Field(default=None, description="""Unified phenotype ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
+    severity: Optional[str] = Field(default=None, description="""Severity of phenotype or disease""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
+    onset_age: Optional[str] = Field(default=None, description="""Age of onset""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
     @field_validator('hp_id')
     def pattern_hp_id(cls, v):
@@ -929,16 +1103,14 @@ class MolecularInitiatingEvent(BiologicalResponse):
     """
     The initial molecular-level perturbation that starts an Adverse Outcome Pathway
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:3000000',
-         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     biological_process: Optional[str] = Field(default=None, description="""Biological process involved""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     biological_object: Optional[str] = Field(default=None, description="""Biological object involved""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     biological_action: Optional[str] = Field(default=None, description="""Biological action or change""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     occurs_in_cell_type: Optional[str] = Field(default=None, description="""Cell type where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent'],
          'slot_uri': 'CL:0000000'} })
-    occurs_in_anatomy: Optional[str] = Field(default=None, description="""Anatomical location where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent'],
-         'slot_uri': 'UBERON:0001062'} })
+    occurs_in_anatomy: Optional[str] = Field(default=None, description="""Anatomical location where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -950,8 +1122,7 @@ class KeyEvent(BiologicalResponse):
     """
     A measurable change in biological state that is a step in an Adverse Outcome Pathway
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ECTO:1000000',
-         'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     biological_process: Optional[str] = Field(default=None, description="""Biological process involved""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     biological_object: Optional[str] = Field(default=None, description="""Biological object involved""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
@@ -959,8 +1130,7 @@ class KeyEvent(BiologicalResponse):
     level_of_biological_organization: Optional[BiologicalOrganizationLevelEnum] = Field(default=None, description="""Level of biological organization""", json_schema_extra = { "linkml_meta": {'domain_of': ['KeyEvent']} })
     occurs_in_cell_type: Optional[str] = Field(default=None, description="""Cell type where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent'],
          'slot_uri': 'CL:0000000'} })
-    occurs_in_anatomy: Optional[str] = Field(default=None, description="""Anatomical location where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent'],
-         'slot_uri': 'UBERON:0001062'} })
+    occurs_in_anatomy: Optional[str] = Field(default=None, description="""Anatomical location where event occurs""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularInitiatingEvent', 'KeyEvent']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1032,7 +1202,7 @@ class Participant(StudyEntity):
     participant_id: Optional[str] = Field(default=None, description="""Participant identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant']} })
     age: Optional[int] = Field(default=None, description="""Age in years""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant']} })
     sex: Optional[SexEnum] = Field(default=None, description="""Biological sex""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant']} })
-    species: Optional[str] = Field(default=None, description="""Species name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant', 'Organism']} })
+    species: Optional[str] = Field(default=None, description="""Species name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant', 'Organism', 'Population']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1063,7 +1233,7 @@ class ExposureMeasurement(Measurement):
                        'BiomarkerMeasurement',
                        'PhenotypeMeasurement']} })
     sample_type: Optional[SampleTypeEnum] = Field(default=None, description="""Type of biological sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
-    source_database_record: Optional[str] = Field(default=None, description="""Reference to source database record""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
+    source_database_record: Optional[str] = Field(default=None, description="""Identifier or record reference in the source database""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureMeasurement']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1193,14 +1363,14 @@ class Protein(BiologicalEntity):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class CellType(BiologicalEntity):
+class Cell(BiologicalEntity):
     """
     A type of cell
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CL:0000000',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
-    cl_id: Optional[str] = Field(default=None, description="""Cell Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['CellType']} })
+    cl_id: Optional[str] = Field(default=None, description="""Cell Ontology identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Cell']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1223,7 +1393,7 @@ class CellType(BiologicalEntity):
 
 class AnatomicalEntity(BiologicalEntity):
     """
-    An anatomical structure or system
+    An anatomical structure or system, part of an organism, made of many cells
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'UBERON:0001062',
          'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
@@ -1255,8 +1425,9 @@ class Organism(BiologicalEntity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
-    species: Optional[str] = Field(default=None, description="""Species name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant', 'Organism']} })
+    species: Optional[str] = Field(default=None, description="""Species name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant', 'Organism', 'Population']} })
     taxon_id: Optional[str] = Field(default=None, description="""NCBI Taxonomy identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organism']} })
+    lifestage: Optional[str] = Field(default=None, description="""Lifestage of the organism (e.g. embryo, larva, adult)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organism']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1264,39 +1435,75 @@ class Organism(BiologicalEntity):
     xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
-class ExposureToPhenotypeAssociation(Association):
+class Population(BiologicalEntity):
+    """
+    A group of organisms of the same species
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+
+    species: Optional[str] = Field(default=None, description="""Species name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Participant', 'Organism', 'Population']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
+    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
+    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+
+
+class ExposureToPhenotypeAssociation(ConfiguredBaseModel):
     """
     An association between an exposure and a phenotype
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema',
+         'implements': ['ExposureEvent']})
 
-    exposure: Optional[str] = Field(default=None, description="""Exposure in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation']} })
+    exposure: Optional[ExposureEvent] = Field(default=None, description="""Exposure in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation']} })
     phenotype: Optional[str] = Field(default=None, description="""The phenotype being measured""", json_schema_extra = { "linkml_meta": {'domain_of': ['PhenotypeMeasurement',
                        'ExposureToPhenotypeAssociation',
                        'GeneticVariantToPhenotypeAssociation']} })
-    association_type: Optional[str] = Field(default=None, description="""Type of association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation', 'GeneToDiseaseAssociation']} })
-    evidence: Optional[str] = Field(default=None, description="""Evidence for association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
+    receiver: Optional[str] = Field(default=None, description="""The organism, cell, tissue, or population being exposed in an association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'ChemicalToGeneAssociation']} })
+    association_type: Optional[str] = Field(default=None, description="""Type of association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'GeneToDiseaseAssociation']} })
+    evidence: Optional[str] = Field(default=None, description="""Evidence for association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation']} })
 
 
-class ChemicalToGeneAssociation(Association):
+class ExposureToDiseaseAssociation(ConfiguredBaseModel):
+    """
+    An association between an exposure and a disease
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema',
+         'implements': ['ExposureEvent']})
+
+    exposure: Optional[ExposureEvent] = Field(default=None, description="""Exposure in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation']} })
+    disease: Optional[str] = Field(default=None, description="""Disease in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToDiseaseAssociation', 'GeneToDiseaseAssociation']} })
+    receiver: Optional[str] = Field(default=None, description="""The organism, cell, tissue, or population being exposed in an association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'ChemicalToGeneAssociation']} })
+    evidence: Optional[str] = Field(default=None, description="""Evidence for association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation']} })
+    association_type: Optional[str] = Field(default=None, description="""Type of association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'GeneToDiseaseAssociation']} })
+
+
+class ChemicalToGeneAssociation(ConfiguredBaseModel):
     """
     An association between a chemical and a gene
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema',
+         'implements': ['ExposureEvent']})
 
     chemical: Optional[str] = Field(default=None, description="""Chemical in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalToGeneAssociation']} })
     gene: Optional[str] = Field(default=None, description="""Gene in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalToGeneAssociation', 'GeneToDiseaseAssociation']} })
+    receiver: Optional[str] = Field(default=None, description="""The organism, cell, tissue, or population being exposed in an association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'ChemicalToGeneAssociation']} })
     interaction_type: Optional[str] = Field(default=None, description="""Type of interaction""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalToGeneAssociation']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
-    category: Optional[list[str]] = Field(default=[], description="""A category or type for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
-    xref: Optional[list[str]] = Field(default=[], description="""External database cross-references""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing']} })
 
 
 class GeneToDiseaseAssociation(Association):
@@ -1306,8 +1513,10 @@ class GeneToDiseaseAssociation(Association):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/diatomsRcool/exposome-schema'})
 
     gene: Optional[str] = Field(default=None, description="""Gene in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalToGeneAssociation', 'GeneToDiseaseAssociation']} })
-    disease: Optional[str] = Field(default=None, description="""Disease in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['GeneToDiseaseAssociation']} })
-    association_type: Optional[str] = Field(default=None, description="""Type of association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation', 'GeneToDiseaseAssociation']} })
+    disease: Optional[str] = Field(default=None, description="""Disease in association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToDiseaseAssociation', 'GeneToDiseaseAssociation']} })
+    association_type: Optional[str] = Field(default=None, description="""Type of association""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureToPhenotypeAssociation',
+                       'ExposureToDiseaseAssociation',
+                       'GeneToDiseaseAssociation']} })
     id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
     name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'], 'slot_uri': 'schema:description'} })
@@ -1356,24 +1565,34 @@ class ExposomeDatabase(ConfiguredBaseModel):
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
+ExposureEvent.model_rebuild()
 NamedThing.model_rebuild()
 BiologicalEntity.model_rebuild()
+StimulusEntity.model_rebuild()
 ChemicalEntity.model_rebuild()
-ExposureEvent.model_rebuild()
+BehavioralEntity.model_rebuild()
+DietEntity.model_rebuild()
 BiologicalResponse.model_rebuild()
 HealthOutcome.model_rebuild()
 StudyEntity.model_rebuild()
 Measurement.model_rebuild()
 Association.model_rebuild()
+Exposure.model_rebuild()
+ActiveExposure.model_rebuild()
+PassiveExposure.model_rebuild()
 ChemicalExposure.model_rebuild()
 DietaryExposure.model_rebuild()
-EnvironmentalExposure.model_rebuild()
 OccupationalExposure.model_rebuild()
+ExperimentalExposure.model_rebuild()
+PrenatalExposure.model_rebuild()
+BehavioralExposure.model_rebuild()
+SesExposure.model_rebuild()
 Phenotype.model_rebuild()
 Disease.model_rebuild()
 AdverseOutcome.model_rebuild()
 MammalianPhenotype.model_rebuild()
 ZebrafishPhenotype.model_rebuild()
+HumanPhenotype.model_rebuild()
 AdverseOutcomePathway.model_rebuild()
 MolecularInitiatingEvent.model_rebuild()
 KeyEvent.model_rebuild()
@@ -1387,10 +1606,12 @@ PhenotypeMeasurement.model_rebuild()
 AggregatedMeasurement.model_rebuild()
 Gene.model_rebuild()
 Protein.model_rebuild()
-CellType.model_rebuild()
+Cell.model_rebuild()
 AnatomicalEntity.model_rebuild()
 Organism.model_rebuild()
+Population.model_rebuild()
 ExposureToPhenotypeAssociation.model_rebuild()
+ExposureToDiseaseAssociation.model_rebuild()
 ChemicalToGeneAssociation.model_rebuild()
 GeneToDiseaseAssociation.model_rebuild()
 GeneticVariantToPhenotypeAssociation.model_rebuild()
