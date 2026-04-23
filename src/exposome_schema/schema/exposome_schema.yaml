@@ -59,8 +59,8 @@ imports:
 classes:
 
   # ============ Metaclass ===============
-  
-    ExposureEvent:
+
+  ExposureEvent:
     abstract: true
     description: >-
       An event in which a BiologicalEntity is exposed 
@@ -69,11 +69,8 @@ classes:
       must_not_have_id_slot: true
     slots:
       - exposure_stimulus
-        required: true
       - exposure_outcome
-        required: true
       - exposure_receiver
-        required: true
 
   # ============ Base Classes ============
 
@@ -119,9 +116,16 @@ classes:
       
   BehavioralEntity:
     is_a: StimulusEntity
-    
+    description: >-
+      A stimulus entity representing a behavior, activity, or lifestyle factor
+      (e.g. smoking, physical activity, sleep) to which an individual may be
+      exposed or that may mediate an exposure
+
   DietEntity:
     is_a: StimulusEntity
+    description: >-
+      A stimulus entity representing a food, beverage, dietary pattern, or
+      nutritional component consumed by an individual
 
   BiologicalResponse:
     abstract: true
@@ -163,8 +167,6 @@ classes:
       External, non-genetic, and internal stimuli, that can be chemical, physical, 
       biological, and psychosocial in nature, that an individual interacts with
     slots:
-      - exposure_stimulus
-        required: true
       - exposure_route
       - exposure_duration
       - exposure_frequency
@@ -212,6 +214,10 @@ classes:
     class_uri: XCO:0000000
     description: >-
       Exposure to a treatment in an empirical experimental setting
+    slots:
+      - treatment
+      - experimental_subject
+      - experimental_result
 
   PrenatalExposure:
     is_a: Exposure
@@ -279,7 +285,7 @@ classes:
     description: >-
       A phenotype observed in humans
     slots:
-      - hpo_id
+      - hp_id
     
 
   # ============ AOP Framework Classes ============
@@ -648,13 +654,14 @@ slots:
 
   # Exposure slots
   exposure_stimulus:
+    required: true
     range: StimulusEntity
     description: The stimulus involved in the exposure
 
   exposure_route:
     range: ExposureRouteEnum
     description: Route of exposure
-
+ 
   exposure_duration:
     range: string
     description: Duration of exposure
@@ -669,11 +676,17 @@ slots:
 
   exposure_frequency:
     range: ExposureFrequencyEnum
-  
+    description: >-
+      The temporal pattern of exposure, describing how often contact with a
+      stimulus occurs over a defined period
+
   exposure_outcome:
+    required: true
     range: BiologicalResponse
-  
+    description: The biological response resulting from the exposure event
+
   exposure_receiver:
+    required: true
     range: BiologicalEntity
     description: The organism, cell, tissue, or population being exposed
 
@@ -696,6 +709,24 @@ slots:
   workplace:
     range: string
     description: Workplace where exposure occurs
+  
+  treatment:
+    instantiates: exposure_stimulus
+    description: >-
+      The experimental stimulus or intervention applied to subjects in an
+      experimental exposure setting; instantiates exposure_stimulus
+
+  experimental_subject:
+    instantiates: exposure_receiver
+    description: >-
+      The organism, cell, tissue, or population that is the subject of an
+      experimental exposure; instantiates exposure_receiver
+
+  experimental_result:
+    instantiates: exposure_outcome
+    description: >-
+      The biological response or outcome observed as a result of an experimental
+      exposure; instantiates exposure_outcome
 
   # Health outcome slots
   hp_id:
@@ -780,7 +811,7 @@ slots:
     description: Biological action or change
 
   occurs_in_cell_type:
-    range: CellType
+    range: Cell
     slot_uri: CL:0000000
     description: Cell type where event occurs
 
@@ -964,6 +995,18 @@ slots:
     range: string
     description: Name of source database
 
+  source_database_record:
+    range: string
+    description: Identifier or record reference in the source database
+
+  lifestage:
+    range: string
+    description: Lifestage of the organism (e.g. embryo, larva, adult)
+
+  receiver:
+    range: BiologicalEntity
+    description: The organism, cell, tissue, or population being exposed in an association
+
   record_url:
     range: uri
     description: URL to database record
@@ -1054,171 +1097,187 @@ slots:
 
 enums:
 
+  ExposureFrequencyEnum:
+    description: Frequency of exposure
+    permissible_values:
+      acute:
+        description: Single or short-term exposure
+      subacute:
+        description: Repeated exposure over a short period
+      subchronic:
+        description: Repeated exposure over an intermediate period
+      chronic:
+        description: Long-term or repeated exposure over a long period
+      intermittent:
+        description: Exposure occurring at irregular intervals
+      unknown:
+        description: Unknown frequency
+
   ExposureRouteEnum:
     description: Routes of exposure to chemicals or environmental factors
     permissible_values:
-      Oral:
+      oral:
         description: Oral ingestion
         meaning: ECTO:0000895
-      Dermal:
+      dermal:
         description: Dermal contact
         meaning: ECTO:0000896
-      Inhalation:
+      inhalation:
         description: Inhalation
         meaning: ECTO:0000897
-      Injection:
+      injection:
         description: Injection
-      Unknown:
+      unknown:
         description: Unknown route
 
   ExposureMediumEnum:
     description: Medium through which exposure occurs
     permissible_values:
-      Air:
+      air:
         description: Air
         meaning: ENVO:00002005
-      Water:
+      water:
         description: Water
         meaning: ENVO:00002006
-      Food:
+      food:
         description: Food
         meaning: FOODON:00002403
-      Soil:
+      soil:
         description: Soil
         meaning: ENVO:00001998
-      Dust:
+      dust:
         description: Dust
-      ConsumerProduct:
+      consumer_product:
         description: Consumer product
-      Unknown:
+      unknown:
         description: Unknown medium
 
   BiologicalOrganizationLevelEnum:
     description: Levels of biological organization
     permissible_values:
-      Molecular:
+      molecular:
         description: Molecular level
         meaning: EFO:0001432
-      Cellular:
+      cellular:
         description: Cellular level
         meaning: CL:0000000
-      Tissue:
+      tissue:
         description: Tissue level
         meaning: UBERON:0000479
-      Organ:
+      organ:
         description: Organ level
         meaning: UBERON:0000062
-      Organism:
+      organism:
         description: Organism level
         meaning: UBERON:0000468
-      Population:
+      population:
         description: Population level
 
   StudyTypeEnum:
     description: Types of research studies
     permissible_values:
-      Cohort:
+      cohort:
         description: Cohort study
         meaning: EFO:0001444
-      CrossSectional:
+      cross_sectional:
         description: Cross-sectional study
         meaning: EFO:0001745
-      CaseControl:
+      case_control:
         description: Case-control study
         meaning: EFO:0001427
-      RandomizedControlledTrial:
+      randomized_controlled_trial:
         description: Randomized controlled trial
         meaning: EFO:0001427
-      Survey:
+      survey:
         description: Survey
-      Gwas:
+      gwas:
         description: Genome-wide association study
         meaning: EFO:0000508
-      Other:
+      other:
         description: Other study type
 
   DataSourceEnum:
     description: Data sources and repositories
     permissible_values:
-      Nhanes:
+      nhanes:
         description: National Health and Nutrition Examination Survey
-      Chear:
+      chear:
         description: Children's Health Exposure Analysis Resource
-      Hhear:
+      hhear:
         description: Human Health Exposure Analysis Resource
-      AopWiki:
+      aop_wiki:
         description: AOP Wiki
-      Ctd:
+      ctd:
         description: Comparative Toxicogenomics Database
-      ToxCast:
+      tox_cast:
         description: ToxCast
-      Tox21:
+      tox21:
         description: Tox21
-      ChemBl:
+      chem_bl:
         description: ChEMBL
-      CompTox:
+      comp_tox:
         description: CompTox Dashboard
-      GwasCatalog:
+      gwas_catalog:
         description: GWAS Catalog
-      GeneExpressionAtlas:
+      gene_expression_atlas:
         description: Gene Expression Atlas
-      UsdaPesticide:
+      usda_pesticide:
         description: USDA Pesticide Data Program
-      Wweia:
+      wweia:
         description: What We Eat In America
-      Other:
+      other:
         description: Other data source
 
   SexEnum:
     description: Biological sex
     permissible_values:
-      Male:
+      male:
         description: Male
         meaning: PATO:0000384
-      Female:
+      female:
         description: Female
         meaning: PATO:0000383
-      Unknown:
+      unknown:
         description: Unknown
 
   SampleTypeEnum:
     description: Types of biological samples
     permissible_values:
-      Blood:
+      blood:
         description: Blood sample
-      Urine:
+      urine:
         description: Urine sample
-      Serum:
+      serum:
         description: Serum sample
-      Plasma:
+      plasma:
         description: Plasma sample
-      Tissue:
+      tissue:
         description: Tissue sample
-      Saliva:
+      saliva:
         description: Saliva sample
-      Hair:
+      hair:
         description: Hair sample
-      Nail:
+      nail:
         description: Nail sample
-      Other:
+      other:
         description: Other sample type
 
   SummaryStatisticEnum:
     description: Types of summary statistics
     permissible_values:
-      Mean:
+      mean:
         description: Arithmetic mean
-      Median:
+      median:
         description: Median
-      Mode:
+      mode:
         description: Mode
-      Percentile:
+      percentile:
         description: Percentile
-      StandardDeviation:
+      standard_deviation:
         description: Standard deviation
-      Variance:
+      variance:
         description: Variance
-      Range:
+      range:
         description: Range
-      InterquartileRange:
+      interquartile_range:
         description: Interquartile range
