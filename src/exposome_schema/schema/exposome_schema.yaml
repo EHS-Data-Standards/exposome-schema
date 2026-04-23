@@ -61,9 +61,8 @@ classes:
   # ============ Metaclass ===============
 
   ExposureEvent:
-    abstract: true
     description: >-
-      An event in which a BiologicalEntity is exposed 
+      An event in which a BiologicalEntity is exposed
       to a StimulusEntity and results in a BiologicalResponse
     annotations:
       must_not_have_id_slot: true
