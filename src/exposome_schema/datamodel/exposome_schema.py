@@ -1,5 +1,5 @@
 # Auto generated from exposome_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-23T14:20:27
+# Generation date: 2026-04-23T14:29:23
 # Schema: exposome-schema
 #
 # id: https://w3id.org/diatomsRcool/exposome-schema
@@ -292,7 +292,7 @@ class GeneticVariantToPhenotypeAssociationId(AssociationId):
 @dataclass(repr=False)
 class ExposureEvent(YAMLRoot):
     """
-    An event in which a BiologicalEntity is exposed  to a StimulusEntity and results in a BiologicalResponse
+    An event in which a BiologicalEntity is exposed to a StimulusEntity and results in a BiologicalResponse
     """
     _inherited_slots: ClassVar[list[str]] = []
 
